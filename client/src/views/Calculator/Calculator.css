@@ -1,0 +1,99 @@
+body {
+    height: 100%;
+    
+}
+
+/*
+    Headers styling
+*/
+
+.calculator-section-header-position {
+    margin-left: 60px;
+    
+}
+
+
+.calculator-section-header {
+    margin-top: 40px;
+    font-size: 15pt;
+    color: #009aff;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.calculator-header-position{
+    text-align: center;
+    margin-top: 60px;
+}
+
+.calculator-header {
+    
+    font-size: 25pt;
+    color: #009fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+    Input grid styling
+*/
+.input-grid{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;    
+
+    display: grid;
+    grid-template-rows: repeat(4);
+    flex-direction: column;
+    max-width: 250px;
+    row-gap: 5px;
+}
+
+.input-spacer{
+    margin-top: 20px;
+}
+
+
+/*
+    Input box styling
+*/
+
+.input-style{
+    border: 2px solid #555;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.input-style:focus{
+    border: 2px solid black;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 1px;
+}
+
+/*
+    Button styling
+*/
+
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #009aff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 20px;
+    
+  }
+  
+  .button:hover {background-color: #0884eb}
+  
+  .button:active {
+    background-color: #0884eb;
+  }
