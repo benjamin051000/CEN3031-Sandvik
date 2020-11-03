@@ -132,13 +132,7 @@ function Calculator() {
 
                 </Formik>
 
-                
-
-
-
-                
-
-
+            
             </div>
             
         </div>
