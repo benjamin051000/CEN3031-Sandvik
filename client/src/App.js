@@ -4,6 +4,7 @@ import Dashboard from "./views/Dashboard/Dashboard"
 import NotFound from "./views/NotFound"
 import Header from "./components/Header/Header"
 import Calculator from "./views/Calculator/Calculator"
+import CalculatorOutput from './views/Calculator/CalculatorOutput';
 import Settings from "./views/Settings/Settings"
 import History from "./views/History/History"
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route exact path="/calculator" component={Calculator} />
         <Route exact path="/history" component={History} />
         <Route exact path="/settings" component={Settings} />
+        <Route path='/CalculatorOutput' component={CalculatorOutput} />
         <Route exact path="/">
           <Redirect to="/dashboard" />
         </Route>
