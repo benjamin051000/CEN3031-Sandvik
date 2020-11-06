@@ -1,0 +1,71 @@
+.body{
+    text-align: center;
+}
+
+.ui.table thead tr:first-child > th {
+	position: sticky !important;
+	background-color: rgb(41, 41, 41);
+	top: 0;
+	z-index: 2;
+}
+
+.history-header{
+    color: #0884eb;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25pt;
+    text-align: left;
+    margin-left: 448px;
+}
+
+/*
+    Table Formatting
+*/
+
+.table-wrapper {
+	max-height: 500px;
+	min-height: 500px;
+	overflow: auto;
+	scroll-behavior: smooth;
+	align-items: flex-start;
+	align-self: flex-end;
+}
+
+.row {
+	margin-top: 0rem;
+	justify-content: center;
+}
+
+.row:after {
+	padding: 1 0rem;
+	content: '';
+	display: table;
+	clear: both;
+	
+}
+
+.button-history {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #009aff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 25px;
+	align-items: center;
+	margin-left: 448px;
+	margin-bottom: 30px;
+  }
+  
+  .button-history:hover {background-color: #0884eb;
+    color: #fff;}
+  
+  .button-history:active {
+    background-color: #0884eb;
+  }
+

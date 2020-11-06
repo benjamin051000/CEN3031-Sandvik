@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
@@ -27,7 +28,7 @@ function Calculator() {
             <div className="calculator-header-position">
                 <h1 className="calculator-header">New Calculation Form</h1>
             </div>
-            <div style={{marginLeft:"150px"}}>
+            <div className="calculator-section-header-position">
                 <Formik
                     initialValues={{
                         name:'',
@@ -57,85 +58,104 @@ function Calculator() {
                     })}
 
                     onSubmit={(values)=>{
-                        alert(JSON.stringify(values, null))
+                        console.log(values);
                     }}
 
                 >
                     <Form>
                         <h1 className="calculator-section-header">Client Information</h1>
                             <div className="input-grid">
-                                <label htmlFor="name">Name</label>
-                                <Field name="name" type="text" />
-                                <ErrorMessage name="name" />
-                                
+                                <p>
+                                    <label htmlFor="name">Name</label>
+                                    <Field className="input-style" name="name" type="text" />
+                                    <ErrorMessage component="required-message" name="name" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="company">Company</label>
-                                <Field name="company" type="text" />  
-                                <ErrorMessage name="company" />
-                                
+                                <p>
+                                    <label htmlFor="company">Company</label>
+                                    <Field className="input-style" name="company" type="text" />  
+                                    <ErrorMessage component="required-message" name="company" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="email">Email Address</label>
-                                <Field name="email" type="email" />
-                                <ErrorMessage name="email" />
-                                
+                                <p>
+                                    <label htmlFor="email">Email Address</label>
+                                    <Field className="input-style" name="email" type="email" />
+                                    <ErrorMessage component="required-message" name="email" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="phone">Phone Number</label>
-                                <Field name="phone" type="text" />
+                                <p>
+                                    <label htmlFor="phone">Phone Number</label>
+                                    <Field className="input-style" name="phone" type="text" />
+                                </p>
 
                             </div>
 
                         <h1 className="calculator-section-header">Site Information</h1>
                             <div className="input-grid">
-                                <label htmlFor="temperature">Temperature</label>
-                                <Field name="temperature" type="text" />
-                                <ErrorMessage name="temperature" />
-                                
 
-                                <label className="input-spacer" htmlFor="rock_hardness">Rock Hardness</label>
-                                <Field name="rock_hardness" type="text" />  
-                                <ErrorMessage name="rock_hardness" />
-                                
+                                <p>
+                                    <label htmlFor="temperature">Temperature</label>
+                                    <Field className="input-style" name="temperature" type="text" />
+                                    <ErrorMessage component="required-message" name="temperature" />
+                                </p>   
 
-                                <label className="input-spacer" htmlFor="depth">Depth</label>
-                                <Field name="depth" type="text" />
-                                <ErrorMessage name="depth" />
-                                
+                                <p>
+                                    <label htmlFor="rock_hardness">Rock Hardness</label>
+                                    <Field className="input-style" name="rock_hardness" type="text" />  
+                                    <ErrorMessage component="required-message" name="rock_hardness" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="color">Color</label>
-                                <Field name="color" type="text" />
-                                <ErrorMessage name="color" />
+                                <p>
+                                    <label htmlFor="depth">Depth</label>
+                                    <Field className="input-style" name="depth" type="text" />
+                                    <ErrorMessage component="required-message" name="depth" />
+                                </p>
+
+                                <p>
+                                    <label htmlFor="color">Color</label>
+                                    <Field className="input-style" name="color" type="text" />
+                                    <ErrorMessage component="required-message" name="color" />
+                                </p>
 
                             </div>
 
 
                         <h1 className="calculator-section-header">Current Rig Specs</h1>
                             <div className="input-grid">
-                                <label htmlFor="size">Size</label>
-                                <Field name="size" type="text" />
-                                <ErrorMessage name="size" />
-                                
+                                <p>
+                                    <label htmlFor="size">Size</label>
+                                    <Field className="input-style" name="size" type="text" />
+                                    <ErrorMessage component="required-message" name="size" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="speed">Speed</label>
-                                <Field name="speed" type="text" />  
-                                <ErrorMessage name="speed" />
-                                
+                                <p>
+                                    <label htmlFor="speed">Speed</label>
+                                    <Field className="input-style" name="speed" type="text" />  
+                                    <ErrorMessage component="required-message" name="speed" />
+                                </p>
 
-                                <label className="input-spacer" htmlFor="power">Power</label>
-                                <Field name="power" type="text" />
-                                <ErrorMessage name="power" />
-                              
+                                <p>
+                                    <label htmlFor="power">Power</label>
+                                    <Field className="input-style" name="power" type="text" />
+                                    <ErrorMessage component="required-message" name="power" />
+                                </p>
+
                             </div>
 
-                        <button className="button" type="submit">Submit</button>
+                        <div className="input-grid-button">
+                            <Link to="/dashboard" className="button-calculator" >Back</Link>
+                            <button style={{gridColumn:"3"}} className="button-calculator" type="submit">Submit</button>
+                        </div>
                         
                     </Form>
 
                 </Formik>
 
-            
+                
             </div>
             
         </div>
+        
     );
 }
 

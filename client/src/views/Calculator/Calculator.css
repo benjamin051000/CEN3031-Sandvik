@@ -8,73 +8,87 @@ body {
 */
 
 .calculator-section-header-position {
-    margin-left: 60px;
+    margin-left: 28%;
 }
 
 
 .calculator-section-header {
-    margin-top: 40px;
+    margin-top: 75px;
     font-size: 15pt;
+    
     color: #009aff;
-    font-family: Arial, Helvetica, sans-serif;    
+    font-family: Tahoma, Geneva, sans-serif;    
 }
 
 .calculator-header-position{
     text-align: center;
-    margin-top: 60px;
+    
+    margin-bottom: 35px;
 }
 
 .calculator-header {
     
     font-size: 25pt;
     color: #009fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
 /*
     Input grid styling
 */
+
 .input-grid{
     color:white;
     font-family: Arial, Helvetica, sans-serif;    
 
     display: grid;
-    grid-template-rows: repeat(4);
-    flex-direction: column;
-    max-width: 250px;
-    row-gap: 5px;
+    grid-template-columns: 225px 225px 225px;
+    gap: 80px;
+    row-gap: 20px;
+    position: sticky;
 }
-
-.input-spacer{
-    margin-top: 20px;
-}
-
 
 /*
     Input box styling
 */
 
 .input-style{
-    border: 2px solid #555;
-    padding: 6px 10px;
-    margin: 8px 0;
+    border: 2px solid gray;
+    padding: 4px 8px;
     box-sizing: border-box;
     border-radius: 3px;
 }
 .input-style:focus{
-    border: 2px solid black;
-    padding: 6px 10px;
-    margin: 8px 0;
+    border: 2px solid #009aff;
+    outline: none;
+    padding: 4px 8px;
     box-sizing: border-box;
-    border-radius: 1px;
+    border-radius: 3px;
 }
 
+required-message{
+    color:rgb(236, 105, 105);
+    position: absolute;
+}
 /*
     Button styling
 */
 
+.input-grid-button{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;    
 
-.button {
+    display: grid;
+    grid-template-columns: 125px 225px 125px;
+    gap: 165px;
+    row-gap: 25px;
+    position: sticky;
+
+    margin-bottom: 100px;
+    margin-left: 2px;
+}
+
+.button-calculator {
     display: inline-block;
     padding: 15px 25px;
     font-size: 20px;
@@ -87,12 +101,14 @@ body {
     background-color: #009aff;
     border: none;
     border-radius: 3px;
-    margin-top: 20px;
-    
+    margin-top: 80px;
+    align-items: center;
   }
   
-  .button:hover {background-color: #0884eb}
+  .button-calculator:hover {background-color: #0884eb;
+    color: #fff;}
   
-  .button:active {
+  .button-calculator:active {
     background-color: #0884eb;
   }
+

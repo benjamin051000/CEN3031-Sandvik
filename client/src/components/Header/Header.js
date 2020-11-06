@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <div>
             
-            <div className="header">
+            <div className="sandvik-header">
                       
                 {/* Logo - Stored in client/public */} 
                 <div className="logo-text-align">

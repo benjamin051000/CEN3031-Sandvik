@@ -8,13 +8,12 @@ function Dashboard() {
 
     return (
         <div>
-            <header className="dashboard-header">
-                <h1>Dashboard</h1>
-            </header>
+            <h1 className="dashboard-header">Dashboard</h1>
+            
             <div className="buttons-layout">
-                <Link to="/calculator" className="button">New Calculation</Link>
-                <Link to="/history" className="button">History</Link>
-                <Link to="/settings" className="button">Settings</Link>
+                <Link to="/calculator" className="dashboard-button">New Calculation</Link>
+                <Link to="/history" className="dashboard-button">History</Link>
+                <Link to="/settings" className="dashboard-button">Settings</Link>
             </div>
                        
         </div>
