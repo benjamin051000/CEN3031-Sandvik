@@ -8,7 +8,7 @@ body {
 */
 
 .calculator-section-header-position {
-    margin-left: 28%;
+    margin-left: 30%;
 }
 
 
@@ -43,7 +43,7 @@ body {
 
     display: grid;
     grid-template-columns: 225px 225px 225px;
-    gap: 80px;
+    gap: 60px;
     row-gap: 20px;
     position: sticky;
 }
@@ -80,7 +80,7 @@ required-message{
 
     display: grid;
     grid-template-columns: 125px 225px 125px;
-    gap: 165px;
+    gap: 150px;
     row-gap: 25px;
     position: sticky;
 

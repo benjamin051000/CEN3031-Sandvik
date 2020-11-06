@@ -70,7 +70,7 @@ function Calculator() {
                                     <Field className="input-style" name="name" type="text" />
                                     <ErrorMessage component="required-message" name="name" />
                                 </p>
-
+                                
                                 <p>
                                     <label htmlFor="company">Company</label>
                                     <Field className="input-style" name="company" type="text" />  
