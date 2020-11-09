@@ -22,125 +22,6 @@ import './Calculator.css'
         ErrorMessage: Location of error message to be displayed when the data in the corresponding field is not valid
     */
 
-
-/* Component to render the input form. */
-const CalcInputForm = ({ setInputs }) => {
-    return <div>
-        <div className="calculator-header-position">
-            <h1 className="calculator-header">New Calculation Form</h1>
-        </div>
-        <div style={{ marginLeft: "150px" }}>
-            <Formik
-                initialValues={{
-                    name: '',
-                    company: '',
-                    email: '',
-                    phone: '',
-                    temperature: '',
-                    rock_hardness: '',
-                    depth: '',
-                    color: '',
-                    size: '',
-                    speed: '',
-                    power: ''
-                }}
-
-                validationSchema={Yup.object({
-                    name: Yup.string().required('Required'),
-                    company: Yup.string().required('Required'),
-                    email: Yup.string().required('Required'),
-                    temperature: Yup.string().required('Required'),
-                    rock_hardness: Yup.string().required('Required'),
-                    depth: Yup.string().required('Required'),
-                    color: Yup.string().required('Required'),
-                    size: Yup.string().required('Required'),
-                    speed: Yup.string().required('Required'),
-                    power: Yup.string().required('Required'),
-                })}
-
-                onSubmit={(values) => {
-                    setInputs(values);
-                }}
-
-            >
-                <Form>
-                    <h1 className="calculator-section-header">Client Information</h1>
-                    <div className="input-grid">
-                        <label htmlFor="name">Name</label>
-                        <Field name="name" type="text" />
-                        <ErrorMessage name="name" />
-
-
-                        <label className="input-spacer" htmlFor="company">Company</label>
-                        <Field name="company" type="text" />
-                        <ErrorMessage name="company" />
-
-
-                        <label className="input-spacer" htmlFor="email">Email Address</label>
-                        <Field name="email" type="email" />
-                        <ErrorMessage name="email" />
-
-
-                        <label className="input-spacer" htmlFor="phone">Phone Number</label>
-                        <Field name="phone" type="text" />
-
-                    </div>
-
-                    <h1 className="calculator-section-header">Site Information</h1>
-                    <div className="input-grid">
-                        <label htmlFor="temperature">Temperature</label>
-                        <Field name="temperature" type="text" />
-                        <ErrorMessage name="temperature" />
-
-
-                        <label className="input-spacer" htmlFor="rock_hardness">Rock Hardness</label>
-                        <Field name="rock_hardness" type="text" />
-                        <ErrorMessage name="rock_hardness" />
-
-
-                        <label className="input-spacer" htmlFor="depth">Depth</label>
-                        <Field name="depth" type="text" />
-                        <ErrorMessage name="depth" />
-
-
-                        <label className="input-spacer" htmlFor="color">Color</label>
-                        <Field name="color" type="text" />
-                        <ErrorMessage name="color" />
-
-                    </div>
-
-
-                    <h1 className="calculator-section-header">Current Rig Specs</h1>
-                    <div className="input-grid">
-                        <label htmlFor="size">Size</label>
-                        <Field name="size" type="text" />
-                        <ErrorMessage name="size" />
-
-
-                        <label className="input-spacer" htmlFor="speed">Speed</label>
-                        <Field name="speed" type="text" />
-                        <ErrorMessage name="speed" />
-
-
-                        <label className="input-spacer" htmlFor="power">Power</label>
-                        <Field name="power" type="text" />
-                        <ErrorMessage name="power" />
-
-                    </div>
-
-                    <button className="button" type="submit">Submit</button>
-
-                </Form>
-
-            </Formik>
-
-
-        </div>
-
-    </div>
-}
-
-
 export default function Calculator() {
     const [inputs, setInputs] = useState({});
 
@@ -166,4 +47,163 @@ export default function Calculator() {
             <CalcInputForm setInputs={setInputs} />
 
     );
+}
+
+/* Component to render the input form. */
+const CalcInputForm = ({ setInputs }) => {
+    return <div>
+        <div className="calculator-header-position">
+            <h1 className="calculator-header">New Calculation Form</h1>
+        </div>
+        <div style={{ marginLeft: "150px" }}> 
+            <Formik
+                initialValues={{
+                    // Client info
+                    custName: '',
+                    projName: '',
+                    date: '',
+                    // Site conditions
+                    ucs: '',
+                    fracturization: '',
+                    elevation: '',
+                    temp: '',
+                    // Rig spec
+                    pipeSize: '',
+                    holeDepth: '',
+                    // DTH
+                    dthComp: '',
+                    dthWap: '',
+                    dthHammer: '',
+                    dthBit: '',
+                    // Rotary
+                    rotPulldown: '',
+                    rotComp: '',
+                    rotBit: '',
+                    rotRpm: ''
+                }}
+
+                // validationSchema={Yup.object({
+                //     name: Yup.string().required('Required'),
+                //     company: Yup.string().required('Required'),
+                //     email: Yup.string().required('Required'),
+                //     temperature: Yup.string().required('Required'),
+                //     rock_hardness: Yup.string().required('Required'),
+                //     depth: Yup.string().required('Required'),
+                //     color: Yup.string().required('Required'),
+                //     size: Yup.string().required('Required'),
+                //     speed: Yup.string().required('Required'),
+                //     power: Yup.string().required('Required'),
+                // })}
+
+                onSubmit={(values) => {
+                    setInputs(values);
+                }}
+
+            >
+                <Form>
+                    {/* General info */}
+                    <h1 className="calculator-section-header">Client Information</h1>
+                    <div className="input-grid">
+                        <label htmlFor="custName">Customer Name</label>
+                        <Field name="custName" type="text" />
+                        <ErrorMessage name="custName" />
+
+                        <label className="input-spacer" htmlFor="projName">Project Name</label>
+                        <Field name="projName" type="text" />
+                        <ErrorMessage name="projName" />
+
+                        <label className="input-spacer" htmlFor="date">Date</label>
+                        <Field name="date" type="text" />
+                        <ErrorMessage name="date" />
+                    </div>
+
+                    {/* Site conditions */}
+                    <h1 className="calculator-section-header">Site Conditions</h1>
+                    <div className="input-grid">
+                        <label htmlFor="ucs">Rock UCS</label>
+                        <Field name="ucs" type="text" />
+                        <ErrorMessage name="ucs" />
+
+                        <label className="input-spacer" htmlFor="fracturization">Fracturization</label>
+                        <Field name="fracturization" as="select">
+                            {['None', 'Light', 'Moderate', 'Heavy'].map(
+                                e => <option>{e}</option>
+                            )}
+                        </Field>
+                        <ErrorMessage name="fracturization" />
+
+
+                        <label className="input-spacer" htmlFor="elevation">Elevation</label>
+                        <Field name="elevation" type="text" />
+                        <ErrorMessage name="elevation" />
+
+
+                        <label className="input-spacer" htmlFor="temp">Ambient Temperature</label>
+                        <Field name="temp" type="text" />
+                        <ErrorMessage name="temp" />
+                    </div>
+
+                    {/* Overall Rig Specs */}
+                    <h1 className="calculator-section-header">Rig Specifications</h1>
+                    <div className="input-grid">
+                        <label htmlFor="pipeSize">Pipe Size</label>
+                        <Field name="pipeSize" type="text" />
+                        <ErrorMessage name="pipeSize" />
+
+
+                        <label htmlFor="holeDepth">Hole Depth</label>
+                        <Field name="holeDepth" type="text" />
+                        <ErrorMessage name="holeDepth" />
+                    </div>
+
+                    {/* Down-the-hole (DTH) */}
+                    <h1 className="calculator-section-header">DTH</h1>
+                    <div className="input-grid">
+                        <label htmlFor="dthComp">Comp</label>
+                        <Field name="dthComp" type="text" />
+                        <ErrorMessage name="dthComp" />
+
+
+                        <label htmlFor="dthWap">WAP</label>
+                        <Field name="dthWap" type="text" />
+                        <ErrorMessage name="dthWap" />
+
+                        <label htmlFor="dthHammer">Hammer</label>
+                        <Field name="dthHammer" type="text" />
+                        <ErrorMessage name="dthHammer" />
+
+                        <label htmlFor="dthBit">Bit</label>
+                        <Field name="dthBit" type="text" />
+                        <ErrorMessage name="dthBit" />
+                    </div>
+
+
+                    {/* Rotary */}
+                    <h1 className="calculator-section-header">Rotary</h1>
+                    <div className="input-grid">
+
+                        <label htmlFor="rotPulldown">Pulldown</label>
+                        <Field name="rotPulldown" type="text" />
+                        <ErrorMessage name="rotPulldown" />
+
+                        <label htmlFor="rotComp">Comp</label>
+                        <Field name="rotComp" type="text" />
+                        <ErrorMessage name="rotComp" />
+
+                        <label htmlFor="rotBit">Bit</label>
+                        <Field name="rotBit" type="text" />
+                        <ErrorMessage name="rotBit" />
+
+                        {/* TODO: Consider a tooltip that says "Revolutions per minute" or additional info */}
+                        <label htmlFor="rotRpm">RPM</label>
+                        <Field name="rotRpm" type="text" />
+                        <ErrorMessage name="rotRpm" />
+                    </div>
+
+
+                    <button className="button" type="submit">Submit</button>
+                </Form>
+            </Formik>
+        </div>
+    </div>
 }
