@@ -104,108 +104,132 @@ const CalcInputForm = ({ setInputs }) => {
             >
                 <Form>
                     {/* General info */}
-                    <h1 className="calculator-section-header">Client Information</h1>
-                    <div className="input-grid">
-                        <label htmlFor="custName">Customer Name</label>
-                        <Field name="custName" type="text" />
-                        <ErrorMessage name="custName" />
+                    <div className="calculator-section-header-position">
+                        <h1 className="calculator-section-header">Client Information</h1>
+                        <div className="input-grid">
+                        <p>   
+                            <label htmlFor="custName">Customer Name</label>
+                            <Field name="custName" type="text" />
+                            <ErrorMessage name="custName" />
+                            </p>   
+                            <p>   
+                            <label className="input-spacer" htmlFor="projName">Project Name</label>
+                            <Field name="projName" type="text" />
+                            <ErrorMessage name="projName" />
+                            </p>   
+                            <p>   
+                            <label className="input-spacer" htmlFor="date">Date</label>
+                            <Field name="date" type="text" />
+                            <ErrorMessage name="date" />
+                            </p>   
+                        </div>
 
-                        <label className="input-spacer" htmlFor="projName">Project Name</label>
-                        <Field name="projName" type="text" />
-                        <ErrorMessage name="projName" />
+                        {/* Site conditions */}
+                        <h1 className="calculator-section-header">Site Conditions</h1>
+                        <div className="input-grid">
+                        <p>   
+                            <label htmlFor="ucs">Rock UCS</label>
+                            <Field name="ucs" type="text" />
+                            <ErrorMessage name="ucs" />
+                        </p>   
+                        <p>   
+                            <label className="input-spacer" htmlFor="fracturization">Fracturization</label>
+                            <Field name="fracturization" as="select">
+                                {['None', 'Light', 'Moderate', 'Heavy'].map(
+                                    e => <option>{e}</option>
+                                )}
+                            </Field>
+                            <ErrorMessage name="fracturization" />
+                        </p>   
 
-                        <label className="input-spacer" htmlFor="date">Date</label>
-                        <Field name="date" type="text" />
-                        <ErrorMessage name="date" />
-                    </div>
+                        <p>   
+                            <label className="input-spacer" htmlFor="elevation">Elevation</label>
+                            <Field name="elevation" type="text" />
+                            <ErrorMessage name="elevation" />
+                        </p>   
+                        <p>   
+                            <label className="input-spacer" htmlFor="temp">Ambient Temperature</label>
+                            <Field name="temp" type="text" />
+                            <ErrorMessage name="temp" />
+                        </p>   
+                        </div>
 
-                    {/* Site conditions */}
-                    <h1 className="calculator-section-header">Site Conditions</h1>
-                    <div className="input-grid">
-                        <label htmlFor="ucs">Rock UCS</label>
-                        <Field name="ucs" type="text" />
-                        <ErrorMessage name="ucs" />
+                        {/* Overall Rig Specs */}
+                        <h1 className="calculator-section-header">Rig Specifications</h1>
+                        <div className="input-grid">
+                        <p>   
+                            <label htmlFor="pipeSize">Pipe Size</label>
+                            <Field name="pipeSize" type="text" />
+                            <ErrorMessage name="pipeSize" />
+                        </p>   
 
-                        <label className="input-spacer" htmlFor="fracturization">Fracturization</label>
-                        <Field name="fracturization" as="select">
-                            {['None', 'Light', 'Moderate', 'Heavy'].map(
-                                e => <option>{e}</option>
-                            )}
-                        </Field>
-                        <ErrorMessage name="fracturization" />
+                        <p>   
+                            <label htmlFor="holeDepth">Hole Depth</label>
+                            <Field name="holeDepth" type="text" />
+                            <ErrorMessage name="holeDepth" />
+                        </p>   
+                        </div>
 
+                        {/* Down-the-hole (DTH) */}
+                        <h1 className="calculator-section-header">DTH</h1>
+                        <div className="input-grid">
+                        <p>   
+                            <label htmlFor="dthComp">Comp</label>
+                            <Field name="dthComp" type="text" />
+                            <ErrorMessage name="dthComp" />
+                        </p>   
 
-                        <label className="input-spacer" htmlFor="elevation">Elevation</label>
-                        <Field name="elevation" type="text" />
-                        <ErrorMessage name="elevation" />
+                        <p>   
+                            <label htmlFor="dthWap">WAP</label>
+                            <Field name="dthWap" type="text" />
+                            <ErrorMessage name="dthWap" />
+                        </p>   
 
+                        <p>   
+                            <label htmlFor="dthHammer">Hammer</label>
+                            <Field name="dthHammer" type="text" />
+                            <ErrorMessage name="dthHammer" />
+                        </p>   
 
-                        <label className="input-spacer" htmlFor="temp">Ambient Temperature</label>
-                        <Field name="temp" type="text" />
-                        <ErrorMessage name="temp" />
-                    </div>
-
-                    {/* Overall Rig Specs */}
-                    <h1 className="calculator-section-header">Rig Specifications</h1>
-                    <div className="input-grid">
-                        <label htmlFor="pipeSize">Pipe Size</label>
-                        <Field name="pipeSize" type="text" />
-                        <ErrorMessage name="pipeSize" />
-
-
-                        <label htmlFor="holeDepth">Hole Depth</label>
-                        <Field name="holeDepth" type="text" />
-                        <ErrorMessage name="holeDepth" />
-                    </div>
-
-                    {/* Down-the-hole (DTH) */}
-                    <h1 className="calculator-section-header">DTH</h1>
-                    <div className="input-grid">
-                        <label htmlFor="dthComp">Comp</label>
-                        <Field name="dthComp" type="text" />
-                        <ErrorMessage name="dthComp" />
-
-
-                        <label htmlFor="dthWap">WAP</label>
-                        <Field name="dthWap" type="text" />
-                        <ErrorMessage name="dthWap" />
-
-                        <label htmlFor="dthHammer">Hammer</label>
-                        <Field name="dthHammer" type="text" />
-                        <ErrorMessage name="dthHammer" />
-
-                        <label htmlFor="dthBit">Bit</label>
-                        <Field name="dthBit" type="text" />
-                        <ErrorMessage name="dthBit" />
-                    </div>
-
-
-                    {/* Rotary */}
-                    <h1 className="calculator-section-header">Rotary</h1>
-                    <div className="input-grid">
-
-                        <label htmlFor="rotPulldown">Pulldown</label>
-                        <Field name="rotPulldown" type="text" />
-                        <ErrorMessage name="rotPulldown" />
-
-                        <label htmlFor="rotComp">Comp</label>
-                        <Field name="rotComp" type="text" />
-                        <ErrorMessage name="rotComp" />
-
-                        <label htmlFor="rotBit">Bit</label>
-                        <Field name="rotBit" type="text" />
-                        <ErrorMessage name="rotBit" />
-
-                        {/* TODO: Consider a tooltip that says "Revolutions per minute" or additional info */}
-                        <label htmlFor="rotRpm">RPM</label>
-                        <Field name="rotRpm" type="text" />
-                        <ErrorMessage name="rotRpm" />
-                    </div>
+                        <p>   
+                            <label htmlFor="dthBit">Bit</label>
+                            <Field name="dthBit" type="text" />
+                            <ErrorMessage name="dthBit" />
+                        </p>   
+                        </div>
 
 
-                    <div className="input-grid-button">
-                        <Link to="/dashboard" className="button-calculator" >Back</Link>
-                        <button style={{gridColumn:"3"}} className="button-calculator" type="submit">Submit</button>
+                        {/* Rotary */}
+                        <h1 className="calculator-section-header">Rotary</h1>
+                        <div className="input-grid">
+                        <p>             
+                            <label htmlFor="rotPulldown">Pulldown</label>
+                            <Field name="rotPulldown" type="text" />
+                            <ErrorMessage name="rotPulldown" />
+                        </p>    
+                        <p>              
+                            <label htmlFor="rotComp">Comp</label>
+                            <Field name="rotComp" type="text" />
+                            <ErrorMessage name="rotComp" />
+                        </p>  
+                        <p>    
+                            <label htmlFor="rotBit">Bit</label>
+                            <Field name="rotBit" type="text" />
+                            <ErrorMessage name="rotBit" />
+                        </p>   
+                        <p>   
+                            {/* TODO: Consider a tooltip that says "Revolutions per minute" or additional info */}
+                            <label htmlFor="rotRpm">RPM</label>
+                            <Field name="rotRpm" type="text" />
+                            <ErrorMessage name="rotRpm" />
+                        </p>   
+                        </div>
+
+
+                        <div className="input-grid-button">
+                            <Link to="/dashboard" className="button-calculator" >Back</Link>
+                            <button style={{gridColumn:"3"}} className="button-calculator" type="submit">Submit</button>
+                        </div>
                     </div>
                 </Form>
             </Formik>
