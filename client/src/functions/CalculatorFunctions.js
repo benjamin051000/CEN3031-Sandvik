@@ -129,3 +129,65 @@ function HMP_CMS_STD_avg_fuel_consumption_per_hour(fuel_consumption_on_load_hr, 
     return fuel_consumption_on_load_hr * drilling_time_perc + fuel_consumption_off_load_hour * non_drilling_time_perc;
 }
 
+function HMP_CMS_STD_avg_load_factor(avg_fuel_consumption_per_hour, max_fuel_consumption) {
+    // avg_fuel_consumption_per_hour is the output of HMP_CMS_STD_avg_fuel_consumption_per_hour.
+    // max_fuel_consumption is the output of HP_CMS_STD_max_fuel_consumption.
+    return avg_fuel_consumption_per_hour / max_fuel_consumption;
+}
+
+function HMP_CMS_STD_annual_fuel_consumption(avg_fuel_consumption_per_hour, est_hours) {
+    // avg_fuel_consumption_per_hour is the output of HMP_CMS_STD_avg_fuel_consumption_per_hour.
+    // est_hours is a form input.
+    return avg_fuel_consumption_per_hour * est_hours;
+}
+
+function HMP_CMS_STD_daily_fuel_consumption(annual_fuel_consumption) {
+    // annual_fuel_consumption is the output of HMP_CMS_STD_annual_fuel_consumption.
+    return annual_fuel_consumption / 365;
+}
+
+function HMP_CMS_STD_endurance_hours(fuel_tank_size, avg_fuel_consumption_per_hour) {
+    // fuel_tank_size is based off the rig model.
+    // avg_fuel_consumption_per_hour is the output of HMP_CMS_STD_avg_fuel_consumption_per_hour.
+    return fuel_tank_size / avg_fuel_consumption_per_hour;
+}
+
+function HMP_CMS_STD_annual_fuel_cost(annual_fuel_consumption, fuel_cost) {
+    // annual_fuel_consumption is the output of HMP_CMS_STD_annual_fuel_consumption.
+    // fuel_cost is a form input.
+    return annual_fuel_consumption * fuel_cost / 100;
+}
+
+function HMP_CMS_STD_engine_life_estimated(fuel_v_life, avg_fuel_consumption_per_hour) {
+    // fuel_v_life is based off of engine model.
+    // avg_fuel_consumption_per_hour is the output of HMP_CMS_STD_avg_fuel_consumption_per_hour.
+    return fuel_v_life * 0.264 / avg_fuel_consumption_per_hour;
+}
+
+function HMP_CMS_STD_cost_to_run_engine_annually(engine_rebuild_cost, engine_life_est, est_hours) {
+    // engine_rebuild_cost
+    // engine_life_est is the output of HMP_CMS_STD_engine_life_estimated.
+    // est_hours is a form input.
+    return engine_rebuild_cost / engine_life_est * est_hours;
+}
+
+function HMP_CMS_STD_cost_to_run_compressor_annually(compressor_rebuild_cost, engine_life_est, est_hours) {
+    // compressor_rebuild_cost
+    // engine_life_est is the output of HMP_CMS_STD_engine_life_estimated.
+    // est_hours is a form input.
+    return compressor_rebuild_cost / engine_life_est * est_hours;
+}
+
+function HMP_CMS_STD_carbon_output(avg_fuel_consumption_per_hour, est_hours) {
+    // (2.683 t/1000l fuel)(2.957ton/264 Gall) was in the name of this spreadsheet cell.
+    // avg_fuel_consumption_per_hour is the output of HMP_CMS_STD_avg_fuel_consumption_per_hour.
+    // est_hours is a form input.
+    return avg_fuel_consumption_per_hour * est_hours * 2.957 / 264;
+}
+
+function HMP_CMS_STD_carbon_tax_per_tonne(carbon_output, carbon_tax_dollars_per_tonne) {
+    // carbon_output is the output of HMP_CMS_STD_carbon_output
+    // carbon_tax_dollars_per_tonne is a form input. 
+    return carbon_output * carbon_tax_dollars_per_tonne;
+}
+
