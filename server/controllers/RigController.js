@@ -88,19 +88,13 @@ export const update = async (req, res) => {
       data.RPD_MaxPulldown = drillRig.RPD_MaxPulldown;
       data.RPD_MaxFeedPressure = drillRig.RPD_MaxFeedPressure;
       data.Rotary_BitSize = drillRig.Rotary_BitSize;
-
-      if (drillRig.HP_Comp) {
-        data.HP_Comp = drillRig.HP_Comp;
-      }
-      if (drillRig.HP_CompPressure) {
-        data.HP_CompPressure = drillRig.HP_CompPressure;
-      }
-      if (drillRig.DTH_HammerModel) {
-        data.DTH_HammerModel = drillRig.DTH_HammerModel;
-      }
-      if (drillRig.DTH_HammerSize) {
-        data.DTH_HammerSize = drillRig.DTH_HammerSize;
-      }
+      data.Comp = drillRig.Comp;
+      data.HP_Comp = drillRig.HP_Comp;
+      data.HP_CompPressure = drillRig.HP_CompPressure;
+      data.FuelTank_Vol = drillRig.FuelTank_Vol;
+      data.Engine = drillRig.Engine;
+      data.DTH_Hammer= drillRig.DTH_Hammer;
+      
 
       data
         .save()

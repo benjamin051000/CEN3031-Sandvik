@@ -8,29 +8,36 @@ const DrillRigSchema = new mongoose.Schema({
 
     //RHT == Rotary head travel (found in Rig spec page in excel sheet)
    //RPD == Rig PullDown
-    Model: { type: String, required: true },
-    PipeSize:{type: [Number], required: true},
-    PipeWeight:{type: [Number], required: true},
-    RHT_SinglePass:{type: mongoose.Types.Decimal128 , required: true},
-    RHT_PipeLength:{type: mongoose.Types.Decimal128 , required: true},
-    RHT_LoaderCap:{type: Number , required: true},
-    RHT_FeedRate:{type: Number, required: true},
-    RHT_HoistRate:{type: Number, required: true},
-    RHT_AddPipe:{type: mongoose.Types.Decimal128, required: true},
-    RHT_SetUp:{type: mongoose.Types.Decimal128, required: true},
-    RPD_RHWeight:{type: Number, required: true},
-    RPD_MaxPulldown:{type: Number, required: true},
-    RPD_MaxFeedPressure:{type: Number, required: true},
-    //UNKNOWN_DATA:{type: ????, required, true}, found in Rig spec page
-    Rotary_BitSize:{type: [Number], required: true},
-    //UNKNOWN_DATA:{type: ????, required, true}, found in rotary page
-    HP_Comp:{type: [Number], required: false},
-    HP_CompPressure:{type: [Number], required: false},
-    DTH_HammerModel:{type:String, required: false},
-    DTH_HammerSize:{type: [Number],required: false},
+    Model: String,
+    PipeSize: [Number],
+    PipeWeight: [Number],
+    RHT_SinglePass: mongoose.Types.Decimal128,
+    RHT_PipeLength: mongoose.Types.Decimal128,
+    RHT_LoaderCap: Number,
+    RHT_FeedRate: Number,
+    RHT_HoistRate: Number,
+    RHT_AddPipe: mongoose.Types.Decimal128,
+    RHT_SetUp: mongoose.Types.Decimal128, 
+    RPD_RHWeight: Number, 
+    RPD_MaxPulldown: Number,
+    RPD_MaxFeedPressure: Number,
+    Rotary_BitSize: [Number], 
+    Comp: [Number], 
+    HP_Comp:[Number], 
+    HP_CompPressure:[Number],
+    FuelTank_Vol : Number,
+    Engine: [{
+        name: String,
+        Fuel_BurnRate: Number,
+        Fuel_V_Life: Number,
+        Nominal_HP: Number
+    }],
+    DTH_Hammer:[{
+        Model: String,
+        Sizes: [Number],
+        ROP_Factor: [Number]
+    }]
     
-    //maybe more labels???
-
 });
 
 
