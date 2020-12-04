@@ -13,7 +13,7 @@ const RigRouter = express.Router();
  
   Note: the RigController variable above and the file it is connected to help you trace
  */
-//RigRouter.get("/", RigController.getAllFootballClubs);
+RigRouter.get("/", RigController.getAllDrillRigs);
 RigRouter.post("/", RigController.create);
 
 /*
