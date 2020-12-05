@@ -4,7 +4,7 @@
 
 */
 
-import * as RigController from "../controllers/Controller.js";
+import * as RigController from "../controllers/RigController.js";
 import express from "express"; //refers to Express the middleware helper for Node.js
 const RigRouter = express.Router();
 /* 
