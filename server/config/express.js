@@ -3,7 +3,11 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/server.routes');
+    exampleRouter = require('../routes/server.routes'),
+    rigRouter = require('../routes/RigRouter');
+
+
+
 
 module.exports.init = () => {
     /* 
@@ -37,6 +41,9 @@ module.exports.init = () => {
             res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
         });
     }
+
+    //sets route to drill rig database
+    app.use('/api/drillRigs/', rigRouter);
 
     return app
 }
