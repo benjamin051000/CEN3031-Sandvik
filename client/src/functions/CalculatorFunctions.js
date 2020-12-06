@@ -214,30 +214,43 @@ const HP_CMS_STD = {
 };
 
 
-///////////////////////////////////////////////////////////////////////////////////////
-/*  CMS Calculations
+
+/*  HP CMS CMS
     
-Common terminology:
-    // alt_ambient_pressure is the output of HP_CMS_altitude_ambient_pressure.
-    // compressor_vol is a form input.
-    // running_pressure
-    // calc_vol_alt_derated_percent is the outptut of HP_CMS_calculated_volume_altitude_derated_percent
-    // volume_air_off_leakage is a form input.
-    // pressure_CMS_air_off is a form input.
-    // friction_mult is a form input.
+Glossary of parameters:
+    *** Form inputs ***
+    - compressor_vol
+    - volume_air_off_leakage
+    - pressure_CMS_air_off
+    - friction_mult
+    
+    
+    *** Based off engine model or rig model ***
+    None
+
+
+    *** Intermediary values *** 
+    - alt_ambient_pressure is the output of HP_CMS_outputs.altitude_ambient_pressure.
+    - calc_vol_alt_derated_percent is the outptut of HP_CMS_outputs.calculated_volume_altitude_derated_percent.
+
+
+    *** UNKNOWN (TODO) ***
+    - running_pressure
 
 */
+const HP_CMS_CMS = {
+    total_hp_compressor: (alt_ambient_pressure, calc_vol_alt_derated_percent, compressor_vol, running_pressure, friction_mult = 1.8) => {
+
+        // TODO determine if friction_mult is a constant
+        return 144 * 2 * alt_ambient_pressure * calc_vol_alt_derated_percent * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1);
+
+        // TODO see if we can just take the output of HP_CMS_STD_total_hp_compressor and multiply by calc_vol_alt_derated_percent
+    },
+
+    fuel_consumption_off_load_per_hour: (volume_air_off_leakage, pressure_CMS_air_off, friction_mult) => {
+        return 144 * 2 * volume_air_off_leakage * 1.41 / (33000 * 1.41 - 1) * pressure_CMS_air_off ** (0.41 / 2.82 - 1) * friction_mult;
+    }
+};
 
 
-function HP_CMS_CMS_total_hp_compressor(alt_ambient_pressure, calc_vol_alt_derated_percent, compressor_vol, running_pressure, friction_mult = 1.8) {
-
-    // TODO determine if friction_mult is a constant
-    return 144 * 2 * alt_ambient_pressure * calc_vol_alt_derated_percent * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1);
-
-    // TODO see if we can just take the output of HP_CMS_STD_total_hp_compressor and multiply by calc_vol_alt_derated_percent
-}
-
-function HP_CMS_CMS_fuel_consumption_off_load_per_hour(volume_air_off_leakage, pressure_CMS_air_off, friction_mult) {
-    return 144 * 2 * volume_air_off_leakage * 1.41 / (33000 * 1.41 - 1) * pressure_CMS_air_off ** (0.41 / 2.82 - 1) * friction_mult;
-}
 
