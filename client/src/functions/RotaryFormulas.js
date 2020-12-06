@@ -15,7 +15,7 @@ const rotaryFormulas = {
         return pen_rate_rot / 3.28083;
     },
 
-    _80_percent_driller_efficiency_penn_rate: (pure_pen_rate, fracturization) => {
+    _80_percent_driller_efficiency_penetration_rate: (pure_pen_rate, fracturization) => {
         return pure_pen_rate * fracturization * 0.8;
     },
 
