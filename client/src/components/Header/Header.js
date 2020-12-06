@@ -10,10 +10,12 @@ const Header = () => {
             <div className="sandvik-header">
                       
                 {/* Logo - Stored in client/public */} 
-                <div className="logo-text-align">
-                    <img src={ "/sandviklogo.png" } alt="Sandvik logo" />
-                    <p className="name-text">Drillsite Calculator</p>
-                </div>   
+                <div style={{marginTop:"45px"}} class="ui center aligned container">
+                    <div class="ui two column grid">
+                        <div class="column"><img src={ "/sandviklogo.png" } alt="Sandvik logo" /></div>
+                        <div class="column"><p className="name-text">Drillsite Calculator</p></div>
+                    </div>   
+                </div>
 
                 {/* Page Links */}
                 <div className="header-links">
