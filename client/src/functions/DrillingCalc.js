@@ -1,25 +1,29 @@
 /*
     Functions from DrillingCalc
 */
-function number_of_pipes_too_deep(hole_depth, single_pass, pipe_len, loader_cap) {
-    // TODO verify this with Brian, this one is a little more complex
+function number_of_pipes_too_deep(hole_depth, single_pass, pipe_len, loader_cap, number_of_pipes) {
+    // TODO verify this with Brian, this one is a little more complex 
+    // number_of_pipes is output of number_of_pipes
     let ans = hole_depth - single_pass - (pipe_len * loader_cap);
 
     if(ans > 0)
-        throw "Too deep";
+        return "Too deep";
     else
-        return ans;
+        return number_of_pipes;
 }
 
 function number_of_pipes(hole_depth, single_pass, pipe_length) {
     return round(hole_depth - single_pass / pipe_length);
 }
 
-function get_drill_string_wt(loader_cap) {
-    if(number_of_pipes_too_deep())
-        return loader_cap;
+function get_drill_string_wt(loader_cap, pipe_weight, number_of_pipes_too_deep) {
+    // number_of_pipes_too_deep is output of number_of_pipes_too_deep
+    if(number_of_pipes_too_deep == "Too deep")
+        return loader_cap * pipe_weight;
+    else if (number_of_pipes_too_deep < 1)
+        return pipe_weight;
     else
-        throw "Number of pipes too deep";
+        return pipe_weight * (number_of_pipes_too_deep + 1)
 }
 
 function available_WOB(rh_weight, max_pulldown, drill_string_wt) {
