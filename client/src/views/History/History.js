@@ -8,14 +8,19 @@ import './History.css'
 function History() {
     const [data, setData] = useState(getData());
     const [filteredEntries, setFilteredEntries] = useState([]);
-
+    const [searchText, setSearchText] = useState([]);
 
     return (
         <div>
-            <h1 className="history-header">History</h1>
-            <Search data={data} setFilteredEntries={setFilteredEntries}/>
+          <div class="ui centered container">
+            <h1 style={{color:"#009aff", fontSize:"26pt", marginBottom:"35px"}} class="ui header">History</h1>
+            <Search 
+              data={data} 
+              setFilteredEntries={setFilteredEntries} 
+              setSearchText={setSearchText}
+            />
+            
             <div
-                style={{ width: "55%", marginLeft:"450px"}}
                 class="table-responsive"
                 className="table-wrapper"
 
@@ -33,10 +38,12 @@ function History() {
                   <HistoryTable
                     data={data}
                     filteredEntries={filteredEntries}
+                    searchText={searchText}
                   />
                 </table>
             </div>
-            <Link to="/dashboard" className="button-history" >Back</Link>
+            <Link to="/dashboard" style={{margin:"20px 0 40px 0"}} class="ui blue huge padded button" >Back</Link>
+          </div>
         </div>
     );
 }
