@@ -2,7 +2,6 @@
     Functions from DrillingCalc
 */
 function number_of_pipes_too_deep(hole_depth, single_pass, pipe_len, loader_cap, number_of_pipes) {
-    // TODO verify this with Brian, this one is a little more complex 
     // number_of_pipes is output of number_of_pipes
     let ans = hole_depth - single_pass - (pipe_len * loader_cap);
 
