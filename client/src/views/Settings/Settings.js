@@ -1,11 +1,12 @@
 import React from 'react';
+import SettingsTabs  from "../../components/SettingsTabs"
 import "./Settings.css"
 
 function Settings() {
    
     return (
-        <div>
-            <h1 className="settings-header">Settings</h1>       
+        <div class="ui centered container">
+        <SettingsTabs />
         </div>
     );
 }
