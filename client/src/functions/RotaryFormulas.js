@@ -80,3 +80,22 @@ const rotaryPower = {
         return hp * 0.7457;
     }
 };
+
+
+/*
+    Calculator Rotary Formulas
+*/
+// TODO ask brian if these are related to the above Rotary formulas or not.
+const calculator_rotary = {
+    maximum_UHV: (compressor_actual_volume_for_altitude, hole_diam, rod_diam) => {
+        return compressor_actual_volume_for_altitude * 183.5 / (hole_diam ** 2 - rod_diam);
+    },
+
+    compressor_actual_volume_for_altitude: (compressor_vol, alt_vol_per_mass) => {
+        return compressor_vol / alt_vol_per_mass;
+    },
+
+    altitude_volume_per_mass: (compressor_vol, altitude) => {
+        return 14.7 * compressor_vol / (14.7 * (1 - 0.0000069 * altitude) ** 5.25588);
+    },
+}
