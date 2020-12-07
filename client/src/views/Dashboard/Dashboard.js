@@ -7,15 +7,21 @@ function Dashboard() {
    
 
     return (
-        <div>
-            <h1 className="dashboard-header">Dashboard</h1>
+        <div class="ui centered container">
+            <h2 style={{fontSize:"30pt", color:"#009aff"}} class="ui centered header">Dashboard</h2>
             
-            <div className="buttons-layout">
-                <Link to="/calculator" className="dashboard-button">New Calculation</Link>
-                <Link to="/history" className="dashboard-button">History</Link>
-                <Link to="/settings" className="dashboard-button">Settings</Link>
-            </div>
-                       
+            <div class="ui middle aligned center aligned three column grid">
+                <div class="column">
+                    
+                    <Link to="/calculator" style={{marginBottom:"15px"}} class="ui fluid massive blue button">Calculator</Link>
+                    
+                    <Link to="/history" style={{marginTop:"15px", marginBottom:"15px"}} class="ui fluid massive blue button">History</Link>
+                    
+                    <Link to="/settings" style={{marginTop:"15px", marginBottom:"15px"}} class="ui fluid massive blue button">Settings</Link>
+                   
+                </div>
+            </div>     
+
         </div>
     );
 }

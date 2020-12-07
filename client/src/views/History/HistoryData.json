@@ -1,65 +1,22 @@
 [
-    { "company": "Joe Mining" , "clientName": "Johnathan" },
+    { "projectName": "Joe Mining Winter Drill" , "date": "10/14/20" , "company": "Joe Mining" , "clientName": "Johnathan" },
 	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
+	{ "projectName": "Steve Mining Summer Drill" , "date": "08/24/19" , "company": "Steve Mining" , "clientName": "Steven" },
 
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
+    { "projectName": "Water-Sulfate Solutions" , "date": "07/15/20" , "company": "Phil Drilling" , "clientName": "Johnny" },
 	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
+	{ "projectName": "Hard Rock Help" , "date": "09/17/20" , "company": "Sandy Shores" , "clientName": "Thomas" },
 
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" },
+    { "projectName": "Fish Stew" , "date": "02/11/20" , "company": "Fish Tales" , "clientName": "Fish Waterson" },
 	
-    { "company": "Grandma Paints" , "clientName": "JoAnn Simpson" },
+    { "projectName": "Heated Seats" , "date": "03/20/20" , "company": "Grandma Paints" , "clientName": "JoAnn Simpson" },
+
+    { "projectName": "forced test" , "date": "12/02/20" , "company": "test man company" , "clientName": "test man" },
+
+    { "projectName": "Third Option, Nov 26" , "date": "11/26/20" , "company": "Three Stage Solutions" , "clientName": "Kyle Grant" },
+
+    { "projectName": "Second Option, Nov 26" , "date": "11/26/20" , "company": "Three Stage Solutions" , "clientName": "Kyle Grant"  },
+
+    { "projectName": "First Option, Nov 26" , "date": "11/26/20" , "company": "Three Stage Solutions" , "clientName": "Kyle Grant" }
     
-    { "company": "Joe Mining" , "clientName": "Johnathan" },
-	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
-
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
-	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
-
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" },
-    
-    { "company": "Joe Mining" , "clientName": "Johnathan" },
-	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
-
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
-	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
-
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" },
-
-    { "company": "Joe Mining" , "clientName": "Johnathan" },
-	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
-
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
-	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
-
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" },
-
-	{ "company": "Joe Mining" , "clientName": "Johnathan" },
-	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
-
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
-	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
-
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" },
-    
-    { "company": "Joe Mining" , "clientName": "Johnathan" },
-	
-	{ "company": "Steve Mining" , "clientName": "Steven" },
-
-    { "company": "Phil Drilling" , "clientName": "Johnny" },
-	
-	{ "company": "Sandy Shores" , "clientName": "Thomas" },
-
-    { "company": "Fish Tales" , "clientName": "Fish Waterson" }
-	
-
 ]

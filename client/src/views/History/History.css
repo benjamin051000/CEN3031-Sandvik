@@ -1,7 +1,3 @@
-.body{
-    text-align: center;
-}
-
 .ui.table thead tr:first-child > th {
 	position: sticky !important;
 	background-color: rgb(41, 41, 41);

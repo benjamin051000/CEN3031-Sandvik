@@ -52,11 +52,11 @@ export default function Calculator() {
 
 /* Component to render the input form. */
 const CalcInputForm = ({ setInputs }) => {
-    return <div>
-        <div className="calculator-header-position">
-            <h1 className="calculator-header">New Calculation Form</h1>
+    return <div class="ui centered container">
+        <div>
+            <h1 style={{fontSize:"30pt", color:"#009aff"}} class="ui centered header">New Calculation Form</h1>
         </div>
-        <div style={{ marginLeft: "150px" }}> 
+        <div> 
             <Formik
                 initialValues={{
                     // Client info
@@ -102,25 +102,25 @@ const CalcInputForm = ({ setInputs }) => {
                 }}
 
             >
-                <Form>
+                <Form class="ui form">
                     {/* General info */}
-                    <div className="calculator-section-header-position">
+                    <div>
                         <h1 className="calculator-section-header">Client Information</h1>
                         <div className="input-grid">
                         <p>   
                             <label htmlFor="custName">Customer Name</label>
-                            <Field name="custName" type="text" />
-                            <ErrorMessage name="custName" />
+                            <Field name="custName" type="text" placeholder="First and Last Name"/>
+                            <ErrorMessage component="required-message" name="custName" />
                             </p>   
                             <p>   
                             <label className="input-spacer" htmlFor="projName">Project Name</label>
-                            <Field name="projName" type="text" />
-                            <ErrorMessage name="projName" />
+                            <Field name="projName" type="text" placeholder="Name of Project"/>
+                            <ErrorMessage component="required-message" name="projName" />
                             </p>   
                             <p>   
-                            <label className="input-spacer" htmlFor="date">Date</label>
-                            <Field name="date" type="text" />
-                            <ErrorMessage name="date" />
+                            <label className="input-spacer" htmlFor="date" >Date</label>
+                            <Field name="date" type="text" placeholder="MM/DD/YY"/>
+                            <ErrorMessage component="required-message" name="date" />
                             </p>   
                         </div>
 
@@ -129,28 +129,28 @@ const CalcInputForm = ({ setInputs }) => {
                         <div className="input-grid">
                         <p>   
                             <label htmlFor="ucs">Rock UCS</label>
-                            <Field name="ucs" type="text" />
-                            <ErrorMessage name="ucs" />
+                            <Field name="ucs" type="text" placeholder="In units"/>
+                            <ErrorMessage component="required-message" name="ucs" />
                         </p>   
                         <p>   
                             <label className="input-spacer" htmlFor="fracturization">Fracturization</label>
-                            <Field name="fracturization" as="select">
+                            <Field class="ui selection dropdown" style={{padding:"6px"}} name="fracturization" as="select">
                                 {['None', 'Light', 'Moderate', 'Heavy'].map(
                                     e => <option>{e}</option>
                                 )}
                             </Field>
-                            <ErrorMessage name="fracturization" />
+                            <ErrorMessage component="required-message" name="fracturization" />
                         </p>   
 
                         <p>   
                             <label className="input-spacer" htmlFor="elevation">Elevation</label>
-                            <Field name="elevation" type="text" />
-                            <ErrorMessage name="elevation" />
+                            <Field name="elevation" type="text" placeholder="Feet"/>
+                            <ErrorMessage component="required-message" name="elevation" />
                         </p>   
                         <p>   
                             <label className="input-spacer" htmlFor="temp">Ambient Temperature</label>
-                            <Field name="temp" type="text" />
-                            <ErrorMessage name="temp" />
+                            <Field name="temp" type="text" placeholder="Degrees in F°"/>
+                            <ErrorMessage component="required-message" name="temp" />
                         </p>   
                         </div>
 
@@ -159,14 +159,14 @@ const CalcInputForm = ({ setInputs }) => {
                         <div className="input-grid">
                         <p>   
                             <label htmlFor="pipeSize">Pipe Size</label>
-                            <Field name="pipeSize" type="text" />
-                            <ErrorMessage name="pipeSize" />
+                            <Field name="pipeSize" type="text" placeholder="Diameter of Pipe"/>
+                            <ErrorMessage component="required-message" name="pipeSize" />
                         </p>   
 
                         <p>   
                             <label htmlFor="holeDepth">Hole Depth</label>
-                            <Field name="holeDepth" type="text" />
-                            <ErrorMessage name="holeDepth" />
+                            <Field name="holeDepth" type="text" placeholder="Depth in Feet"/>
+                            <ErrorMessage component="required-message" name="holeDepth" />
                         </p>   
                         </div>
 
@@ -176,25 +176,25 @@ const CalcInputForm = ({ setInputs }) => {
                         <p>   
                             <label htmlFor="dthComp">Comp</label>
                             <Field name="dthComp" type="text" />
-                            <ErrorMessage name="dthComp" />
+                            <ErrorMessage component="required-message" name="dthComp" />
                         </p>   
 
                         <p>   
                             <label htmlFor="dthWap">WAP</label>
-                            <Field name="dthWap" type="text" />
-                            <ErrorMessage name="dthWap" />
+                            <Field name="dthWap" type="text" placeholder=";)"/>
+                            <ErrorMessage component="required-message" name="dthWap" />
                         </p>   
 
                         <p>   
                             <label htmlFor="dthHammer">Hammer</label>
                             <Field name="dthHammer" type="text" />
-                            <ErrorMessage name="dthHammer" />
+                            <ErrorMessage component="required-message" name="dthHammer" />
                         </p>   
 
                         <p>   
                             <label htmlFor="dthBit">Bit</label>
                             <Field name="dthBit" type="text" />
-                            <ErrorMessage name="dthBit" />
+                            <ErrorMessage component="required-message" name="dthBit" />
                         </p>   
                         </div>
 
@@ -205,30 +205,34 @@ const CalcInputForm = ({ setInputs }) => {
                         <p>             
                             <label htmlFor="rotPulldown">Pulldown</label>
                             <Field name="rotPulldown" type="text" />
-                            <ErrorMessage name="rotPulldown" />
+                            <ErrorMessage component="required-message" name="rotPulldown" />
                         </p>    
                         <p>              
                             <label htmlFor="rotComp">Comp</label>
                             <Field name="rotComp" type="text" />
-                            <ErrorMessage name="rotComp" />
+                            <ErrorMessage component="required-message" name="rotComp" />
                         </p>  
                         <p>    
                             <label htmlFor="rotBit">Bit</label>
                             <Field name="rotBit" type="text" />
-                            <ErrorMessage name="rotBit" />
+                            <ErrorMessage component="required-message" name="rotBit" />
                         </p>   
                         <p>   
                             {/* TODO: Consider a tooltip that says "Revolutions per minute" or additional info */}
                             <label htmlFor="rotRpm">RPM</label>
                             <Field name="rotRpm" type="text" />
-                            <ErrorMessage name="rotRpm" />
+                            <ErrorMessage component="required-message" name="rotRpm" />
                         </p>   
                         </div>
 
 
-                        <div className="input-grid-button">
-                            <Link to="/dashboard" className="button-calculator" >Back</Link>
-                            <button style={{gridColumn:"3"}} className="button-calculator" type="submit">Submit</button>
+                        <div style={{marginTop:"60px"}} class="ui centered grid">
+                            <div class="left floated column">
+                                <Link to="/dashboard" class="ui blue huge button" >Back</Link>
+                            </div>
+                            <div style={{marginRight:"85px"}} class="right floated column">
+                                <button class="ui blue huge button" type="submit">Submit</button>
+                            </div>                            
                         </div>
                     </div>
                 </Form>
