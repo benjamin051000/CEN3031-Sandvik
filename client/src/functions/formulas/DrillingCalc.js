@@ -1,7 +1,7 @@
 /*
     Functions from DrillingCalc
 */
-const drillingCalc = {
+export const drillingCalc = {
     number_of_pipes_too_deep: (hole_depth, single_pass, pipe_len, loader_cap, number_of_pipes) => {
         // number_of_pipes is output of number_of_pipes
         let ans = hole_depth - single_pass - (pipe_len * loader_cap);

@@ -1,36 +1,3 @@
-
-/* Master function to get all output information from form input */
-// Input below:
-// {
-//     // Client info
-//     custName: '',
-//     projName: '',
-//     date: '',
-//     // Site conditions
-//     ucs: '',
-//     fracturization: '',
-//     elevation: '',
-//     temp: '',
-//     // Rig spec
-//     pipeSize: '',
-//     holeDepth: '',
-//     // DTH
-//     dthComp: '',
-//     dthWap: '',
-//     dthHammer: '',
-//     dthBit: '',
-//     // Rotary
-//     rotPulldown: '',
-//     rotComp: '',
-//     rotBit: '',
-//     rotRpm: ''
-// }
-function getOutputs(calculatorInput) {
-
-}
-
-///////////////////////////////////////////////////////////////////////////////////////
-
 const HP_CMS_outputs = {
     non_drilling_time_percent: (drilling_time_perc) => {
         // drilling_time_perc is a form input
@@ -252,5 +219,8 @@ const HP_CMS_CMS = {
     }
 };
 
-
-
+export {
+    HP_CMS_outputs,
+    HP_CMS_STD,
+    HP_CMS_CMS
+};

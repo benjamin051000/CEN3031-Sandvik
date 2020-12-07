@@ -98,4 +98,10 @@ const calculator_rotary = {
     altitude_volume_per_mass: (compressor_vol, altitude) => {
         return 14.7 * compressor_vol / (14.7 * (1 - 0.0000069 * altitude) ** 5.25588);
     },
-}
+};
+
+export {
+    rotaryFormulas,
+    rotaryPower,
+    calculator_rotary
+};
