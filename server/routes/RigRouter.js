@@ -3,9 +3,10 @@
    For each route, make note of the sequence of requests called for each
 
 */
-
-import * as RigController from "../controllers/RigController.js";
-import express from "express"; //refers to Express the middleware helper for Node.js
+const RigController = require('../controllers/RigController.js'),
+express = require('express')
+//import * as RigController from "../controllers/RigController.js";
+//import express from "express"; //refers to Express the middleware helper for Node.js
 const RigRouter = express.Router();
 /* 
   These method calls are responsible for routing requests to the correct request handler.
@@ -24,4 +25,6 @@ RigRouter.get("/:DrillId", RigController.read);
 RigRouter.put("/:DrillId", RigController.update);
 RigRouter.delete("/:DrillId", RigController.remove);
 
-export default RigRouter;
+
+module.exports = RigRouter;
+//export default RigRouter;

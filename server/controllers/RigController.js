@@ -1,5 +1,6 @@
 /* Dependencies */
-import DrillRig from "../models/DrillRigModel.js";
+const DrillRig = require('../models/DrillRigModel.js');
+//import DrillRig from "../models/DrillRigModel.js";
 /*
   In this file, you should use Mongoose queries in order to retrieve/add/remove/update football clubs.
   On an error you should send a 404 status code, as well as the error message. 
@@ -18,7 +19,7 @@ import DrillRig from "../models/DrillRigModel.js";
  */
 
 /* Create a drill rig*/
-export const create = async (req, res) => {
+module.exports.create = async (req, res) => {
   /* get the drill rig data from req.body */
   /* Then save the drillrill to the database */
   const drillRig = req.body;
@@ -38,7 +39,7 @@ export const create = async (req, res) => {
 };
 
 /* Show the current drill rig */
-export const read = async (req, res) => {
+module.exports.read = async (req, res) => {
   /*get the drill rig id from the req.params */
   /* send back the drill rig data as json from the request */
   /* If the drill rig data could not be found, be sure to send back a response in the following format: {error: 'Some message that indicates an error'} */
@@ -60,7 +61,7 @@ export const read = async (req, res) => {
 };
 
 /* Update a Drill Rig - note the order in which this function is called by the router*/
-export const update = async (req, res) => {
+module.exports.update = async (req, res) => {
   /*get both the football club id and new data from the request */
   /* Replace the FootballClubs's properties which is in the database with the new properties found in what the new data */
   /* Save the FootballClub */
@@ -115,7 +116,7 @@ export const update = async (req, res) => {
 };
 
 /* Delete a Drill Rig */
-export const remove = async (req, res) => {
+module.exports.remove = async (req, res) => {
   
   /* If the Drill Rig could not be found, be sure to send back a response in the following format: {error: 'Some message that indicates an error'} */
   let id = req.params.DrillId;
@@ -133,7 +134,7 @@ export const remove = async (req, res) => {
 };
 
 /* Retrieve all the directory, DrillRig*/
-export const getAllDrillRigs = async (req, res) => {
+module.exports.getAllDrillRigs = async (req, res) => {
   /* Add your code. Make sure to send the documents as a JSON response.*/
   await DrillRig.find({}, (err, data) => {
     if (err)
