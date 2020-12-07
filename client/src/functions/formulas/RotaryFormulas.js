@@ -88,11 +88,11 @@ const rotaryPower = {
 // TODO ask brian if these are related to the above Rotary formulas or not.
 const calculator_rotary = {
     maximum_UHV: (compressor_actual_volume_for_altitude, hole_diam, rod_diam) => {
-        return compressor_actual_volume_for_altitude * 183.5 / (hole_diam ** 2 - rod_diam);
+        return compressor_actual_volume_for_altitude * 183.5 / (hole_diam ** 2 - rod_diam ** 2);
     },
 
     compressor_actual_volume_for_altitude: (compressor_vol, alt_vol_per_mass) => {
-        return compressor_vol / alt_vol_per_mass;
+        return compressor_vol ** 2 / alt_vol_per_mass;
     },
 
     altitude_volume_per_mass: (compressor_vol, altitude) => {
