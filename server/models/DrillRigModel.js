@@ -1,5 +1,5 @@
 /* Import mongoose and define any variables needed to create the schema */
-import mongoose from 'mongoose';
+mongoose = require('mongoose');
 
 
 const DrillRigSchema = new mongoose.Schema({
@@ -45,4 +45,4 @@ const DrillRigSchema = new mongoose.Schema({
 /* Use your schema to instantiate a Mongoose model
 Export the model to make it available to other parts of your Node application */
 //Check out - https://mongoosejs.com/docs/guide.html#models
-export default mongoose.model('DrillRigs', DrillRigSchema);
+module.exports = mongoose.model('DrillRigs', DrillRigSchema);
