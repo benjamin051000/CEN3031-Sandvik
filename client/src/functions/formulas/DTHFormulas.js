@@ -9,7 +9,59 @@ const DTH = {
     penetration_rate: (inst_rop) => {
         return inst_rop * 3.28084;
     },
+    
 
+    inst_rop: (rock_DRI, ground_conditions, ROP_in_DRI_at_given_pressure) => {
+        //Ground_conditions based on Rock UCS
+        //1-100 -> Ground_conditions = 1
+        //101-200 -> Ground_conditions = 2
+        //201-300 -> Ground_conditions = 3
+        //301-infinity -> Ground_conditions = 4
+        if (ground_conditions == 1)
+        {
+            let factor1 = ROP_in_DRI_at_given_pressure * 30 / rock_DRI * (30/rock_DRI) ** 0.8 *1.15
+            let factor2 = ROP_in_DRI_at_given_pressure * 32 / rock_DRI * (32/rock_DRI) ** 0.8 *1.15
+            let factor3 = ROP_in_DRI_at_given_pressure * 34 / rock_DRI * (34/rock_DRI) ** 0.8 *1.15
+            let factor4 = ROP_in_DRI_at_given_pressure * 36 / rock_DRI * (36/rock_DRI) ** 0.8 *1.15
+            let factor5 = ROP_in_DRI_at_given_pressure * 38 / rock_DRI * (38/rock_DRI) ** 0.8 *1.15
+            let factor6 = ROP_in_DRI_at_given_pressure * 40 / rock_DRI * (40/rock_DRI) ** 0.8 *1.15
+            return (factor1 + factor2 + factor3 + factor4 + factor5 + factor6)/6;
+        }
+        if (ground_conditions == 2)
+        {
+            let factor1 = ROP_in_DRI_at_given_pressure * 42 / rock_DRI * (42/rock_DRI) ** 0.8 *1.15
+            let factor2 = ROP_in_DRI_at_given_pressure * 44 / rock_DRI * (44/rock_DRI) ** 0.8 *1.15
+            let factor3 = ROP_in_DRI_at_given_pressure * 46 / rock_DRI * (46/rock_DRI) ** 0.8 *1.15
+            let factor4 = ROP_in_DRI_at_given_pressure * 48 / rock_DRI * (48/rock_DRI) ** 0.8 *1.15
+            let factor5 = ROP_in_DRI_at_given_pressure * 50 / rock_DRI * (50/rock_DRI) ** 0.8 *1.15
+            let factor6 = ROP_in_DRI_at_given_pressure * 52 / rock_DRI * (52/rock_DRI) ** 0.8 *1.15
+            return (factor1 + factor2 + factor3 + factor4 + factor5 + factor6)/6;
+        }
+        if (ground_conditions == 3)
+        {
+            let factor1 = ROP_in_DRI_at_given_pressure * 54 / rock_DRI * (54/rock_DRI) ** 0.8 *1.15
+            let factor2 = ROP_in_DRI_at_given_pressure * 56 / rock_DRI * (56/rock_DRI) ** 0.8 *1.15
+            let factor3 = ROP_in_DRI_at_given_pressure * 58 / rock_DRI * (58/rock_DRI) ** 0.8 *1.15
+            let factor4 = ROP_in_DRI_at_given_pressure * 60 / rock_DRI * (60/rock_DRI) ** 0.8 *1.15
+            let factor5 = ROP_in_DRI_at_given_pressure * 62 / rock_DRI * (62/rock_DRI) ** 0.8 *1.15
+            let factor6 = ROP_in_DRI_at_given_pressure * 64 / rock_DRI * (64/rock_DRI) ** 0.8 *1.15
+            let factor7 = ROP_in_DRI_at_given_pressure * 66 / rock_DRI * (66/rock_DRI) ** 0.8 *1.15
+            return (factor1 + factor2 + factor3 + factor4 + factor5 + factor6 + factor7)/7;
+        }
+        if (ground_conditions == 4)
+        {
+            let factor1 = ROP_in_DRI_at_given_pressure * 68 / rock_DRI * (68/rock_DRI) ** 0.8 *1.15
+            let factor2 = ROP_in_DRI_at_given_pressure * 70 / rock_DRI * (70/rock_DRI) ** 0.8 *1.15
+            let factor3 = ROP_in_DRI_at_given_pressure * 72 / rock_DRI * (72/rock_DRI) ** 0.8 *1.15
+            let factor4 = ROP_in_DRI_at_given_pressure * 74 / rock_DRI * (74/rock_DRI) ** 0.8 *1.15
+            let factor5 = ROP_in_DRI_at_given_pressure * 76 / rock_DRI * (76/rock_DRI) ** 0.8 *1.15
+            let factor6 = ROP_in_DRI_at_given_pressure * 78 / rock_DRI * (78/rock_DRI) ** 0.8 *1.15
+            return (factor1 + factor2 + factor3 + factor4 + factor5 + factor6)/6;
+        }
+
+    },
+    
+    
     // TODO investigate "Rock DRI"
 
     adjusted_hammer_ROP: (hammer_rop_factor1, hammer_rop_factor2, dth_hammer_available_bit) => {
