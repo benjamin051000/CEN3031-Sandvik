@@ -4,8 +4,9 @@ const getData = () => {
     let allHistoryData = [];
     let id = 1;
       historyData.forEach(element => {
-          element["id"] = id
-          allHistoryData.push(element)
+          if(element.clientName) 
+            element["id"] = id
+            allHistoryData.push(element)
           id++
           
       });

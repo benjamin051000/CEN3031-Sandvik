@@ -2,36 +2,53 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const CalculatorOutput = (props) => {
-    let calculation_inputs = props.location.state.inputs; // Will be here
-    console.log(calculation_inputs);
+    const inputNames = {
+        "projName":"Project Name",
+        "custName":"Customer Name",
+        "companyName":"Company Name",
+        "date":"Date",
+        "ucs":"Rock UCS",
+        "fracturization":"Fracturization",
+        "elevation":"Elevation",
+        "fuelCost":"Fuel Cost",
+        "estHours":"Estimated Hours",
+        "temp":"Ambient Temperature",
+        "carbTaxTonne":"Carbon Tax ($ per Tonne)",
+        "drillTimePercent":"Drill Time (% of Time Active)",
+        "fuelTankSize":"Fuel Tank Size",
+        "engineRebuildCost":"Engine Rebuild Cost",
+        "compRebuildCost":"Compressor Rebuild Cost",
+        "pipeSize":"Pipe Size (Units !!!!!!!!!!!!!!!!!!!!!!!)",
+        "holeDepth":"Hole Depth",
+        "dthComp":"DTH Compressor",
+        "dthWap":"DTH WAP",
+        "dthHammer":"DTH Hammer",
+        "dthBit":"DTH Bit",
+        "rotPulldown":"Rotary Pulldown",
+        "rotComp":"Rotary Compressor",
+        "rotBit":"Rotary Bit",
+        "rotRpm":"Rotary RPM",
+    }
 
+
+    let calculation_inputs = props.location.state.inputs; // Will be here
+   
 
     /* TODO: This is where we would call the function to get the outputs. For now, dummy outputs will be used. */
-    const outputs = {};
+    //const outputs = {};
 
 
     return (
         <div class="ui centered container">
-            <div class="ui grid">
-                <div class="one wide left floated column">
-                    <Link to="/dashboard" class="ui blue huge button" >Back</Link>
-                </div>
-                <div class="ten wide column"></div>
-                <div style={{marginRight:"85px"}} class="one wide column">
-                    <button class="ui blue huge button" type="Edit">Edit</button>
-                </div>    
-                <div style={{marginRight:"85px"}} class="one wide right floated column">
-                    <button class="ui blue huge button" type="Delete">Delete</button>
-                </div>    
-            </div>    
+               
             <div style={{color: "white"}} class="ui relaxed internally celled grid">
                 <div class="one column row">
                     <div class="column">
                         <h1 style={{fontSize:"20pt", color:"#009aff"}} class="ui left aligned header">Project Specifications:</h1>
                         <div class="ui three column grid">
-                            {Object.keys(calculation_inputs).map((e) => 
-                            <p class="column">{e}: {calculation_inputs[e]}</p>
-                            )}
+                            {  Object.keys(calculation_inputs).map((e, i) => 
+                                <p class="column">{inputNames[e]}: {calculation_inputs[e]}</p>)
+                            }
                         </div>
                     </div>
                 </div>
@@ -53,6 +70,19 @@ const CalculatorOutput = (props) => {
                     </div>
                 </div>
             </div>
+
+            <div class="ui grid">
+                <div class="one wide left floated column">
+                    <Link to="/dashboard" class="ui blue medium button" >Back</Link>
+                </div>
+                <div class="ten wide column"></div>
+                <div style={{marginRight:"-10px"}} class="one wide column">
+                    <button class="ui blue medium button" type="Edit">Edit</button>
+                </div>    
+                <div style={{marginRight:"85px"}} class="one wide right floated column">
+                    <button class="ui blue medium button" type="Delete">Delete</button>
+                </div>    
+            </div> 
         </div>
     );
 
