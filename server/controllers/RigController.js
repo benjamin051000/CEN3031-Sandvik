@@ -75,26 +75,66 @@ module.exports.update = async (req, res) => {
 
   await DrillRig.findById(id)
     .then((data) => {
-      data.Model = drillRig.Model;
+      if(drillRig.Model){
+        data.Model = drillRig.Model;
+      }
+      if(drillRig.PipeSize){
       data.PipeSize = drillRig.PipeSize;
-      data.PipeWeight = drillRig.PipeWeight;
-      data.RHT_SinglePass = drillRig.RHT_SinglePass;
-      data.RHT_PipeLength = drillRig.RHT_PipeLength;
-      data.RHT_LoaderCap = drillRig.RHT_LoaderCap;
-      data.RHT_FeedRate = drillRig.RHT_FeedRate;
-      data.RHT_HoistRate = drillRig.RHT_HoistRate;
-      data.RHT_AddPipe = drillRig.RHT_AddPipe;
-      data.RHT_SetUp = drillRig.RHT_SetUp;
-      data.RPD_RHWeight = drillRig.RPD_RHWeight;
-      data.RPD_MaxPulldown = drillRig.RPD_MaxPulldown;
-      data.RPD_MaxFeedPressure = drillRig.RPD_MaxFeedPressure;
-      data.Rotary_BitSize = drillRig.Rotary_BitSize;
-      data.Comp = drillRig.Comp;
-      data.HP_Comp = drillRig.HP_Comp;
-      data.HP_CompPressure = drillRig.HP_CompPressure;
-      data.FuelTank_Vol = drillRig.FuelTank_Vol;
-      data.Engine = drillRig.Engine;
-      data.DTH_Hammer= drillRig.DTH_Hammer;
+      }
+      if(drillRig.PipeWeight){
+        data.PipeWeight = drillRig.PipeWeight;
+      }
+      if(drillRig.RHT_SinglePass){
+        data.RHT_SinglePass = drillRig.RHT_SinglePass;
+      }
+      if(drillRig.RHT_PipeLength){
+        data.RHT_PipeLength = drillRig.RHT_PipeLength;
+      }
+      if(drillRig.RHT_LoaderCap){
+        data.RHT_LoaderCap = drillRig.RHT_LoaderCap;
+      }
+      if(drillRig.RHT_FeedRate){
+        data.RHT_FeedRate = drillRig.RHT_FeedRate;
+      }
+      if(drillRig.RHT_HoistRate){
+        data.RHT_HoistRate = drillRig.RHT_HoistRate;
+      }
+      if(drillRig.RHT_AddPipe){
+        data.RHT_AddPipe = drillRig.RHT_AddPipe;
+      }
+      if(drillRig.RHT_SetUp){
+        data.RHT_SetUp = drillRig.RHT_SetUp;
+      }
+      if(drillRig.RPD_RHWeight){
+        data.RPD_RHWeight = drillRig.RPD_RHWeight;
+      }
+      if(drillRig.RPD_MaxPulldown){
+        data.RPD_MaxPulldown = drillRig.RPD_MaxPulldown;
+      }
+      if(drillRig.RPD_MaxFeedPressure){
+        data.RPD_MaxFeedPressure = drillRig.RPD_MaxFeedPressure;
+      }
+      if(drillRig.Rotary_BitSize){
+        data.Rotary_BitSize = drillRig.Rotary_BitSize;
+      }
+      if(drillRig.Comp){
+        data.Comp = drillRig.Comp;
+      }
+      if(drillRig.HP_Comp){
+        data.HP_Comp = drillRig.HP_Comp;
+      }
+      if(drillRig.HP_CompPressure){
+        data.HP_CompPressure = drillRig.HP_CompPressure;
+      }
+      if(drillRig.FuelTank_Vol){
+        data.FuelTank_Vol = drillRig.FuelTank_Vol;
+      }
+      if(drillRig.Engine){
+        data.Engine = drillRig.Engine;
+      }
+      if(drillRig.DTH_Hammer){
+        data.DTH_Hammer= drillRig.DTH_Hammer;
+      }
       
 
       data
