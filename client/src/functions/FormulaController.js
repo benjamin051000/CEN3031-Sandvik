@@ -247,11 +247,18 @@ function get_HP_CMS_outputs(inputs, rig_model){
     };
 }
 
-function get_HP_CMS_STD_outputs(inputs, rig_model){
+function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let compressor_vol = inputs.dthComp;
-    let altitude_ambient_pressure = inputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
+    let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
     let running_pressure = inputs.Wap;
+    let drill_time_percent = inputs.drill_time_percent;
+    let est_hours = inputs.est_hours;
+    let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
+    let fuel_cost = input.fuel_cost;  //Check what actually name is later
+    let engine_rebuild_cost = input.engine_rebuild_cost //Add input
+    let compressor_rebuild_cost = input.compressor_rebuild_cost //Add input
+    let carbon_tax = input.carbon_tax;  //Add input
 
 
 
@@ -259,6 +266,9 @@ function get_HP_CMS_STD_outputs(inputs, rig_model){
     let fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
     let engine_hp = rig_model.Engine[0].Nominal_HP;
     let est_parasitic_hp = 225; //Some rig model has different values but some do not have this maybe just take average value?
+    let Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life
+
+    let non_drill_time_percent = HP_CMS_outputs.non_drilling_time_percent(drill_time_percent);
 
     let max_fuel_consumption = HP_CMS_STD.max_fuel_consumption(fuel_burn, engine_hp);
 
@@ -267,8 +277,140 @@ function get_HP_CMS_STD_outputs(inputs, rig_model){
 
     let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
+    let fuel_consumption_off_load_per_hour = HP_CMS_STD.fuel_consumption_off_load_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
+
+    let avg_fuel_consumption_per_hour = HP_CMS_STD.avg_fuel_consumption_per_hour(fuel_consumption_on_load_per_hour, drill_time_percent, fuel_consumption_off_load_per_hour,non_drill_time_percent );
+
+    let avg_load_factor = HP_CMS_STD.avg_load_factor(avg_fuel_consumption_per_hour, max_fuel_consumption);
+
+    let annual_fuel_consumption = HP_CMS_STD.annual_fuel_consumption(avg_fuel_consumption_per_hour, est_hours);
+
+    let daily_fuel_consumption = HP_CMS_STD.daily_fuel_consumption(annual_fuel_consumption);
+
+    let endurance_hours = HP_CMS_STD.endurance_hours(fuel_tank_size, avg_fuel_consumption_per_hour);
+
+    let annual_fuel_cost = HP_CMS_STD.annual_fuel_cost(annual_fuel_consumption, fuel_cost);
+
+    let engine_life_estimated = HP_CMS_STD.engine_life_estimated(Fuel_V_Life,avg_fuel_consumption_per_hour);
+
+    let cost_to_run_engine_annually = HP_CMS_STD.cost_to_run_engine_annually(engine_rebuild_cost, engine_life_estimated, est_hours);
+
+    let cost_to_run_compressor_annually = HP_CMS_STD.cost_to_run_compressor_annually(compressor_rebuild_cost, engine_life_estimated, est_hours);
+
+    let carbon_output = HP_CMS_STD.carbon_output(avg_fuel_consumption_per_hour, est_hours);
+
+    let carbon_tax_per_tonne = HP_CMS_STD.carbon_tax_per_tonne(carbon_output,carbon_tax);
+
+    let cost_before_and_after_total_savings = HP_CMS_STD.cost_before_and_after_total_savings(carbon_tax, annual_fuel_cost);
+
+    let total_saving_with_component_life_increase = HP_CMS_STD.total_saving_with_component_life_increase(cost_before_and_after_total_savings,cost_to_run_engine_annually,cost_to_run_compressor_annually);
+
+    let cost_per_hour_fuel_engine_compressor = HP_CMS_STD.cost_per_hour_fuel_engine_compressor(total_saving_with_component_life_increase, est_hours);
+
+    return{
+        max_fuel_consumption,
+        fuel_consumption_on_load_per_hour,
+        total_hp_compressor,
+        fuel_consumption_off_load_hour,
+        avg_fuel_consumption_per_hour,
+        avg_load_factor,
+        annual_fuel_consumption,
+        daily_fuel_consumption,
+        endurance_hours,
+        annual_fuel_cost,
+        engine_life_estimated,
+        cost_to_run_engine_annually,
+        cost_to_run_compressor_annually,
+        carbon_output,
+        carbon_tax_per_tonne,
+        cost_per_hour_fuel_engine_compressor,
+        cost_before_and_after_total_savings,
+        total_saving_with_component_life_increase,
+        cost_per_hour_fuel_engine_compressor
+    };
+
+}
+
+function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
+    let compressor_vol = inputs.dthComp;
+    let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
+    let running_pressure = inputs.Wap;
+    let drill_time_percent = inputs.drill_time_percent;
+    let est_hours = inputs.est_hours;
+    let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
+    let fuel_cost = input.fuel_cost;  //Check what actually name is later
+    let engine_rebuild_cost = input.engine_rebuild_cost //Add input
+    let compressor_rebuild_cost = input.compressor_rebuild_cost //Add input
+    let carbon_tax = input.carbon_tax;  //Add input
 
 
+
+    //For all Engine values, will use first engine as temp values
+    let fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
+    let engine_hp = rig_model.Engine[0].Nominal_HP;
+    let est_parasitic_hp = 225; //Some rig model has different values but some do not have this maybe just take average value?
+    let Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life
+
+    let non_drill_time_percent = HP_CMS_outputs.non_drilling_time_percent(drill_time_percent);
+
+    let max_fuel_consumption = HP_CMS_STD.max_fuel_consumption(fuel_burn, engine_hp);
+
+    let total_HP_compressor = HP_CMS_CMS.total_hp_compressor(altitude_ambient_pressure, compressor_vol, running_pressure, 1.8);
+    let load_factor = HP_CMS_STD.load_factor();
+
+    let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
+
+    let fuel_consumption_off_load_per_hour = HP_CMS_CMS.fuel_consumption_off_load_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
+
+    let avg_fuel_consumption_per_hour = HP_CMS_STD.avg_fuel_consumption_per_hour(fuel_consumption_on_load_per_hour, drill_time_percent, fuel_consumption_off_load_per_hour,non_drill_time_percent );
+
+    let avg_load_factor = HP_CMS_STD.avg_load_factor(avg_fuel_consumption_per_hour, max_fuel_consumption);
+
+    let annual_fuel_consumption = HP_CMS_STD.annual_fuel_consumption(avg_fuel_consumption_per_hour, est_hours);
+
+    let daily_fuel_consumption = HP_CMS_STD.daily_fuel_consumption(annual_fuel_consumption);
+
+    let endurance_hours = HP_CMS_STD.endurance_hours(fuel_tank_size, avg_fuel_consumption_per_hour);
+
+    let annual_fuel_cost = HP_CMS_STD.annual_fuel_cost(annual_fuel_consumption, fuel_cost);
+
+    let engine_life_estimated = HP_CMS_STD.engine_life_estimated(Fuel_V_Life,avg_fuel_consumption_per_hour);
+
+    let cost_to_run_engine_annually = HP_CMS_STD.cost_to_run_engine_annually(engine_rebuild_cost, engine_life_estimated, est_hours);
+
+    let cost_to_run_compressor_annually = HP_CMS_STD.cost_to_run_compressor_annually(compressor_rebuild_cost, engine_life_estimated, est_hours);
+
+    let carbon_output = HP_CMS_STD.carbon_output(avg_fuel_consumption_per_hour, est_hours);
+
+    let carbon_tax_per_tonne = HP_CMS_STD.carbon_tax_per_tonne(carbon_output,carbon_tax);
+
+    let cost_before_and_after_total_savings = HP_CMS_STD.cost_before_and_after_total_savings(carbon_tax, annual_fuel_cost);
+
+    let total_saving_with_component_life_increase = HP_CMS_STD.total_saving_with_component_life_increase(cost_before_and_after_total_savings,cost_to_run_engine_annually,cost_to_run_compressor_annually);
+
+    let cost_per_hour_fuel_engine_compressor = HP_CMS_STD.cost_per_hour_fuel_engine_compressor(total_saving_with_component_life_increase, est_hours);
+
+    return{
+        max_fuel_consumption,
+        fuel_consumption_on_load_per_hour,
+        total_hp_compressor,
+        fuel_consumption_off_load_hour,
+        avg_fuel_consumption_per_hour,
+        avg_load_factor,
+        annual_fuel_consumption,
+        daily_fuel_consumption,
+        endurance_hours,
+        annual_fuel_cost,
+        engine_life_estimated,
+        cost_to_run_engine_annually,
+        cost_to_run_compressor_annually,
+        carbon_output,
+        carbon_tax_per_tonne,
+        cost_per_hour_fuel_engine_compressor,
+        cost_before_and_after_total_savings,
+        total_saving_with_component_life_increase,
+        cost_per_hour_fuel_engine_compressor
+    };
 }
 
 
