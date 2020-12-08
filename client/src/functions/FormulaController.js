@@ -99,6 +99,7 @@ function get_drillingCalc_info(input, rig_model) {
     let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RHT_RHWeight, drill_string_wt, pulldown_force_DTH);
 
     return {
+        number_of_pipes,
         available_WOB,
         adjusted_WOB,
         adjusted_WOB_for_DTH
@@ -111,9 +112,7 @@ function get_drillingCalc_info(input, rig_model) {
  * @param {Object} input is input from the client form.
  * @param {Object} rig_model is the mongoose Schema DrillRigSchema.
  */
-function get_rotary_info(input, rig_model) {
-
-    let altitude = input.elevation;
+function get_rotary_info(altitude, rig_model) {
 
     let comp_vol = rig_model.HP_Comp;
     // Rotary_BitSize and PipeSize must be converted to inches (from mm).
@@ -149,7 +148,7 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
     let setup = rig_model.RHT_SetUp;
     let single_pass = rig_model.RHT_SinglePass;
 
-    let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
+    let number_of_pipes = drillingCalc.number_of_pipes;
 
     let UCS = rotaryFormulas.UCS(rock_UCS);
     let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize);
