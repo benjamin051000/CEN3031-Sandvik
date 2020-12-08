@@ -108,18 +108,20 @@ function get_rotary_information(input, rig_model) {
 
     return max_uhv;
 }
-//Need adjusted_WOB from get_drillingCalc_information ask Ben for opinion
-//Temp solution parameter add drillingCalc_outputs
-function get_rotaryFormulas_information(input, rig_model, drillingCalc) {
+
+function get_rotaryFormulas_information(input, rig_model,drillingCalc) {
     let rock_UCS = input.rock_UCS;
     let rpm = input.rpm;
     let holeDepth = input.holeDepth;
     let fracturization = input.fracturization;   //May want to make a function to calculate it, right now it would be: none. light, moderate, or heavy
+
     let adjusted_WOB = drillingCalc.adjusted_WOB;
-    let number_of_pipes = drillingCalc.number_of_pipes; //Need to make it an output or find a different way of transfering
     let pipeLength = rig_model.RHT_PipeLength;
     let feed_rate = rig_model.RHT_FeedRate;
     let hoist_rate = rig_model.RHT_HoistRate;
+    let setup = rig_model.RHT_SetUp;
+
+    let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
 
     let UCS = rotaryFormulas.UCS(rock_UCS);
     let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize);
@@ -132,8 +134,30 @@ function get_rotaryFormulas_information(input, rig_model, drillingCalc) {
 
     let add_pipe = rotaryFormulas.add_pipe(number_of_pipes, rig_model.RHT_AddPipe);
 
-    let retract = rotaryFormulas.retract(number_of_pipes, pipeLength, feed_rate, hoist_rate );
-    
+    let retract = rotaryFormulas.retract(number_of_pipes, pipeLength, feed_rate, hoist_rate);
+
+    let remove = add_pipe;
+
+    let collaring = rotaryFormulas.collaring(fracturization, add_pipe, retract, remove, setup);
+
+    let cleaning = rotaryFormulas.cleaning(fracturization, drill_time);
+
+    //Unsure if we should use the formula made or just add the values
+    let total_time = drill_time + collaring + add_pipe + retract + remove + setup + cleaning;
+
+    let total_percent_time_drilling = drill_time / total_time;
+
+    let net_penetration_rate = rotaryFormulas.net_penetration_rate(_80_percent_driller_efficiency_penetration_rate, total_percent_time_drilling);
+
+    return{
+        drill_time,
+        collaring,
+        add_pipe,
+        retract,
+        setup,
+        cleaning
+    };
+
 
 
 
