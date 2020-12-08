@@ -59,6 +59,11 @@ export default function run_calculations(input) {
     let rotaryPower_inputs = (({rotary_bit, adjusted_WOB, rpm, bit}) => ({rotary_bit, adjusted_WOB, rpm, bit}))(input_json);
     let rotaryPower = get_rotaryPower_info(input);
 
+    let HP_CMS = get_HP_CMS_outputs(input, get_rig_model());
+    let HP_CMS_STD = get_HP_CMS_STD_info(input, get_rig_model(), HP_CMS);
+    let HP_CMS_CMS = get_HP_CMS_CMS_info(input, get_rig_model(), HP_CMS);
+
+
 
     return {
         drillingCalc_outputs,
