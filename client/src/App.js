@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import Dashboard from "./views/Dashboard/Dashboard"
@@ -10,9 +10,20 @@ import Settings from "./views/Settings/Settings"
 import History from "./views/History/History"
 import NewHeader from "./components/Header/NewHeader"
 import Login from "./views/Login/Login"
+import {getData} from './views/History/HistoryData'
 import './App.css';
 
 const App = () => {
+  //Current Data
+  const [data, setData] = useState(getData());
+
+  //Global States
+  const [comingFromHistory, setComingFromHistory] = useState([]);
+  const [accountId, setAccountId] = useState([]);
+  const [isAdmin, setIsAdmin] = useState([]);
+
+
+
   return (
     <div>
       
