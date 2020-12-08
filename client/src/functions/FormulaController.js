@@ -1,6 +1,6 @@
-import { drillingCalc } from './DrillingCalc.js';
-import {rotaryFormulas, rotaryPower, calculator_rotary} from './RotaryFormulas.js';
-import {HP_CMS_outputs, HP_CMS_STD, HP_CMS_CMS} from './HP_CMS.js';
+import { drillingCalc } from './formulas/DrillingCalc.js';
+import {rotaryFormulas, rotaryPower, calculator_rotary} from './formulas/RotaryFormulas.js';
+import {HP_CMS_outputs, HP_CMS_STD, HP_CMS_CMS} from './formulas/HP_CMS.js';
 // Inputs
 // input_json example
 /* {
@@ -29,7 +29,7 @@ import {HP_CMS_outputs, HP_CMS_STD, HP_CMS_CMS} from './HP_CMS.js';
 
 // const subset_of_obj_properties = (({ a, c }) => ({ a, c }))(object);
 
-function start_flow(input_json) {
+export default function run_calculations(input_json) {
     let rotary_inputs = input_json.elevation; // TODO this is a subset of input_json
 
     let rotary_output = get_rotary_information(rotary_inputs, get_rig_model());
