@@ -13,7 +13,7 @@ function History() {
     return (
         <div>
           <div class="ui centered container">
-            <h1 style={{color:"#009aff", fontSize:"26pt", marginBottom:"35px"}} class="ui header">History</h1>
+            <h1 style={{color:"#009aff", fontSize:"26pt", marginBottom:"15px"}} class="ui header">History</h1>
             <Search 
               data={data} 
               setFilteredEntries={setFilteredEntries} 
