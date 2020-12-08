@@ -27,8 +27,10 @@ import {HP_CMS_outputs, HP_CMS_STD, HP_CMS_CMS} from './formulas/HP_CMS.js';
     rotRpm: ''
 } */
 //Inputs to add:
-// Hammer type: M30, M40, etc
-
+ /*
+ * Hammer type: M30, M40, etc
+ * rpm
+ */
 // const subset_of_obj_properties = (({ a, c }) => ({ a, c }))(object);
 
 export default function run_calculations(input_json) {
@@ -45,10 +47,16 @@ function get_rig_model() {
     // TODO
     return {};
 }
-
+/******************************************************************************************************
+                                    Get Information Functions
+/**
+ * 
+ * @param {*} input is input from the client form.
+ * @param {*} rig_model is the mongoose Schema DrillRigSchema.
+ */
 function get_drillingCalc_information(input, rig_model){
-    let holeDepth = input.holeDepth;  //input
-    let pulldown = input.pulldown; //input
+    let holeDepth = input.holeDepth;  
+    let pulldown = input.pulldown; 
 
     let single_pass = rig_model.single_pass;
     let pipeLength = rig_model.pipeLength;
@@ -99,4 +107,35 @@ function get_rotary_information(input, rig_model) {
     let max_uhv = calculator_rotary.maximum_UHV(comp_act_vol_for_alt, hole_diam, rod_diam);
 
     return max_uhv;
+}
+//Need adjusted_WOB from get_drillingCalc_information ask Ben for opinion
+//Temp solution parameter add drillingCalc_outputs
+function get_rotaryFormulas_information(input, rig_model, drillingCalc) {
+    let rock_UCS = input.rock_UCS;
+    let rpm = input.rpm;
+    let holeDepth = input.holeDepth;
+    let fracturization = input.fracturization;   //May want to make a function to calculate it, right now it would be: none. light, moderate, or heavy
+    let adjusted_WOB = drillingCalc.adjusted_WOB;
+    let number_of_pipes = drillingCalc.number_of_pipes; //Need to make it an output or find a different way of transfering
+    let pipeLength = rig_model.RHT_PipeLength;
+    let feed_rate = rig_model.RHT_FeedRate;
+    let hoist_rate = rig_model.RHT_HoistRate;
+
+    let UCS = rotaryFormulas.UCS(rock_UCS);
+    let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize);
+
+    let pure_penetration_rate = rotaryFormulas.pure_penetration_rate(penetration_rate);
+    
+    let _80_percent_driller_efficiency_penetration_rate = rotaryFormulas._80_percent_driller_efficiency_penetration_rate(pure_penetration_rate,fracturization);
+
+    let drill_time = rotaryFormulas.drill_time(holeDepth, _80_percent_driller_efficiency_penetration_rate);
+
+    let add_pipe = rotaryFormulas.add_pipe(number_of_pipes, rig_model.RHT_AddPipe);
+
+    let retract = rotaryFormulas.retract(number_of_pipes, pipeLength, feed_rate, hoist_rate );
+    
+
+
+
+    
 }
