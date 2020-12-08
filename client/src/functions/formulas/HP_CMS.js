@@ -93,7 +93,7 @@ const HP_CMS_STD = {
 
     total_hp_compressor: (alt_ambient_pressure, compressor_vol, running_pressure, friction_mult = 1.8) => {
         // TODO this isn't using friction_mult ?
-        return 144 * 2 * alt_ambient_pressure * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1);
+        return (144 * 2 * alt_ambient_pressure * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1))*friction_mult;
     },
 
     load_factor: (ground_conditions) => {

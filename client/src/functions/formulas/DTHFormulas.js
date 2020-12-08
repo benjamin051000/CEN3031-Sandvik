@@ -5,11 +5,32 @@
 /* 
     inst_rop: instantaneous ROP (From rig info)
 */
-const DTH = {
+export const DTH = {
     penetration_rate: (inst_rop) => {
         return inst_rop * 3.28084;
     },
+
+    ground_conditions: (rock_ucs) => {
+        if(rock_ucs <=100)
+        return 1;
+        else if (rock_ucs <= 200)
+        return 2;
+        else if (rock_ucs <= 300)
+        return 3;
+        else
+        return 4;
+    },
     
+    fracturization: (fracturization) =>{
+        if(fracturization == "None")
+            return 1;
+        if (fracturization == "Light")
+            return .980;
+        if (fracturization == "Moderate")
+            return .950;
+        if (fracturization == "Heavy")
+            return .910;
+    },
 
     inst_rop: (rock_DRI, ground_conditions, ROP_in_DRI_at_given_pressure) => {
         //Ground_conditions based on Rock UCS
