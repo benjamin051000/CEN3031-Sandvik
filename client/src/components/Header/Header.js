@@ -2,29 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
+//Set website header, includes the bar with home
 const Header = () => {
     return (
-        <div className='topnav'>
-            {/* Logo */}
-            <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={ "/logo192.png" } alt="React logo" />
-            </Link>
+        <div>
+            
+            <div className="sandvik-header">
+                      
+                {/* Logo - Stored in client/public */} 
+                <div style={{marginTop:"45px"}} class="ui center aligned container">
+                    <div class="ui two column grid">
+                        <div class="column"><img src={ "/sandviklogo.png" } alt="Sandvik logo" /></div>
+                        <div class="column"><p className="name-text">Drillsite Calculator</p></div>
+                    </div>   
+                </div>
 
-            {/* Page Links */}
-            <div className="topnav-right">
-                <Link className="topnav-link" to='/Register'>Sign in</Link>
-                <Link className="topnav-link" to='/projects'>Projects</Link>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
-                    Events
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
-                </a>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://github.com/ufosc/club-resources">
-                    Resources
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6 right-4"></i>
-                </a>
-                <Link className="topnav-link" to="/about">About</Link>
+                {/* Page Links */}
+                <div className="header-links">
+                    <div className="header-links-filler" ></div>
+                    <Link className="buttons-header" to='/login' >Sign in</Link>
+                    <Link className="buttons-header" to='/dashboard'>Dashboard</Link>
+                    <Link className="buttons-header" to="/settings">Settings</Link>
+                </div>
             </div>
+
+            
+
         </div>
+        
     )
 }
 

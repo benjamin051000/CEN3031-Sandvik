@@ -1,0 +1,51 @@
+/*
+    Dashboard main styling
+
+*/
+
+.dashboard-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 30pt;
+    font-family: Tahoma, Geneva, sans-serif;
+    color:#009aff;
+    margin-bottom: 35px;
+}
+
+.buttons-layout {
+    text-align: center;
+    display: grid;
+    gap: 40px;
+    margin: 10px auto 0;
+    max-width: 450px;
+}
+
+/*
+    Button styling
+*/
+
+.dashboard-button {
+    display: inline-block;
+    padding: 20px 25px;
+    font-size: 24px;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #009aff;
+    border: none;
+    border-radius: 3px;
+  }
+  
+  .dashboard-button:hover {
+      background-color: #0884eb;
+      color: #ffffff;
+    }
+  
+  .dashboard-button:active {
+    background-color: #0884eb;
+  }

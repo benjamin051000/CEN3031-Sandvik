@@ -3,7 +3,11 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    exampleRouter = require('../routes/server.routes'),
+    rigRouter = require('../routes/RigRouter');
+
+
+
 
 module.exports.init = () => {
     /* 
@@ -11,7 +15,8 @@ module.exports.init = () => {
         - reference README for db uri
     */
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
+				useNewUrlParser: true,
+				useUnifiedTopology: true
     });
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
@@ -37,6 +42,9 @@ module.exports.init = () => {
             res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
         });
     }
+
+    //sets route to drill rig database
+    app.use('/api/drillRigs/', rigRouter);
 
     return app
 }
