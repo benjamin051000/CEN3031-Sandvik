@@ -6,6 +6,7 @@ import InputTabs  from "../../components/InputTabs"
 import * as Yup from 'yup';
 
 import './Calculator.css'
+import run_calculations from '../../functions/FormulaController.js';
 
 /*
         Formik component:
@@ -26,6 +27,7 @@ import './Calculator.css'
 
 export default function Calculator() {
     const [inputs, setInputs] = useState({});
+    const [outputs, setOutputs] = useState({});
 
     const objectEmpty = (obj) => {
         // because Object.keys(new Date()).length === 0;
@@ -35,26 +37,25 @@ export default function Calculator() {
     }
 
     // Either render the input form or redirect to the outputs
-    // Depending on whether inputs is an empty object.
+    // Depending on whether outputs is an empty object.
     return (
-        !objectEmpty(inputs) ?
+        !objectEmpty(outputs) ?
             <Redirect to={{
                 pathname: '/CalculatorOutput',
-                state: { inputs: inputs }
+                state: { inputs: inputs, outputs: outputs }
             }} />
 
             :
 
-            <CalcInputForm setInputs={setInputs} />
+            <CalcInputForm inputs={inputs} setInputs={setInputs} setOutputs={setOutputs} />
 
 
     );
 }
 
 /* Component to render the input form. */
-const CalcInputForm = ({ setInputs }) => {
-    return (
-    <div class="ui centered container">
+const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
+    return <div class="ui centered container">
         <div>
             <h1 style={{ fontSize: "30pt", color: "#009aff" }} class="ui centered header">New Calculation Form</h1>
         </div>
@@ -114,6 +115,7 @@ const CalcInputForm = ({ setInputs }) => {
                 onSubmit={(values) => {
                     console.log(values)
                     setInputs(values);
+                    setOutputs(run_calculations(inputs));
                 }}
 
             >
@@ -135,5 +137,5 @@ const CalcInputForm = ({ setInputs }) => {
             </Formik>
         </div>
     </div>
-    )
+    
 }

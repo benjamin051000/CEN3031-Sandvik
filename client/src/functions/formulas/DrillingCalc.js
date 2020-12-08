@@ -13,7 +13,48 @@ export const drillingCalc = {
     },
 
     number_of_pipes: (hole_depth, single_pass, pipe_length) => {
-        return round(hole_depth - single_pass / pipe_length);
+        return Math.round(hole_depth - single_pass / pipe_length);
+    },
+
+    get_pipe_weight: (pipe_length) => {
+        switch(pipe_length){
+        case 89:
+        case 102:
+            return 512;
+        case 114:
+            return 800;
+        case 127:
+            return 1100;
+        case 140:
+            return 1600;
+        case 152:
+            return 1381;
+        case 165:
+            return 1590;
+        case 178: 
+            return 2400;
+        case 179:
+            return 2720;
+        case 194:
+            return 2713;
+        case 203:
+            return 1675;
+        case 219:
+            return 3684;
+        case 229:
+            return 1961;
+        case 244:
+            return 3000;
+        case 254:
+            return 3245;
+        case 260:
+            return 4300;
+        case 273:
+            return 3550;
+        case 324:
+            return 4000;
+
+        }
     },
 
     get_drill_string_wt: (loader_cap, pipe_weight, number_of_pipes_too_deep) => {
@@ -26,6 +67,7 @@ export const drillingCalc = {
 
         return pipe_weight * (number_of_pipes_too_deep + 1);
     },
+
 
     available_WOB: (rh_weight, max_pulldown, drill_string_wt) => {
         return rh_weight + max_pulldown + drill_string_wt;
@@ -50,5 +92,17 @@ export const drillingCalc = {
         // 750 for hammers M30, M40, M50
         // 1200 for hammers M60, M80.
         return adjusted_feed_pressure * pulldown;
+    },
+
+    get_adjusted_feed_pressure: (hammer) => {
+        switch(hammer){
+            case "M30":
+            case "M40":
+            case "M50":
+                return 750;
+            case "M60":
+            case "M80":
+                return 1200;
+        }
     }
 };

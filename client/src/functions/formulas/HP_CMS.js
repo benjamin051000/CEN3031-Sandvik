@@ -171,7 +171,7 @@ const HP_CMS_STD = {
         return carbon_tax_dollars_per_tonne + annual_fuel_cost;
     },
 
-    total_saving_with_component_life_increase: (total_savings, annual_engine_cost, annual_compressor_cost) => {
+    total_saving_with_component_life_increase: (cost_before_and_after_total_savings, annual_engine_cost, annual_compressor_cost) => {
         return cost_before_and_after_total_savings + annual_engine_cost + annual_compressor_cost;
     },
 
