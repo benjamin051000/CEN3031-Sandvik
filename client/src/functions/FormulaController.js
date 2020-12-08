@@ -59,9 +59,9 @@ function get_drillingCalc_info(input, rig_model){
     let holeDepth = input.holeDepth;  
     let pulldown = input.pulldown; 
 
-    let single_pass = rig_model.single_pass;
-    let pipeLength = rig_model.pipeLength;
-    let loader_cap = rig_model.loader_cap;
+    let single_pass = rig_model.RHT_SinglePass;
+    let pipeLength = rig_model.RHT_PipeLength;
+    let loader_cap = rig_model.RHT_LoaderCap;
     
 
 
@@ -122,6 +122,7 @@ function get_rotaryFormulas_info(input, rig_model,drillingCalc) {
     let feed_rate = rig_model.RHT_FeedRate;
     let hoist_rate = rig_model.RHT_HoistRate;
     let setup = rig_model.RHT_SetUp;
+    let single_pass = rig_model.RHT_SinglePass;
 
     let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
 
