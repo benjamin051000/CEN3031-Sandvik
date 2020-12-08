@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
 
 import './Calculator.css'
+import run_calculations from '../../functions/FormulaController.js';
 
 /*
         Formik component:
@@ -99,6 +100,7 @@ const CalcInputForm = ({ setInputs }) => {
 
                 onSubmit={(values) => {
                     setInputs(values);
+                    let outputs = run_calculations(inputs);
                 }}
 
             >
