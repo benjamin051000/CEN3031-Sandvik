@@ -4,10 +4,8 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/server.routes'),
-    rigRouter = require('../routes/RigRouter');
-
-
-
+		rigRouter = require('../routes/RigRouter'),
+		SignInRouter = require('../routes/SignInRouter');
 
 module.exports.init = () => {
     /* 
@@ -44,7 +42,10 @@ module.exports.init = () => {
     }
 
     //sets route to drill rig database
-    app.use('/api/drillRigs/', rigRouter);
+		app.use('/api/drillRigs/', rigRouter);
+
+		// use router for sign in page
+		app.use('/api/account/', SignInRouter);
 
     return app
 }
