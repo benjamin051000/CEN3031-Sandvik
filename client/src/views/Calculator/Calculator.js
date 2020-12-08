@@ -27,7 +27,7 @@ import run_calculations from '../../functions/FormulaController.js';
 
 export default function Calculator() {
     const [inputs, setInputs] = useState({});
-    const [outputs, setOutputs] = useState({});
+    // const [outputs, setOutputs] = useState({});
 
     const objectEmpty = (obj) => {
         // because Object.keys(new Date()).length === 0;
@@ -39,15 +39,15 @@ export default function Calculator() {
     // Either render the input form or redirect to the outputs
     // Depending on whether outputs is an empty object.
     return (
-        !objectEmpty(outputs) ?
+        !objectEmpty(inputs) ?
             <Redirect to={{
                 pathname: '/CalculatorOutput',
-                state: { inputs: inputs, outputs: outputs }
+                state: { inputs: inputs, outputs: run_calculations(inputs) }
             }} />
 
             :
 
-            <CalcInputForm inputs={inputs} setInputs={setInputs} setOutputs={setOutputs} />
+            <CalcInputForm inputs={inputs} setInputs={setInputs} />
 
 
     );
@@ -113,9 +113,8 @@ const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
                 // })}
 
                 onSubmit={(values) => {
-                    console.log(values)
+                    console.log('Input values:', values)
                     setInputs(values);
-                    setOutputs(run_calculations(inputs));
                 }}
 
             >

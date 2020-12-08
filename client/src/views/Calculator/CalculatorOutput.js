@@ -33,7 +33,7 @@ const CalculatorOutput = (props) => {
 
     let calculation_inputs = props.location.state.inputs; // Will be here
    
-
+    console.log('[CalculatorOutput.js] Received output info:',props.location.state.outputs);
     /* TODO: This is where we would call the function to get the outputs. For now, dummy outputs will be used. */
     //const outputs = {};
 
