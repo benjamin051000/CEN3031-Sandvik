@@ -34,18 +34,19 @@ import {HP_CMS_outputs, HP_CMS_STD, HP_CMS_CMS} from './formulas/HP_CMS.js';
 // const subset_of_obj_properties = (({ a, c }) => ({ a, c }))(object);
 
 export default function run_calculations(input_json) {
+
     let rotary_inputs = input_json.elevation; // TODO this is a subset of input_json
 
-    let rotary_output = get_rotary_information(rotary_inputs, get_rig_model());
+    let rotary_output = get_rotary_info(rotary_inputs, get_rig_model());
 
     let drillingCalc_inputs = (({holeDepth, pulldown}) => ({holeDepth, pulldown}))(input_json);
-    let drillingCalc_outputs = get_drillingCalc_information(drillingCalc_inputs, get_rig_model()); 
+    let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, get_rig_model()); 
     return {error: 'NOT IMPLEMENTED'};
 }
 
 function get_rig_model() {
     // TODO
-    return {};
+    return {error: 'NOT IMPLEMENTED'};
 }
 /******************************************************************************************************
                                     Get Information Functions
@@ -54,7 +55,7 @@ function get_rig_model() {
  * @param {*} input is input from the client form.
  * @param {*} rig_model is the mongoose Schema DrillRigSchema.
  */
-function get_drillingCalc_information(input, rig_model){
+function get_drillingCalc_info(input, rig_model){
     let holeDepth = input.holeDepth;  
     let pulldown = input.pulldown; 
 
@@ -74,6 +75,8 @@ function get_drillingCalc_information(input, rig_model){
     let pulldown_Force = drillingCalc.get_pulldown_force(rig_model.RPD_MaxPulldown, rig_model.RPD_MaxFeedPressure, pulldown)
     let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RHT_RHWeight,pulldown_Force, drill_string_wt);
 
+    let hammer; // TODO figure out where to get this
+
     let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(hammer);
     let pulldown_force_DTH = drillingCalc.get_pulldown_force_DTH(adjusted_feed_pressure,pulldown);
     let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RHT_RHWeight,drill_string_wt, pulldown_force_DTH);
@@ -82,7 +85,6 @@ function get_drillingCalc_information(input, rig_model){
         available_WOB,
         adjusted_WOB,
         adjusted_WOB_for_DTH
-
     };
 }
 
@@ -91,7 +93,7 @@ function get_drillingCalc_information(input, rig_model){
  * @param {*} input is input from the client form.
  * @param {*} rig_model is the mongoose Schema DrillRigSchema.
  */
-function get_rotary_information(input, rig_model) {
+function get_rotary_info(input, rig_model) {
     
     let altitude = input.elevation;
 
@@ -109,7 +111,7 @@ function get_rotary_information(input, rig_model) {
     return max_uhv;
 }
 
-function get_rotaryFormulas_information(input, rig_model,drillingCalc) {
+function get_rotaryFormulas_info(input, rig_model,drillingCalc) {
     let rock_UCS = input.rock_UCS;
     let rpm = input.rpm;
     let holeDepth = input.holeDepth;
@@ -162,4 +164,18 @@ function get_rotaryFormulas_information(input, rig_model,drillingCalc) {
 
 
     
+}
+
+
+function get_rotaryPower_info(inputs) {
+
+    let {rotary_bit, adjusted_WOB, rpm, bit} = inputs;
+
+    let w = rotaryPower.w(rotary_bit, adjusted_WOB);
+
+    let hp = rotaryPower.hp(rpm, bit, w, adjusted_WOB);
+
+    let rotation_power = rotaryPower.rotation_power(hp);
+
+    return {w, hp, rp: rotation_power};
 }
