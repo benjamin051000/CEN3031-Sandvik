@@ -92,5 +92,17 @@ export const drillingCalc = {
         // 750 for hammers M30, M40, M50
         // 1200 for hammers M60, M80.
         return adjusted_feed_pressure * pulldown;
+    },
+
+    get_adjusted_feed_pressure: (hammer) => {
+        switch(hammer){
+            case "M30":
+            case "M40":
+            case "M50":
+                return 750;
+            case "M60":
+            case "M80":
+                return 1200;
+        }
     }
 };
