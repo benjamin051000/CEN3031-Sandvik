@@ -48,7 +48,7 @@ export default function run_calculations(input) {
     // Rotary formula calculations
     let rotary_info = get_rotary_info(input.elevation, rig_model);
     let rotaryFormulas = get_rotaryFormulas_info(input, rig_model, drillingCalc_outputs);
-    let rotaryPower = get_rotaryPower_info(input);
+    let rotaryPower = get_rotaryPower_info(input, drillingCalc_outputs.adjusted_WOB);
 
     let drillingCalc_inputs = (({holeDepth, pulldown}) => ({holeDepth, pulldown}))(input);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, get_rig_model()); 
@@ -91,9 +91,7 @@ function get_rig_model() {
  * @param {Object} input - Input from the frontend web form.
  * @param {Object} rig_model - Mongoose database results, in the form of DrillRigSchema.
  */
-function get_drillingCalc_info(input, rig_model) {
-    let holeDepth = input.holeDepth;
-    let pulldown = input.rotPulldown;
+function get_drillingCalc_info({ holeDepth, rotPulldown }, rig_model) {
 
     let single_pass = rig_model.RHT_SinglePass;
     let pipeLength = rig_model.RHT_PipeLength;
@@ -108,13 +106,13 @@ function get_drillingCalc_info(input, rig_model) {
     let drill_string_wt = drillingCalc.get_drill_string_wt(loader_cap, pipeWeight, number_of_pipes_too_deep);
     let available_WOB = drillingCalc.available_WOB(rig_model.RHT_RHWeight, rig_model.RPD_MaxPulldown, drill_string_wt);
 
-    let pulldown_Force = drillingCalc.get_pulldown_force(rig_model.RPD_MaxPulldown, rig_model.RPD_MaxFeedPressure, pulldown)
+    let pulldown_Force = drillingCalc.get_pulldown_force(rig_model.RPD_MaxPulldown, rig_model.RPD_MaxFeedPressure, rotPulldown)
     let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RHT_RHWeight, pulldown_Force, drill_string_wt);
 
     let hammer; // TODO figure out where to get this
 
     let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(hammer);
-    let pulldown_force_DTH = drillingCalc.get_pulldown_force_DTH(adjusted_feed_pressure, pulldown);
+    let pulldown_force_DTH = drillingCalc.get_pulldown_force_DTH(adjusted_feed_pressure, rotPulldown);
     let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RHT_RHWeight, drill_string_wt, pulldown_force_DTH);
 
     return {
@@ -209,13 +207,12 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
  * Calculates the Rotary Power data.
  * @param {Object} inputs - Form inputs
  */
-function get_rotaryPower_info(inputs) {
+function get_rotaryPower_info(inputs, adjusted_WOB) {
+    let { rotRpm, rotBit: bit } = inputs;
 
-    let { rotary_bit, adjusted_WOB, rpm, bit } = inputs;
+    let w = rotaryPower.w(bit, adjusted_WOB);
 
-    let w = rotaryPower.w(rotary_bit, adjusted_WOB);
-
-    let hp = rotaryPower.hp(rpm, bit, w, adjusted_WOB);
+    let hp = rotaryPower.hp(rotRpm, bit, w, adjusted_WOB);
 
     let rotation_power = rotaryPower.rotation_power(hp);
 
