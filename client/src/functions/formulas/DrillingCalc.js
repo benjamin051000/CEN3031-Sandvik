@@ -13,7 +13,7 @@ export const drillingCalc = {
     },
 
     number_of_pipes: (hole_depth, single_pass, pipe_length) => {
-        return round(hole_depth - single_pass / pipe_length);
+        return Math.round(hole_depth - single_pass / pipe_length);
     },
 
     get_pipe_weight: (pipe_length){

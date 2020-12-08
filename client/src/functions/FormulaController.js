@@ -33,6 +33,8 @@ export default function run_calculations(input_json) {
     let rotary_inputs = input_json.elevation; // TODO this is a subset of input_json
 
     let rotary_output = get_rotary_information(rotary_inputs, get_rig_model());
+
+    return {error: 'NOT IMPLEMENTED'};
 }
 
 function get_rig_model() {
@@ -66,7 +68,7 @@ function get_rotary_information(input, rig_model) {
     let comp_vol = rig_model.HP_Comp;
     // Rotary_BitSize and PipeSize must be converted to inches (from mm).
     let hole_diam = rig_model.Rotary_BitSize / 25.4;
-    let rod_diam = rig_mode.PipeSize / 25.4;
+    let rod_diam = rig_model.PipeSize / 25.4;
     
     let alt_vol_per_mass = calculator_rotary.altitude_volume_per_mass(comp_vol, altitude);
 
