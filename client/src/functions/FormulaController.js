@@ -40,6 +40,20 @@ function get_rig_model() {
     return {};
 }
 
+function drillingCalc_information(input, rig_model){
+    let holeDepth = input.holeDepth;  //input
+    let single_pass = rig_model.single_pass;
+    let pipeLength = rig_model.pipeLength;
+    let loader_cap = rig_model.loader_cap;
+    
+
+
+    let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
+    let number_of_pipes_too_deep = drillingCalc.number_of_pipes_too_deep(holeDepth, single_pass, pipeLength, loader_cap, number_of_pipes);
+    let drill_string_wt = drillingCalc.get_drill_string_wt(loader_cap,pipe)
+
+}
+
 /**
  * 
  * @param {*} input is input from the client form.
