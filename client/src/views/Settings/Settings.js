@@ -6,7 +6,7 @@ function Settings() {
    
     return (
         <div class="ui centered container">
-        <SettingsTabs />
+            <SettingsTabs />
         </div>
     );
 }
