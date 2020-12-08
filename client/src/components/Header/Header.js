@@ -1,36 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import holedig from '../../assets/holedig.jpg'
 
-//Set website header, includes the bar with home
-const Header = () => {
+//Set website header, includes the bar with home 
+const NewHeader = () => {
     return (
-        <div>
-            
-            <div className="sandvik-header">
-                      
-                {/* Logo - Stored in client/public */} 
-                <div style={{marginTop:"45px"}} class="ui center aligned container">
-                    <div class="ui two column grid">
-                        <div class="column"><img src={ "/sandviklogo.png" } alt="Sandvik logo" /></div>
-                        <div class="column"><p className="name-text">Drillsite Calculator</p></div>
-                    </div>   
+        <div style={{backgroundImage:`url(${holedig})`,  backgroundSize:"cover", backgroundPosition:"50px", backgroundPositionX:"0"}} class="ui fluid container">
+            <div>
+                {/* Logo - Stored in client/public */}
+                <div >
+                    <div class="column"style={{ paddingTop:"40px"}}>
+                        <img style={{ border: "4px solid #009aff"}} class="ui centered image" src={"/sandvik_header_2.png"} alt="Sandvik logo" />
+                    </div>
                 </div>
 
                 {/* Page Links */}
-                <div className="header-links">
-                    <div className="header-links-filler" ></div>
-                    <Link className="buttons-header" to='/login' >Sign in</Link>
-                    <Link className="buttons-header" to='/dashboard'>Dashboard</Link>
-                    <Link className="buttons-header" to="/settings">Settings</Link>
+                <div style={{ marginTop: "35px", marginBottom: "35px", position: "sticky" }} class="ui inverted menu" >
+                    <div class="right menu" >
+                        <Link class="item" to='/login' >Sign in</Link>
+                        <Link class="item" to='/dashboard'>Dashboard</Link>
+                        <Link class="item" to="/settings">Settings</Link>
+                    </div>
                 </div>
             </div>
-
-            
-
         </div>
-        
     )
 }
 
-export default Header;
+export default NewHeader;
