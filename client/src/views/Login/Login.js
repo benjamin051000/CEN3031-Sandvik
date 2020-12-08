@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {Component} from 'react'
+import { Redirect } from 'react-router-dom';
 import './Login.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+/** Login styling based off example hosted at https://semantic-ui.com/examples/login.html */
+
 //Set website header, includes the bar with home
-const Login  = () => {
+const Login  = (props) => {
     
+    
+
     return (
         <div class="ui centered container">
             <div class="ui middle aligned center aligned grid">
@@ -27,7 +32,7 @@ const Login  = () => {
 
                         onSubmit={(values) => {
                             console.log(values);
-                    }}>
+                        }}>
                         {/**^^^^^^^^^^^^^^^PROCESS FROM HERE */}
 
                         <Form class="ui large form">
@@ -42,7 +47,7 @@ const Login  = () => {
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="lock icon"></i>
-                                        <Field name="password" type="text" placeholder="Password"/>
+                                        <Field name="password" type="password" placeholder="Password"/>
                                         <ErrorMessage component="required-message-login" name="password" />
                                     </div>
                                 </div>
