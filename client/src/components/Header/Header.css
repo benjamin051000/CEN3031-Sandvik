@@ -1,27 +1,4 @@
-.sandvik-header{
-    text-align: center;
-}
 
-.sandvik-header:before{
-    position: absolute;
-    content: "";
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -1;
-
-    background-image: url(../../assets/holedig.jpg);
-    background-size: cover;
-    background-position: 50px;
-
-    
-    height: 220px;
-    width: 100%;
-    
-   
-    filter: blur(4px) opacity(85%);
-    
-}
 
 .header-links{  
     text-align: left;
