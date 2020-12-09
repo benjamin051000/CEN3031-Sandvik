@@ -1,19 +1,9 @@
 import React from 'react'
 import { Tab } from 'semantic-ui-react'
-import { writeToJSON } from "../functions/JSONFunctions"
 
 
 const panes = [
-  { menuItem: 'Rig Spec Settings', render: () => 
-    <Tab.Pane style={{backgroundColor:"#272727", border:"5px solid #009aff"}}>
-      <div style={{color:"#009aff", marginBottom:"15px"}} class="ui centered header">Rig Spec Settings</div>
-      <div style={{marginTop:"15px"}} class="ui three centered column grid">
-          <div class="ui blue medium button">Add</div>
-          <div class="ui blue medium button">Edit</div>
-          <div class="ui blue medium button">Delete</div>
-      </div>
-    </Tab.Pane> },
-
+  
   { menuItem: 'Sync', render: () => 
     <Tab.Pane style={{backgroundColor:"#272727", border:"5px solid #009aff"}}>
         <div style={{color:"#009aff", marginBottom:"15px"}} class="ui centered header">Sync with Server</div>
