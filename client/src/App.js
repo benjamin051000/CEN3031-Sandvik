@@ -5,7 +5,7 @@ import Dashboard from "./views/Dashboard/Dashboard";
 import NotFound from "./views/NotFound";
 import Header from "./components/Header/Header";
 import Calculator from "./views/Calculator/Calculator";
-import CalculatorOutput from './views/Calculator/CalculatorOutput';
+import Output from './views/Output/Output.js';
 import Settings from "./views/Settings/Settings";
 import History from "./views/History/History";
 import Login from "./views/Login/Login";
@@ -41,7 +41,7 @@ const App = () => {
         <Route exact path="/settings" component={Settings}
           isAdmin={isAdmin}
         />
-        <Route path='/CalculatorOutput' component={CalculatorOutput}
+        <Route path='/output' component={Output}
           comingFromHistory={comingFromHistory}
         />
         <Route exact path="/">
