@@ -18,7 +18,7 @@
         "pipeSize": 0.4,
         "holeDepth": 12.5,
         "dthComp": 100,
-        "dthWap": 69,
+        "dthWap": 180,
         "dthHammer": "M30",
         "dthBit": 1.25,
         "rockDRI": "something",
