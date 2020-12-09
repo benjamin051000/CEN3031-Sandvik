@@ -5,7 +5,7 @@ const path = require('path'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/server.routes'),
 		rigRouter = require('../routes/RigRouter'),
-		SignInRouter = require('../routes/SignInRouter');
+		signInRouter = require('../routes/SignInRouter');
 
 module.exports.init = () => {
     /* 
@@ -45,7 +45,7 @@ module.exports.init = () => {
 		app.use('/api/drillRigs/', rigRouter);
 
 		// use router for sign in page
-		app.use('/api/account/', SignInRouter);
+		app.use('/api/account/', signInRouter);
 
     return app
 }
