@@ -92,6 +92,7 @@ const CalculatorOutput = (props) => {
                     <Grid.Column>
 
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Rig Information</h1>
+                        
                         <RigInformation outputs={calc_outputs} />
 
                     </Grid.Column>
@@ -146,14 +147,25 @@ const PricingInformation = ({ outputs }) => {
 };
 
 const RigInformation = ({ outputs }) => {
-    
-    // Extract ALL the rig information
-    
-    
+        
     return (
-        <>
-
-        </>
+        <Grid columns={3}>
+            {
+                Object.keys(outputs).map(e => 
+                    <Grid.Column>
+                        <u><h3>{e}</h3></u>
+                        <Grid columns={2}>
+                        {
+                            Object.keys(outputs[e]).map(f =>
+                                    <Grid.Column><p>{f}: {outputs[e][f]}</p></Grid.Column>
+                            )
+                        }
+                        </Grid>
+                        
+                    </Grid.Column>
+                )
+            }
+        </Grid>
     );
 };
 
