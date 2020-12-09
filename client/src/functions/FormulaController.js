@@ -16,7 +16,7 @@ import {DTH} from './formulas/DTHFormulas.js';
  * 
  * Returns an object containing results from each calculation category.
  * 
- * @param {Object} input - JSON containing all inputs from the Calculator.js input form, as seen below:
+ * @param {Object} inputs - JSON containing all inputs from the Calculator.js input form, as seen below:
  * custName
  * projName
  * date
@@ -39,29 +39,21 @@ import {DTH} from './formulas/DTHFormulas.js';
  * rotBit
  * rotRpm
  */
-export default function run_calculations(input) {
+export default function run_calculations(inputs) {
     let rig_model = get_rig_model();
 
-    let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(input);
+    let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
     // Rotary formula calculations
-    let rotary_info = get_rotary_info(input.elevation, rig_model);
-    let rotaryFormulas = get_rotaryFormulas_info(input, rig_model, drillingCalc_outputs);
-    let rotaryPower = get_rotaryPower_info(input, drillingCalc_outputs.adjusted_WOB);
+    let rotary_info = get_rotary_info(inputs.elevation, rig_model);
+    let rotaryFormulas = get_rotaryFormulas_info(inputs, rig_model, drillingCalc_outputs);
+    let rotaryPower = get_rotaryPower_info(inputs, drillingCalc_outputs.adjusted_WOB);
 
-    let drillingCalc_inputs = (({holeDepth, pulldown}) => ({holeDepth, pulldown}))(input);
-    let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, get_rig_model()); 
 
-    let rotaryFormulas_inputs = (({rock_UCS, rpm, holeDepth, fracturization}) => ({rock_UCS, rpm, holeDepth, fracturization}))(input_json);
-    let rotaryFormulas = get_rotaryFormulas_info(input, get_rig_model(), drillingCalc_outputs);
-
-    let rotaryPower_inputs = (({rotary_bit, adjusted_WOB, rpm, bit}) => ({rotary_bit, adjusted_WOB, rpm, bit}))(input_json);
-    let rotaryPower = get_rotaryPower_info(input);
-
-    let HP_CMS = get_HP_CMS_outputs(input, get_rig_model());
-    let HP_CMS_STD = get_HP_CMS_STD_info(input, get_rig_model(), HP_CMS);
-    let HP_CMS_CMS = get_HP_CMS_CMS_info(input, get_rig_model(), HP_CMS);
+    let HP_CMS = get_HP_CMS_outputs(inputs, rig_model);
+    let HP_CMS_STD = get_HP_CMS_STD_info(inputs, rig_model, HP_CMS);
+    let HP_CMS_CMS = get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS);
 
 
 
@@ -260,10 +252,10 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
     let drill_time_percent = inputs.drill_time_percent;
     let est_hours = inputs.est_hours;
     let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
-    let fuel_cost = input.fuel_cost;  //Check what actually name is later
-    let engine_rebuild_cost = input.engine_rebuild_cost //Add input
-    let compressor_rebuild_cost = input.compressor_rebuild_cost //Add input
-    let carbon_tax = input.carbon_tax;  //Add input
+    let fuel_cost = inputs.fuel_cost;  //Check what actually name is later
+    let engine_rebuild_cost = inputs.engine_rebuild_cost //Add inputs
+    let compressor_rebuild_cost = inputs.compressor_rebuild_cost //Add inputs
+    let carbon_tax = inputs.carbon_tax;  //Add inputs
 
 
 
@@ -312,11 +304,11 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let cost_per_hour_fuel_engine_compressor = HP_CMS_STD.cost_per_hour_fuel_engine_compressor(total_saving_with_component_life_increase, est_hours);
 
-    return{
+    return {
         max_fuel_consumption,
         fuel_consumption_on_load_per_hour,
-        total_hp_compressor,
-        fuel_consumption_off_load_hour,
+        total_HP_compressor,
+        fuel_consumption_off_load_per_hour,
         avg_fuel_consumption_per_hour,
         avg_load_factor,
         annual_fuel_consumption,
@@ -343,10 +335,10 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
     let drill_time_percent = inputs.drill_time_percent;
     let est_hours = inputs.est_hours;
     let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
-    let fuel_cost = input.fuel_cost;  //Check what actually name is later
-    let engine_rebuild_cost = input.engine_rebuild_cost //Add input
-    let compressor_rebuild_cost = input.compressor_rebuild_cost //Add input
-    let carbon_tax = input.carbon_tax;  //Add input
+    let fuel_cost = inputs.fuel_cost;  //Check what actually name is later
+    let engine_rebuild_cost = inputs.engine_rebuild_cost //Add inputs
+    let compressor_rebuild_cost = inputs.compressor_rebuild_cost //Add inputs
+    let carbon_tax = inputs.carbon_tax;  //Add inputs
 
 
 
@@ -398,8 +390,8 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
     return{
         max_fuel_consumption,
         fuel_consumption_on_load_per_hour,
-        total_hp_compressor,
-        fuel_consumption_off_load_hour,
+        total_HP_compressor,
+        fuel_consumption_off_load_per_hour,
         avg_fuel_consumption_per_hour,
         avg_load_factor,
         annual_fuel_consumption,
@@ -421,9 +413,9 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
 
 function get_DTH_info(inputs, rig_model, drillingCalc_outputs){
     
-    let rock_UCS = input.rock_UCS;
-    let holeDepth = input.holeDepth;
-    let fracturization_Word = input.fracturization;   
+    let rock_UCS = inputs.rock_UCS;
+    let holeDepth = inputs.holeDepth;
+    let fracturization_Word = inputs.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
     let WAP = inputs.dthWap;
 
