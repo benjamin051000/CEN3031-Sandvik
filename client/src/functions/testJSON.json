@@ -5,7 +5,7 @@
 
     { "userId":"3", "projectName": "Water-Sulfate Solutions" , "date": "07/15/20" , "company": "Phil Drilling" , "clientName": "Johnny" },
 	
-	{ "userId":"2", "projectName": "Hard Rock Help" , "date": "09/17/20" , "company": "Sandy Shores" , "clientName": "Thomas" },
+	{ "userId":2, "projectName": "Hard Rock Help" , "date": "09/17/20" , "company": "Sandy Shores" , "clientName": "Thomas" },
 
     { "userId":"3", "projectName": "Fish Stew" , "date": "02/11/20" , "company": "Fish Tales" , "clientName": "Fish Waterson" },
 	

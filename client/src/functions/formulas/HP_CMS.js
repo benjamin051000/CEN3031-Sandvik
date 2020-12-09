@@ -93,7 +93,7 @@ const HP_CMS_STD = {
 
     total_hp_compressor: (alt_ambient_pressure, compressor_vol, running_pressure, friction_mult = 1.8) => {
         // TODO this isn't using friction_mult ?
-        return 144 * 2 * alt_ambient_pressure * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1);
+        return (144 * 2 * alt_ambient_pressure * compressor_vol * 1.41 / (33000 * 1.41 - 1) * (running_pressure / alt_ambient_pressure) ** (0.41 / 2.82 - 1))*friction_mult;
     },
 
     load_factor: (ground_conditions) => {
@@ -108,7 +108,7 @@ const HP_CMS_STD = {
         //         return 1.3;
         // }
         if (ground_conditions < 1 || ground_conditions > 4)
-            throw "ground_conditions out of bounds!";
+            throw new Error("ground_conditions out of bounds");
 
         return 1.1 + 0.05 * ground_conditions;
     },
@@ -171,12 +171,8 @@ const HP_CMS_STD = {
         return carbon_tax_dollars_per_tonne + annual_fuel_cost;
     },
 
-    total_saving_with_component_life_increase: (total_savings, annual_engine_cost, annual_compressor_cost) => {
+    total_saving_with_component_life_increase: (cost_before_and_after_total_savings, annual_engine_cost, annual_compressor_cost) => {
         return cost_before_and_after_total_savings + annual_engine_cost + annual_compressor_cost;
-    },
-
-    cost_per_hour_fuel_engine_compressor: (total_savings, est_hours) => {
-        return total_savings / est_hours;
     }
 };
 

@@ -4,7 +4,10 @@ import {Link} from 'react-router-dom';
 import './Dashboard.css';
 
 function Dashboard() {
-   
+    const Flippy = () =>{
+        localStorage.setItem("userId", 3)
+       
+    }
 
     return (
         <div class="ui centered container">
@@ -19,6 +22,7 @@ function Dashboard() {
                     
                     <Link to="/settings" style={{marginTop:"15px", marginBottom:"15px"}} class="ui fluid massive blue button">Settings</Link>
                    
+                    <button onClick={Flippy} class="ui blue button">test</button>
                 </div>
             </div>     
 

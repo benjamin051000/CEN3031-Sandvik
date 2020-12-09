@@ -1,5 +1,6 @@
-import React from 'react'
-import { Tab } from 'semantic-ui-react'
+import React from 'react';
+import { Tab } from 'semantic-ui-react';
+// import { writeToJSON } from "../functions/JSONFunctions";
 
 
 const panes = [
@@ -12,6 +13,7 @@ const panes = [
           <div class="ui blue medium button">Delete</div>
       </div>
     </Tab.Pane> },
+
   { menuItem: 'Sync', render: () => 
     <Tab.Pane style={{backgroundColor:"#272727", border:"5px solid #009aff"}}>
         <div style={{color:"#009aff", marginBottom:"15px"}} class="ui centered header">Sync with Server</div>
@@ -20,10 +22,11 @@ const panes = [
                 <div style={{color:"white", fontSize:"10pt", marginTop:"-15px", marginBottom:"30px"}}>Last Synced: MY DATE</div>
             </div>
             <div>
-                <div class="ui blue medium button">Sync</div>
+                <button onClick={{}} class="ui blue medium button">Sync</button>
             </div>
         </div>
     </Tab.Pane  > },
+
   { menuItem: 'User Settings', render: () => 
     <Tab.Pane style={{backgroundColor:"#272727", border:"5px solid #009aff"}}>
         <div style={{color:"#009aff", marginBottom:"15px"}} class="ui centered header">User Settings</div>

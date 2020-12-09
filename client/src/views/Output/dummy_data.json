@@ -1,0 +1,102 @@
+{
+    "inputs": {
+        "projName": "Minin' 'fer gold 🤠",
+        "custName": "Albert",
+        "companyName": "UF Drilling Co. Ltd.",
+        "date": "12/8/2020",
+        "ucs": 150,
+        "fracturization": "Light",
+        "elevation": 5163,
+        "temp": 90,
+        "fuelCost": 15,
+        "estHours": 40,
+        "carbTaxTonne": 2,
+        "drillTimePercent": 75,
+        "fuelTankSize": 40,
+        "engineRebuildCost": 1200,
+        "compRebuildCost": 2400,
+        "pipeSize": 0.4,
+        "holeDepth": 12.5,
+        "dthComp": 100,
+        "dthWap": 69,
+        "dthHammer": "M30",
+        "dthBit": 1.25,
+        "rockDRI": "something",
+        "rotPulldown": 14,
+        "rotComp": 19,
+        "rotBit": 0.75,
+        "rotRpm": 9001
+    },
+    "outputs": {
+        "drillingCalc_outputs": {
+            "number_of_pipes": 5,
+            "available_WOB": 6,
+            "adjusted_WOB": 7,
+            "adjusted_WOB_for_DTH": 8
+        },
+        "all_rotary_info": {
+            "max_uhv": 5000,
+        
+            "drill_time": 40,
+            "collaring": 0.2,
+            "add_pipe": 5,
+            "retract": 8,
+            "setup": 1,
+            "cleaning": 0.5,
+            "net_penetration_rate": 42.0,
+        
+            "w": 500,
+            "hp": 1000,
+            "rp": 1200
+        },
+        "dth_info": {
+            "drill_time": 41,
+            "collaring": 1.2,
+            "add_pipe": 6,
+            "retract": 9,
+            "setup": 10,
+            "cleaning": 0.51,
+            "net_penetration_rate": 42.1
+        },
+        "HP_CMS_STD": {
+            "max_fuel_consumption": 100,
+            "fuel_consumption_on_load_per_hour": 6,
+            "total_HP_compressor": 8,
+            "fuel_consumption_off_load_per_hour": 14,
+            "avg_fuel_consumption_per_hour": 2000,
+            "avg_load_factor": 10,
+            "annual_fuel_consumption": 59,
+            "daily_fuel_consumption": 31415,
+            "endurance_hours": 2,
+            "annual_fuel_cost": 0,
+            "engine_life_estimated": 123,
+            "cost_to_run_engine_annually": 456,
+            "cost_to_run_compressor_annually": 789,
+            "carbon_output": 101112,
+            "carbon_tax_per_tonne": 0.169,
+            "cost_per_hour_fuel_engine_compressor": 450,
+            "cost_before_and_after_total_savings": 9154,
+            "total_saving_with_component_life_increase": 1500
+        },
+        "HP_CMS_CMS": {
+            "max_fuel_consumption": 100,
+            "fuel_consumption_on_load_per_hour": 6,
+            "total_HP_compressor": 8,
+            "fuel_consumption_off_load_per_hour": 14,
+            "avg_fuel_consumption_per_hour": 2000,
+            "avg_load_factor": 10,
+            "annual_fuel_consumption": 59,
+            "daily_fuel_consumption": 31415,
+            "endurance_hours": 2,
+            "annual_fuel_cost": 0,
+            "engine_life_estimated": 123,
+            "cost_to_run_engine_annually": 456,
+            "cost_to_run_compressor_annually": 789,
+            "carbon_output": 101112,
+            "carbon_tax_per_tonne": 0.169,
+            "cost_per_hour_fuel_engine_compressor": 450,
+            "cost_before_and_after_total_savings": 5001,
+            "total_saving_with_component_life_increase": 6001
+        }
+    }
+}
