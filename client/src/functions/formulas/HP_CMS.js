@@ -108,7 +108,7 @@ const HP_CMS_STD = {
         //         return 1.3;
         // }
         if (ground_conditions < 1 || ground_conditions > 4)
-            throw "ground_conditions out of bounds!";
+            throw new Error("ground_conditions out of bounds");
 
         return 1.1 + 0.05 * ground_conditions;
     },
