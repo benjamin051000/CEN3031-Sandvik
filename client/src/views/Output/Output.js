@@ -90,6 +90,17 @@ const categoryNames = {
 
 const CalculatorOutput = (props) => {
 
+    const toEdit = () =>{
+        localStorage.setItem("isEditing", true);
+        localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[0]))
+        //Redirect to input page
+    }
+
+    //const toDelete = () => {
+        //return ;
+    //}
+
+
     let calc_inputs, calc_outputs;
     if (props.location.state) {
         let { inputs: i, outputs: o } = props.location.state;
@@ -168,7 +179,7 @@ const CalculatorOutput = (props) => {
                 </Grid.Column>
 
                 <Grid.Column style={{ marginRight: "-10px" }}>
-                    <Button size='medium' color='blue' type="Edit">Edit</Button>
+                    <Button onClick={toEdit} size='medium' color='blue' type="Edit">Edit</Button>
                 </Grid.Column>
 
                 <Grid.Column floated='right' style={{ marginRight: "85px" }}>
