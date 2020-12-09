@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import dummy_data from './dummy_data.json';
 
+import { Grid, Container, Button } from 'semantic-ui-react';
+
 const inputNames = {
     "projName": "Project Name",
     "custName": "Customer Name",
@@ -29,6 +31,7 @@ const inputNames = {
     "rotComp": "Rotary Compressor",
     "rotBit": "Rotary Bit",
     "rotRpm": "Rotary RPM",
+    "rockDRI": "Rock DRI"
 }
 
 const CalculatorOutput = (props) => {
@@ -49,20 +52,23 @@ const CalculatorOutput = (props) => {
     }
 
     return (
-        <div class="ui centered container">
-            <div style={{ color: "white" }} class="ui relaxed internally celled grid">
-                <div class="one column row">
-                    <div class="column">
+        <Container>
+            <Grid style={{ color: "white" }} celled='internally'>
+                <Grid.Row>
+                    <Grid.Column>
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }} class="ui left aligned header">Project Specifications:</h1>
-                        <div class="ui three column grid">
+                        <Grid columns={3}>
                             {Object.keys(calc_inputs).map(e =>
-                                <p class="column"><u><h3>{inputNames[e]}:</h3></u> {calc_inputs[e]}</p>)
+                                <Grid.Column key={e}><u>{inputNames[e]}:</u> {calc_inputs[e]}</Grid.Column>)
                             }
-                        </div>
-                    </div>
-                </div>
-                <div class="two column row">
-                    <div class="six wide column">
+                        </Grid>
+                    </Grid.Column>
+                </Grid.Row>
+
+
+                {/* Rig model info and pricing info */}
+                <Grid.Row>
+                    <Grid.Column width={6}>
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Rig Model</h1>
                         <p>This is the recommended rig. You can change the model to assess different pricings.</p>
                         {/* TODO: get recommended rig from function */}
@@ -71,30 +77,84 @@ const CalculatorOutput = (props) => {
                             <option>Drill #2</option>
                             <option>Drill #3</option>
                         </select>
-                    </div>
-                    <div class="ten wide column">
+                    </Grid.Column>
+                    <Grid.Column width={10}>
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Pricing Information</h1>
-                        <p>...</p>
-                        {/* TODO get outputs & pricing info from function */}
-                    </div>
-                </div>
-            </div>
 
-            <div class="ui grid">
-                <div class="one wide left floated column">
-                    <Link to="/dashboard" class="ui blue medium button" >Back</Link>
-                </div>
-                <div class="ten wide column"></div>
-                <div style={{ marginRight: "-10px" }} class="one wide column">
-                    <button class="ui blue medium button" type="Edit">Edit</button>
-                </div>
-                <div style={{ marginRight: "85px" }} class="one wide right floated column">
-                    <button class="ui blue medium button" type="Delete">Delete</button>
-                </div>
-            </div>
-        </div>
+                        <PricingInformation outputs={calc_outputs} />
+
+                    </Grid.Column>
+                </Grid.Row>
+
+
+                {/* Rig calculator information */}
+                <Grid.Row>
+                    <Grid.Column>
+
+                        <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Rig Information</h1>
+                        <RigInformation outputs={calc_outputs} />
+
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+
+
+            {/* Buttons at the bottom of the page */}
+            <Grid>
+                <Grid.Column floated='left'>
+                    <Link to='/dashboard'>
+                        <Button size='medium' color='blue'>
+                            Back
+                        </Button>
+                    </Link>
+                </Grid.Column>
+
+                <Grid.Column style={{ marginRight: "-10px" }}>
+                    <Button size='medium' color='blue' type="Edit">Edit</Button>
+                </Grid.Column>
+
+                <Grid.Column floated='right' style={{ marginRight: "85px" }}>
+                    <Button size='medium' color='blue' type="Delete">Delete</Button>
+                </Grid.Column>
+            </Grid>
+        </Container>
     );
+};
 
+
+const PricingInformation = ({ outputs }) => {
+    // Extract pricing info from the props.
+    let pricing = {
+        "STD": outputs.HP_CMS_STD,
+        "CMS": outputs.HP_CMS_CMS
+    };
+
+    return (
+        <Grid columns={2}>
+            {
+                Object.keys(pricing).map(e => (
+                    <Grid.Column key={e}>
+                        <h2>{e}</h2>
+                        <u>Total Savings:</u> ${pricing[e].cost_before_and_after_total_savings}
+                        <br />
+                        With life increase: ${pricing[e].total_saving_with_component_life_increase}
+                    </Grid.Column>
+                ))
+            }
+        </Grid>
+    );
+};
+
+const RigInformation = ({ outputs }) => {
+    
+    // Extract ALL the rig information
+    
+    
+    return (
+        <>
+
+        </>
+    );
 };
 
 export default CalculatorOutput;
