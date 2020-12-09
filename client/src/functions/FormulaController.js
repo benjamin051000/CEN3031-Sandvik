@@ -56,11 +56,11 @@ export default function run_calculations(inputs) {
     let HP_CMS_STD = get_HP_CMS_STD_info(inputs, rig_model, HP_CMS);
     let HP_CMS_CMS = get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS);
 
+    let all_rotary_info = {...rotary_info, ...rotaryFormulas, ...rotaryPower};
+
     return {
         drillingCalc_outputs,
-        rotary_info,
-        rotaryFormulas,
-        rotaryPower,
+        all_rotary_info,
         dth_info,
         HP_CMS_STD,
         HP_CMS_CMS

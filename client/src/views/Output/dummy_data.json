@@ -34,19 +34,17 @@
             "adjusted_WOB": 7,
             "adjusted_WOB_for_DTH": 8
         },
-        "rotary_info": {
-            "max_uhv": 5000
-        },
-        "rotaryFormulas": {
+        "all_rotary_info": {
+            "max_uhv": 5000,
+        
             "drill_time": 40,
             "collaring": 0.2,
             "add_pipe": 5,
             "retract": 8,
             "setup": 1,
             "cleaning": 0.5,
-            "net_penetration_rate": 42.0
-        },
-        "rotaryPower": {
+            "net_penetration_rate": 42.0,
+        
             "w": 500,
             "hp": 1000,
             "rp": 1200
