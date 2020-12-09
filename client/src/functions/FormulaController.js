@@ -136,8 +136,8 @@ function get_rotary_info(altitude, rig_model) {
  * @param {Object} drillingCalc - DrillingCalc output data
  */
 function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
-    let rock_UCS = input.rock_UCS;
-    let rpm = input.rpm;
+    let rock_UCS = input.ucs;
+    let rpm = input.rotRpm;
     let holeDepth = input.holeDepth;
     let fracturization_Word = input.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
@@ -150,8 +150,11 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
 
     let number_of_pipes = drillingCalc.number_of_pipes;
 
+   
+
     let UCS = rotaryFormulas.UCS(rock_UCS);
-    let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize);
+    console.log(UCS);
+    let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize[0]);
 
     let pure_penetration_rate = rotaryFormulas.pure_penetration_rate(penetration_rate);
 
@@ -414,7 +417,7 @@ function get_DTH_info(inputs, rig_model){
     let hammer_ROP_factor1 = rig_model.DTH_Hammer[0].ROP_Factor[0];
     let hammer_ROP_factor2 = rig_model.DTH_Hammer[0].ROP_Factor[1];
     let hammer_bit = inputs.dthBit;
-    let rock_DRI = inputs.rock_DRI
+    let rock_DRI = inputs.rockDRI;
 
     let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
 
@@ -424,9 +427,9 @@ function get_DTH_info(inputs, rig_model){
     let adjusted_hammer_ROP = DTH.adjusted_hammer_ROP(hammer_ROP_factor1, hammer_ROP_factor2, hammer_bit);
 
     let ROP_in_DRI_at_given_pressure = DTH.ROP_in_DRI_at_given_pressure(adjusted_hammer_ROP, WAP);
-
+    
     let inst_rop = DTH.inst_rop(rock_DRI,ground_conditions,ROP_in_DRI_at_given_pressure);
-
+    
     let penetration_rate = DTH.penetration_rate(inst_rop);
 
     let pure_penetration_rate = DTH.pure_penetration_rate(penetration_rate);
