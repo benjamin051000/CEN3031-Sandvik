@@ -192,6 +192,7 @@ const panes = [
 ]
 
 const InputTabs = () => (
+    
     <Tab menu={{ fluid: true, tabular: true, inverted: true, color: "blue" }} panes={panes} />
 )
 
