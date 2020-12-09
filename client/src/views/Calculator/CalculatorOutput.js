@@ -46,7 +46,7 @@ const CalculatorOutput = (props) => {
                     <div class="column">
                         <h1 style={{fontSize:"20pt", color:"#009aff"}} class="ui left aligned header">Project Specifications:</h1>
                         <div class="ui three column grid">
-                            {  Object.keys(calculation_inputs).map((e, i) => 
+                            {  Object.keys(calculation_inputs).map((e) => 
                                 <p class="column">{inputNames[e]}: {calculation_inputs[e]}</p>)
                             }
                         </div>

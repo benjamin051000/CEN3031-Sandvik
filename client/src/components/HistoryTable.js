@@ -20,9 +20,9 @@ const HistoryTable = (props) => {
             return (
                 
                 <tr>
-                    <td data-label="Project">{entry.projectName}</td>
-                    <td data-label="Company">{entry.company}</td>
-                    <td data-label="Client Name">{entry.clientName}</td>
+                    <td data-label="Project">{entry.projName}</td>
+                    <td data-label="Company">{entry.companyName}</td>
+                    <td data-label="Client Name">{entry.custName}</td>
                     <td data-label="Date">{entry.date}</td>
                     <td class="right aligned">
                         <button class="ui icon button">
@@ -51,9 +51,9 @@ const HistoryTable = (props) => {
             return(
                 
                 <tr>
-                    <td data-label="Project">{entry.projectName}</td>
-                    <td data-label="Company">{entry.company}</td>
-                    <td data-label="Client Name">{entry.clientName}</td>
+                    <td data-label="Project">{entry.projName}</td>
+                    <td data-label="Company">{entry.companyName}</td>
+                    <td data-label="Client Name">{entry.custName}</td>
                     <td data-label="Date">{entry.date}</td>
                     <td class="right aligned">
                         <button class="ui icon button">

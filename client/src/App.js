@@ -13,9 +13,6 @@ import { getData } from './views/History/HistoryData'
 import './App.css';
 
 const App = () => {
-  //Current Data
-  const [data, setData] = useState(getData());
-
   //Global States
   const [comingFromHistory, setComingFromHistory] = useState([]);
   const [accountId, setAccountId] = useState([]);

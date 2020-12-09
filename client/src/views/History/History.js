@@ -5,7 +5,8 @@ import Search from "../../components/Search"
 import {getData} from './HistoryData'
 import './History.css'
 
-function History() {
+function History(props) {
+
     const [data, setData] = useState(getData());
     const [filteredEntries, setFilteredEntries] = useState([]);
     const [searchText, setSearchText] = useState([]);

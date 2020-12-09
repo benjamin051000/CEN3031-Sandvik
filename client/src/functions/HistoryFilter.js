@@ -4,7 +4,7 @@ const historyFilter = (filterText, data) => {
     results = data.filter((entry) => {
       return (
         filterText.length > 0 &&
-        entry.projectName
+        entry.projName
           .toLowerCase()
           .indexOf(filterText.toLowerCase().trim()) !== -1
       );
@@ -15,7 +15,7 @@ const historyFilter = (filterText, data) => {
         results = data.filter((entry) => {
             return (
               filterText.length > 0 &&
-              entry.company
+              entry.companyName
                 .toLowerCase()
                 .indexOf(filterText.toLowerCase().trim()) !== -1
             );
@@ -27,7 +27,7 @@ const historyFilter = (filterText, data) => {
       results = data.filter((entry) => {
           return (
             filterText.length > 0 &&
-            entry.clientName
+            entry.custName
               .toLowerCase()
               .indexOf(filterText.toLowerCase().trim()) !== -1
           );

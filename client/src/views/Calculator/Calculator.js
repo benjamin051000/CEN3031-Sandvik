@@ -62,6 +62,7 @@ const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
         <div>
             <Formik
                 initialValues={{
+                    userId: localStorage.getItem("userId"),
                     // Client info
                     projName: '',
                     custName: '',
@@ -113,8 +114,19 @@ const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
                 // })}
 
                 onSubmit={(values) => {
-                    console.log('Input values:', values)
                     setInputs(values);
+                    
+                    if(localStorage.getItem("historyStorage")){
+                        let history = JSON.parse(localStorage.getItem("historyStorage"))
+                        history.push(values);
+                        localStorage.setItem("historyStorage", JSON.stringify(history))
+                    }
+
+                    else{
+                        let stringValues = '[' + JSON.stringify(values) + ']'
+                        let history = JSON.parse(stringValues);
+                        localStorage.setItem("historyStorage", JSON.stringify(history));
+                    }
                 }}
 
             >

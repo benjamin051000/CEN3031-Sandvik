@@ -1,14 +1,19 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom';
+import {writeToCookie} from "../../functions/JSONFunctions"
 import './Login.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 /** Login styling based off example hosted at https://semantic-ui.com/examples/login.html */
 
+/**
+ * @param {*} props 
+ */
+
+
 //Set website header, includes the bar with home
 const Login  = (props) => {
-    
     
 
     return (
@@ -31,7 +36,7 @@ const Login  = (props) => {
                         })}
 
                         onSubmit={(values) => {
-                            console.log(values);
+                            
                         }}>
                         {/**^^^^^^^^^^^^^^^PROCESS FROM HERE */}
 
@@ -58,7 +63,7 @@ const Login  = (props) => {
                         </Form>
                     </Formik>
                     <div class="ui message">
-                        <a href="#">Create an Account</a>   |   <a href="#">Change Password</a>
+                        <a href="#">Create an Account</a>
                     </div>
                 </div>
             
