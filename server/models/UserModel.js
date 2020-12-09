@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const UserSchema = new mongoose.Schema({
-	email: {
+	username: {
 		type: String,
 		default: ''
 	},
@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
+	isAdmin: {
+		type: Boolean,
+		default: false
+	}
 });
 
 // for password security (hashing and checking against hashes)

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import InputTabs from "../../components/InputTabs"
-import * as Yup from 'yup';
+import InputTabs  from "../../components/InputTabs"
+// import * as Yup from 'yup';
 
 import './Calculator.css'
 import run_calculations from '../../functions/FormulaController.js';
@@ -43,7 +43,7 @@ export default function Calculator() {
     return (
         !objectEmpty(inputs) ?
             <Redirect to={{
-                pathname: '/CalculatorOutput',
+                pathname: '/output',
                 state: { inputs: inputs, outputs: run_calculations(inputs) }
             }} />
 
