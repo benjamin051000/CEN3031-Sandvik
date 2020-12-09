@@ -8,7 +8,7 @@ import {DTH} from './formulas/DTHFormulas.js';
  * rpm
  * rock_DRI
  */
-// const subset_of_obj_properties = (({ a, c }) => ({ a, c }))(object);
+//const subset_of_obj_properties = (({ a, c }) => ({ a, c }))(object);
 
 
 /**
@@ -45,7 +45,7 @@ export default function run_calculations(inputs) {
     let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
-    // Rotary formula calculations
+    //Rotary formula calculations
     let rotary_info = get_rotary_info(inputs.elevation, rig_model);
     let rotaryFormulas = get_rotaryFormulas_info(inputs, rig_model, drillingCalc_outputs);
     let rotaryPower = get_rotaryPower_info(inputs, drillingCalc_outputs.adjusted_WOB);
