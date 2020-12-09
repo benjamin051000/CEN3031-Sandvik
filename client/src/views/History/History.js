@@ -6,8 +6,7 @@ import {getData} from './HistoryData'
 import './History.css'
 
 function History(props) {
-
-    const [data, setData] = useState(getData());
+    const data = getData();
     const [filteredEntries, setFilteredEntries] = useState([]);
     const [searchText, setSearchText] = useState([]);
 

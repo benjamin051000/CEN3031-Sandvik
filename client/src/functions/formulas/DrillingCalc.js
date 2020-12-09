@@ -54,12 +54,14 @@ export const drillingCalc = {
         case 324:
             return 4000;
 
+        default:
+
         }
     },
 
     get_drill_string_wt: (loader_cap, pipe_weight, number_of_pipes_too_deep) => {
         // number_of_pipes_too_deep is output of number_of_pipes_too_deep
-        if (number_of_pipes_too_deep == "Too deep")
+        if (number_of_pipes_too_deep === "Too deep")
             return loader_cap * pipe_weight;
 
         if (number_of_pipes_too_deep < 1)
@@ -103,6 +105,7 @@ export const drillingCalc = {
             case "M60":
             case "M80":
                 return 1200;
+            default:
         }
     }
 };

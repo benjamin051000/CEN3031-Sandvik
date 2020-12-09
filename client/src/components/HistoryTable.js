@@ -9,9 +9,9 @@ import React from "react";
 
 const HistoryTable = (props) => {
 
-    const goToOutputPage = (id) => {
+    // const goToOutputPage = (id) => {
         
-    }
+    // }
 
     const returnList = 
         props.filteredEntries.length === 0 && props.searchText.length === 0

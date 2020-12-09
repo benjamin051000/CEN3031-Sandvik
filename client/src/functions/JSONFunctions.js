@@ -20,8 +20,8 @@ const deleteObject = (id, data) =>{
 }
 
 const getObject = (id, data) => {
-    return data.filter(Object =>  {
-        return Object.id == id
+    return data.filter(obj =>  {
+        return obj.id === id
       });
 }
 
@@ -29,5 +29,5 @@ export {
     addObject,
     deleteObject,
     editObject,
-    getObject,
+    getObject
 };

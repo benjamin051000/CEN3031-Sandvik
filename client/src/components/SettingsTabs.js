@@ -1,6 +1,6 @@
-import React from 'react'
-import { Tab } from 'semantic-ui-react'
-import { writeToJSON } from "../functions/JSONFunctions"
+import React from 'react';
+import { Tab } from 'semantic-ui-react';
+// import { writeToJSON } from "../functions/JSONFunctions";
 
 
 const panes = [

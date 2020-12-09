@@ -50,26 +50,21 @@ export default function run_calculations(inputs) {
     let rotaryFormulas = get_rotaryFormulas_info(inputs, rig_model, drillingCalc_outputs);
     let rotaryPower = get_rotaryPower_info(inputs, drillingCalc_outputs.adjusted_WOB);
 
+    let dth_info = get_DTH_info(inputs, rig_model);
 
     let HP_CMS = get_HP_CMS_outputs(inputs, rig_model);
     let HP_CMS_STD = get_HP_CMS_STD_info(inputs, rig_model, HP_CMS);
     let HP_CMS_CMS = get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS);
 
-
-
     return {
         drillingCalc_outputs,
         rotary_info,
         rotaryFormulas,
-        rotaryPower
-    };
-
-    
-
-
-    return {error: 'NOT IMPLEMENTED'};
-
-    
+        rotaryPower,
+        dth_info,
+        HP_CMS_STD,
+        HP_CMS_CMS
+    };    
 }
 
 
@@ -160,7 +155,7 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
     let feed_rate = rig_model.RHT_FeedRate;
     let hoist_rate = rig_model.RHT_HoistRate;
     let setup = rig_model.RHT_SetUp;
-    let single_pass = rig_model.RHT_SinglePass;
+    // let single_pass = rig_model.RHT_SinglePass;
 
     let number_of_pipes = drillingCalc.number_of_pipes;
 
@@ -188,6 +183,7 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
 
     let total_percent_time_drilling = drill_time / total_time;
 
+    // TODO This isn't used in the final output page, so it may not be needed.
     let net_penetration_rate = rotaryFormulas.net_penetration_rate(_80_percent_driller_efficiency_penetration_rate, total_percent_time_drilling);
 
     return {
@@ -196,7 +192,8 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
         add_pipe,
         retract,
         setup,
-        cleaning
+        cleaning,
+        net_penetration_rate
     };
 }
 
@@ -322,8 +319,7 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
         carbon_tax_per_tonne,
         cost_per_hour_fuel_engine_compressor,
         cost_before_and_after_total_savings,
-        total_saving_with_component_life_increase,
-        cost_per_hour_fuel_engine_compressor
+        total_saving_with_component_life_increase
     };
 
 }
@@ -405,13 +401,12 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
         carbon_tax_per_tonne,
         cost_per_hour_fuel_engine_compressor,
         cost_before_and_after_total_savings,
-        total_saving_with_component_life_increase,
-        cost_per_hour_fuel_engine_compressor
+        total_saving_with_component_life_increase
     };
 }
 
 
-function get_DTH_info(inputs, rig_model, drillingCalc_outputs){
+function get_DTH_info(inputs, rig_model){
     
     let rock_UCS = inputs.rock_UCS;
     let holeDepth = inputs.holeDepth;
@@ -472,7 +467,8 @@ function get_DTH_info(inputs, rig_model, drillingCalc_outputs){
         add_pipe,
         retract,
         setup,
-        cleaning
+        cleaning,
+        net_penetration_rate
     };
 
 }

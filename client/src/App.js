@@ -9,8 +9,8 @@ import CalculatorOutput from './views/Calculator/CalculatorOutput';
 import Settings from "./views/Settings/Settings";
 import History from "./views/History/History";
 import Login from "./views/Login/Login";
-import { getData } from './views/History/HistoryData';
 import './App.css';
+
 
 const App = () => {
   //Global States

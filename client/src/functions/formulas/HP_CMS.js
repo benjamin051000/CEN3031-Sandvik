@@ -173,10 +173,6 @@ const HP_CMS_STD = {
 
     total_saving_with_component_life_increase: (cost_before_and_after_total_savings, annual_engine_cost, annual_compressor_cost) => {
         return cost_before_and_after_total_savings + annual_engine_cost + annual_compressor_cost;
-    },
-
-    cost_per_hour_fuel_engine_compressor: (total_savings, est_hours) => {
-        return total_savings / est_hours;
     }
 };
 

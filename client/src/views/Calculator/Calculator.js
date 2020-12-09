@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import InputTabs  from "../../components/InputTabs"
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import './Calculator.css'
 import run_calculations from '../../functions/FormulaController.js';
@@ -114,7 +114,7 @@ const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
                 // })}
 
                 onSubmit={(values) => {
-                    setInputs(values);
+                    
                     
                     if(localStorage.getItem("historyStorage")){
                         let history = JSON.parse(localStorage.getItem("historyStorage"))
@@ -127,6 +127,8 @@ const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
                         let history = JSON.parse(stringValues);
                         localStorage.setItem("historyStorage", JSON.stringify(history));
                     }
+                    
+                    setInputs(values);
                 }}
 
             >

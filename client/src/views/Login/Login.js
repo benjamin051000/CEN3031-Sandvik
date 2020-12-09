@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import { Redirect } from 'react-router-dom';
-import {writeToCookie} from "../../functions/JSONFunctions"
-import './Login.css'
+import React from 'react';
+// import { Redirect } from 'react-router-dom';
+// import {writeToCookie} from "../../functions/JSONFunctions"
+import './Login.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
