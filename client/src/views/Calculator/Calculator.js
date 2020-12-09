@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
-import InputTabs  from "../../components/InputTabs"
+import InputTabs from "../../components/InputTabs"
 import * as Yup from 'yup';
 
 import './Calculator.css'
 import run_calculations from '../../functions/FormulaController.js';
+import { editObject } from '../../functions/JSONFunctions';
 
 /*
         Formik component:
@@ -36,6 +37,7 @@ export default function Calculator() {
             && obj.constructor === Object;
     }
 
+
     // Either render the input form or redirect to the outputs
     // Depending on whether outputs is an empty object.
     return (
@@ -54,99 +56,166 @@ export default function Calculator() {
 }
 
 /* Component to render the input form. */
-const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
-    return <div class="ui centered container">
-        <div>
-            <h1 style={{ fontSize: "30pt", color: "#009aff" }} class="ui centered header">New Calculation Form</h1>
-        </div>
-        <div>
-            <Formik
-                initialValues={{
-                    userId: localStorage.getItem("userId"),
-                    // Client info
-                    projName: '',
-                    custName: '',
-                    companyName: '',
-                    date: '',
+const CalcInputForm = ({ inputs }) => {
 
-                    // Site conditions
-                    ucs: '',
-                    fracturization: '',
-                    elevation: '',
-                    fuelCost: '',
-                    estHours: '',
-                    temp: '',
-                    carbTaxTonne: '',
-                    drillTimePercent: '',
-                    fuelTankSize: '',
-                    engineRebuildCost: '',
-                    compRebuildCost: '',
+    const getId = () => {
+        if (localStorage.getItem("historyStorage")) {
+            return JSON.parse(localStorage.getItem("historyStorage"))[JSON.parse(localStorage.getItem("historyStorage")).length - 1].itemId + 1
+        }
+        else
+            return 0;
+    }
 
-                    // Rig spec
-                    pipeSize: '',
-                    holeDepth: '',
+    const getInitial = () => {
+        let returnList;
+        if ("false" == localStorage.getItem("isEditing")) {
+            returnList = {
+                itemId: getId(),
+                // Client info
+                projName: '',
+                custName: '',
+                companyName: '',
+                date: '',
 
-                    // DTH
-                    dthComp: '',
-                    dthWap: '',
-                    dthHammer: '',
-                    dthBit: '',
+                // Site conditions
+                ucs: '',
+                fracturization: '',
+                elevation: '',
+                fuelCost: '',
+                estHours: '',
+                temp: '',
+                carbTaxTonne: '',
+                drillTimePercent: '',
+                fuelTankSize: '',
+                engineRebuildCost: '',
+                compRebuildCost: '',
 
-                    // Rotary
-                    rotPulldown: '',
-                    rotComp: '',
-                    rotBit: '',
-                    rotRpm: ''
-                }}
+                // Rig spec
+                pipeSize: '',
+                holeDepth: '',
 
-                // TODO update this for new inputs
-                // validationSchema={Yup.object({
-                //     custName: Yup.string().required('Required'),
-                //     company: Yup.string().required('Required'),
-                //     email: Yup.string().required('Required'),
-                //     temperature: Yup.string().required('Required'),
-                //     rock_hardness: Yup.string().required('Required'),
-                //     depth: Yup.string().required('Required'),
-                //     color: Yup.string().required('Required'),
-                //     size: Yup.string().required('Required'),
-                //     speed: Yup.string().required('Required'),
-                //     power: Yup.string().required('Required'),
-                // })}
+                // DTH
+                dthComp: '',
+                dthWap: '',
+                dthHammer: '',
+                dthBit: '',
 
-                onSubmit={(values) => {
-                    setInputs(values);
-                    
-                    if(localStorage.getItem("historyStorage")){
-                        let history = JSON.parse(localStorage.getItem("historyStorage"))
-                        history.push(values);
-                        localStorage.setItem("historyStorage", JSON.stringify(history))
-                    }
+                // Rotary
+                rotPulldown: '',
+                rotComp: '',
+                rotBit: '',
+                rotRpm: '',
+            }
+        }
+        else {
+            const initValues = JSON.parse(localStorage.getItem("editingItem"))
+            returnList = {
+                itemId: initValues.itemId,
+                // Client info
+                projName: initValues.projName,
+                custName: initValues.custName,
+                companyName: initValues.companyName,
+                date: initValues.date,
 
-                    else{
-                        let stringValues = '[' + JSON.stringify(values) + ']'
-                        let history = JSON.parse(stringValues);
-                        localStorage.setItem("historyStorage", JSON.stringify(history));
-                    }
-                }}
+                // Site conditions
+                ucs: initValues.ucs,
+                fracturization: initValues.fracturization,
+                elevation: initValues.elevation,
+                fuelCost: initValues.fuelCost,
+                estHours: initValues.estHours,
+                temp: initValues.temp,
+                carbTaxTonne: initValues.carbTaxTonne,
+                drillTimePercent: initValues.drillTimePercent,
+                fuelTankSize: initValues.fuelTankSize,
+                engineRebuildCost: initValues.engineRebuildCost,
+                compRebuildCost: initValues.compRebuildCost,
 
-            >
-                <Form class="ui form">
-                    <div style={{marginTop:"30px"}}>
-                       {/** Inputs are imported via the InputTabs component */}
-                       <InputTabs />
+                // Rig spec
+                pipeSize: initValues.pipeSize,
+                holeDepth: initValues.holeDepth,
 
-                        <div style={{ marginTop: "60px" }} class="ui centered grid">
-                            <div class="left floated column">
-                                <Link to="/dashboard" class="ui blue huge button" >Back</Link>
-                            </div>
-                            <div style={{ marginRight: "90px" }} class="right floated column">
-                                <button class="ui blue huge button" type="submit">Submit</button>
+                // DTH
+                dthComp: initValues.dthComp,
+                dthWap: initValues.dthWap,
+                dthHammer: initValues.dthHammer,
+                dthBit: initValues.dthBit,
+
+                // Rotary
+                rotPulldown: initValues.rotPulldown,
+                rotComp: initValues.rotComp,
+                rotBit: initValues.rotBit,
+                rotRpm: initValues.rotRpm,
+            }
+        }
+
+        return returnList;
+    }
+
+        return <div class="ui centered container">
+            <div>
+                <h1 style={{ fontSize: "30pt", color: "#009aff" }} class="ui centered header">New Calculation Form</h1>
+            </div>
+            <div>
+                <Formik
+
+                    initialValues={getInitial()}
+
+                    // TODO update this for new inputs
+                    // validationSchema={Yup.object({
+                    //     custName: Yup.string().required('Required'),
+                    //     company: Yup.string().required('Required'),
+                    //     email: Yup.string().required('Required'),
+                    //     temperature: Yup.string().required('Required'),
+                    //     rock_hardness: Yup.string().required('Required'),
+                    //     depth: Yup.string().required('Required'),
+                    //     color: Yup.string().required('Required'),
+                    //     size: Yup.string().required('Required'),
+                    //     speed: Yup.string().required('Required'),
+                    //     power: Yup.string().required('Required'),
+                    // })}
+
+                    onSubmit={(values) => {
+
+                        if ("true" == localStorage.getItem("isEditing")) {
+                            let history = JSON.parse(localStorage.getItem("historyStorage"))
+                            editObject(values, history)
+                            localStorage.setItem("historyStorage", JSON.stringify(history))
+                        }
+
+
+                        else if (localStorage.getItem("historyStorage")) {
+                            let history = JSON.parse(localStorage.getItem("historyStorage"))
+                            history.push(values);
+                            localStorage.setItem("historyStorage", JSON.stringify(history))
+                        }
+
+                        else {
+                            let stringValues = '[' + JSON.stringify(values) + ']'
+                            let history = JSON.parse(stringValues);
+                            localStorage.setItem("historyStorage", JSON.stringify(history));
+                        }
+
+                        //setInputs(values);
+                    }}
+
+                >
+                    <Form class="ui form">
+                        <div style={{ marginTop: "30px" }}>
+                            {/** Inputs are imported via the InputTabs component */}
+                            <InputTabs />
+
+                            <div style={{ marginTop: "60px" }} class="ui centered grid">
+                                <div class="left floated column">
+                                    <Link to="/dashboard" class="ui blue huge button" >Back</Link>
+                                </div>
+                                <div style={{ marginRight: "90px" }} class="right floated column">
+                                    <button class="ui blue huge button" type="submit">Submit</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Form>
-            </Formik>
+                    </Form>
+                </Formik>
+            </div>
         </div>
-    </div>
-    
-}
+
+    }
