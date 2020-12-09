@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Dashboard from "./views/Dashboard/Dashboard"
-import NotFound from "./views/NotFound"
-import Header from "./components/Header/Header"
-import Calculator from "./views/Calculator/Calculator"
+import Dashboard from "./views/Dashboard/Dashboard";
+import NotFound from "./views/NotFound";
+import Header from "./components/Header/Header";
+import Calculator from "./views/Calculator/Calculator";
 import CalculatorOutput from './views/Calculator/CalculatorOutput';
-import Settings from "./views/Settings/Settings"
-import History from "./views/History/History"
-import Login from "./views/Login/Login"
+import Settings from "./views/Settings/Settings";
+import History from "./views/History/History";
+import Login from "./views/Login/Login";
+import { getData } from './views/History/HistoryData';
 import './App.css';
 
 const App = () => {
