@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import RigModal from '../../components/RigModal.js';
 import dummy_data from './dummy_data.json';
 
 import { Grid, Container, Button, Tab } from 'semantic-ui-react';
@@ -130,6 +131,9 @@ const CalculatorOutput = (props) => {
                             <option>Drill #2</option>
                             <option>Drill #3</option>
                         </select>
+                        
+                        <RigModal />
+                    
                     </Grid.Column>
                     <Grid.Column width={10}>
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Pricing Information</h1>
