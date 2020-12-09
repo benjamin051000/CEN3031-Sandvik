@@ -39,9 +39,8 @@ import {DTH} from './formulas/DTHFormulas.js';
  * rotBit
  * rotRpm
  */
-export default function run_calculations(inputs) {
-    let rig_model = inputs;
-    
+export default function run_calculations(inputs, rig_model) {
+
     let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
