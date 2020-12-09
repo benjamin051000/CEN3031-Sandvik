@@ -21,7 +21,7 @@
         "dthWap": 180,
         "dthHammer": "M30",
         "dthBit": 1.25,
-        "rockDRI": "something",
+        "rockDRI": 150,
         "rotPulldown": 14,
         "rotComp": 19,
         "rotBit": 0.75,

@@ -54,7 +54,6 @@ export const DTH = {
 
         let factors = factor_constants[ground_cond];
         
-        //Does not work ask Ben for help
         factors = factors.map(f => {
             console.log(rock_DRI);
             return ROP_in_DRI_at_given_pressure * f / rock_DRI * (f / rock_DRI) ** 0.8 * 1.15;
