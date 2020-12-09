@@ -30,10 +30,20 @@ const CalculatorOutput = (props) => {
         "rotRpm":"Rotary RPM",
     }
 
+    const toEdit = () =>{
+        localStorage.setItem("isEditing", true);
+        localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[0]))
+        //Redirect to input page
+    }
 
-    let calculation_inputs = props.location.state.inputs; // Will be here
-   
-    console.log('[CalculatorOutput.js] Received output info:',props.location.state.outputs);
+    const toDelete = () => {
+        //return ;
+    }
+
+
+    //let calculation_inputs = props.location.state.inputs; // Will be here
+    
+    //console.log('[CalculatorOutput.js] Received output info:',props.location.state.outputs);
     /* TODO: This is where we would call the function to get the outputs. For now, dummy outputs will be used. */
     //const outputs = {};
 
@@ -46,8 +56,8 @@ const CalculatorOutput = (props) => {
                     <div class="column">
                         <h1 style={{fontSize:"20pt", color:"#009aff"}} class="ui left aligned header">Project Specifications:</h1>
                         <div class="ui three column grid">
-                            {  Object.keys(calculation_inputs).map((e) => 
-                                <p class="column">{inputNames[e]}: {calculation_inputs[e]}</p>)
+                            {  //Object.keys(calculation_inputs).map((e) => 
+                                //<p class="column">{inputNames[e]}: {calculation_inputs[e]}</p>)
                             }
                         </div>
                     </div>
@@ -77,7 +87,7 @@ const CalculatorOutput = (props) => {
                 </div>
                 <div class="ten wide column"></div>
                 <div style={{marginRight:"-10px"}} class="one wide column">
-                    <button class="ui blue medium button" type="Edit">Edit</button>
+                    <button class="ui blue medium button" type="Edit" onClick={toEdit}>Edit</button>
                 </div>    
                 <div style={{marginRight:"85px"}} class="one wide right floated column">
                     <button class="ui blue medium button" type="Delete">Delete</button>
