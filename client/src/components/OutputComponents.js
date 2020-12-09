@@ -104,15 +104,26 @@ const RigInformation = ({ outputs }) => {
     );
 };
 
-const RigDropdown = ({setRig}) => {
+const RigDropdown = ({rigs, setRig}) => {
 
-    // Get rigs from the JSON file.
+    // rigs is a list of rigs. Duh.
+    const rigOptions = rigs.map((rigInfo, idx) => {
+        return {
+            key: idx,
+            value: rigInfo,
+            text: rigInfo.Model
+        }
+    });
+
+    console.log('[RigDropdown] rigOptions:', rigOptions);
 
     return (
         <Dropdown 
-            onChange={(e, {value}) => {setRig(value)}}
+            onChange={(_, {value}) => {setRig(value)}}
+            options={rigOptions}
+            // defaultValue={0}
         />
-    )
+    );
 }
 
 export {

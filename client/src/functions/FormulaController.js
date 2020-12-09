@@ -40,8 +40,8 @@ import {DTH} from './formulas/DTHFormulas.js';
  * rotRpm
  */
 export default function run_calculations(inputs) {
-    let rig_model = get_rig_model();
-
+    let rig_model = inputs;
+    
     let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
@@ -65,15 +65,6 @@ export default function run_calculations(inputs) {
         HP_CMS_STD,
         HP_CMS_CMS
     };    
-}
-
-
-/**
- * Retrieves rig models from the drill database.
- */
-function get_rig_model() {
-    // TODO
-    return { error: 'NOT IMPLEMENTED' };
 }
 
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import RigModal from '../../components/RigModal.js';
 import {RigInformation, PricingInformation, RigDropdown} from '../../components/OutputComponents.js';
+
+import dummy_rig_models from './dummy_rig_models.json';
 import dummy_data from './dummy_data.json';
 
 import { Grid, Container, Button } from 'semantic-ui-react';
@@ -39,21 +41,47 @@ const inputNames = {
     "rockDRI": "Rock DRI"
 }
 
+
+const get_rigs_from_storage = () => {
+    // TODO check if its' there and sync if not ?
+    return localStorage.getItem('rig-models');
+}
+
 const CalculatorOutput = (props) => {
 
-    let [rig, setRig] = useState({});
+    const [rig, setRig] = useState({});
 
+    console.log('[Output.js] selected rig:', rig);
+
+    let list_of_rigs;
     let calc_inputs, calc_outputs;
 
+    // Load data (from dummy files or elsewhere)
     if (props.location.state) {
         calc_inputs = props.location.state.inputs;
+        list_of_rigs = get_rigs_from_storage();
+    }
+    else {
+        calc_inputs = dummy_data.inputs;
+        list_of_rigs = dummy_rig_models;
+        console.log('[Output.js] Loaded dummy_data.json.')
+    }
+
+    const objectEmpty = (obj) => {
+        // because Object.keys(new Date()).length === 0;
+        // we have to do some additional check
+        return Object.keys(obj).length === 0
+            && obj.constructor === Object;
+    };
+
+    // Calculate the outputs, or load them from a dummy file.
+    if(!objectEmpty(rig)) {
+        console.log('[Output.js] Running calculations...');
         // calc_outputs doesn't exist yet (needs to be calculated).
         calc_outputs = run_calculations(calc_inputs, rig);
     }
     else {
-        calc_inputs = dummy_data.inputs;
         calc_outputs = dummy_data.outputs;
-        console.log('[Output.js] Loaded dummy_data.json.')
     }
 
     return (
@@ -77,13 +105,8 @@ const CalculatorOutput = (props) => {
                         <h1 style={{ fontSize: "20pt", color: "#009aff" }}>Rig Model</h1>
                         <p>This is the recommended rig. You can change the model to assess different pricings.</p>
                         {/* TODO: get recommended rig from function */}
-                        {/* <select>
-                            <option>Drill #1</option>
-                            <option>Drill #2</option>
-                            <option>Drill #3</option>
-                        </select> */}
                         
-                        <RigDropdown setRig={setRig}/>
+                        <RigDropdown setRig={setRig} rigs={list_of_rigs}/>
 
                         <RigModal rig={rig}/>
                     
