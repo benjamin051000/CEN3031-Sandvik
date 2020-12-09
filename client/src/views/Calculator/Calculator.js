@@ -41,7 +41,7 @@ export default function Calculator() {
     return (
         !objectEmpty(inputs) ?
             <Redirect to={{
-                pathname: '/CalculatorOutput',
+                pathname: '/output',
                 state: { inputs: inputs, outputs: run_calculations(inputs) }
             }} />
 
