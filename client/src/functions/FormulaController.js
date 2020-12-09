@@ -39,10 +39,9 @@ import {DTH} from './formulas/DTHFormulas.js';
  * rotBit
  * rotRpm
  */
-export default function run_calculations(inputs) {
-    let rig_model = get_rig_model();
+export default function run_calculations(inputs, rig_model) {
 
-    let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
+    let drillingCalc_inputs = (({ holeDepth, rotPulldown, dthHammer }) => ({ holeDepth, rotPulldown, dthHammer }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
     //Rotary formula calculations
@@ -69,21 +68,12 @@ export default function run_calculations(inputs) {
 
 
 /**
- * Retrieves rig models from the drill database.
- */
-function get_rig_model() {
-    // TODO
-    return { error: 'NOT IMPLEMENTED' };
-}
-
-
-/**
  * Calculates data from the DrillingCalc formula set.
  * 
  * @param {Object} input - Input from the frontend web form.
  * @param {Object} rig_model - Mongoose database results, in the form of DrillRigSchema.
  */
-function get_drillingCalc_info({ holeDepth, rotPulldown }, rig_model) {
+function get_drillingCalc_info({ holeDepth, rotPulldown, dthHammer }, rig_model) {
 
     let single_pass = rig_model.RHT_SinglePass;
     let pipeLength = rig_model.RHT_PipeLength;
@@ -93,19 +83,20 @@ function get_drillingCalc_info({ holeDepth, rotPulldown }, rig_model) {
 
     let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
     let number_of_pipes_too_deep = drillingCalc.number_of_pipes_too_deep(holeDepth, single_pass, pipeLength, loader_cap, number_of_pipes);
-
+    
     let pipeWeight = drillingCalc.get_pipe_weight(pipeLength);
+    
     let drill_string_wt = drillingCalc.get_drill_string_wt(loader_cap, pipeWeight, number_of_pipes_too_deep);
-    let available_WOB = drillingCalc.available_WOB(rig_model.RHT_RHWeight, rig_model.RPD_MaxPulldown, drill_string_wt);
+  
+    let available_WOB = drillingCalc.available_WOB(rig_model.RPD_RHWeight, rig_model.RPD_MaxPulldown, drill_string_wt);
 
     let pulldown_Force = drillingCalc.get_pulldown_force(rig_model.RPD_MaxPulldown, rig_model.RPD_MaxFeedPressure, rotPulldown)
-    let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RHT_RHWeight, pulldown_Force, drill_string_wt);
+   
+    let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RPD_RHWeight, pulldown_Force, drill_string_wt);
 
-    let hammer; // TODO figure out where to get this
-
-    let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(hammer);
+    let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(dthHammer);
     let pulldown_force_DTH = drillingCalc.get_pulldown_force_DTH(adjusted_feed_pressure, rotPulldown);
-    let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RHT_RHWeight, drill_string_wt, pulldown_force_DTH);
+    let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RPD_RHWeight, drill_string_wt, pulldown_force_DTH);
 
     return {
         number_of_pipes,
@@ -145,8 +136,8 @@ function get_rotary_info(altitude, rig_model) {
  * @param {Object} drillingCalc - DrillingCalc output data
  */
 function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
-    let rock_UCS = input.rock_UCS;
-    let rpm = input.rpm;
+    let rock_UCS = input.ucs;
+    let rpm = input.rotRpm;
     let holeDepth = input.holeDepth;
     let fracturization_Word = input.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
@@ -159,8 +150,11 @@ function get_rotaryFormulas_info(input, rig_model, drillingCalc) {
 
     let number_of_pipes = drillingCalc.number_of_pipes;
 
+   
+
     let UCS = rotaryFormulas.UCS(rock_UCS);
-    let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize);
+    console.log(UCS);
+    let penetration_rate = rotaryFormulas.penetration_rate(adjusted_WOB, rpm, UCS, rig_model.Rotary_BitSize[0]);
 
     let pure_penetration_rate = rotaryFormulas.pure_penetration_rate(penetration_rate);
 
@@ -245,30 +239,41 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let compressor_vol = inputs.dthComp;
     let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
-    let running_pressure = inputs.Wap;
-    let drill_time_percent = inputs.drill_time_percent;
-    let est_hours = inputs.est_hours;
-    let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
-    let fuel_cost = inputs.fuel_cost;  //Check what actually name is later
-    let engine_rebuild_cost = inputs.engine_rebuild_cost //Add inputs
-    let compressor_rebuild_cost = inputs.compressor_rebuild_cost //Add inputs
-    let carbon_tax = inputs.carbon_tax;  //Add inputs
+    let running_pressure = inputs.dthWap;
+    let drill_time_percent = inputs.drillTimePercent;
+    let est_hours = inputs.estHours;
+    let fuel_tank_size = inputs.fuelTankSize;  //Check what actually name is later
+    let fuel_cost = inputs.fuelCost;  //Check what actually name is later
+    let engine_rebuild_cost = inputs.engineRebuildCost //Add inputs
+    let compressor_rebuild_cost = inputs.compRebuildCost //Add inputs
+    let carbon_tax = inputs.carbTaxTonne;  //Add inputs
+    let fuel_burn;
+    let engine_hp;
+    let Fuel_V_Life;
 
-
-
+    
     //For all Engine values, will use first engine as temp values
-    let fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
-    let engine_hp = rig_model.Engine[0].Nominal_HP;
+    if(rig_model.Engine.length === 0)
+    {
+        fuel_burn = 0;
+        engine_hp = 0;
+        Fuel_V_Life = 0;
+    }
+    else{
+        fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
+        engine_hp = rig_model.Engine[0].Nominal_HP;
+        Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life;
+    }
     let est_parasitic_hp = 225; //Some rig model has different values but some do not have this maybe just take average value?
-    let Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life
+    let ground_conditions = DTH.ground_conditions(inputs.ucs);
 
     let non_drill_time_percent = HP_CMS_outputs.non_drilling_time_percent(drill_time_percent);
-
+    
     let max_fuel_consumption = HP_CMS_STD.max_fuel_consumption(fuel_burn, engine_hp);
 
     let total_HP_compressor = HP_CMS_STD.total_hp_compressor(altitude_ambient_pressure, compressor_vol, running_pressure, 1.8);
-    let load_factor = HP_CMS_STD.load_factor();
-
+    let load_factor = HP_CMS_STD.load_factor(ground_conditions);
+   
     let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
     let fuel_consumption_off_load_per_hour = HP_CMS_STD.fuel_consumption_off_load_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
@@ -279,9 +284,11 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let annual_fuel_consumption = HP_CMS_STD.annual_fuel_consumption(avg_fuel_consumption_per_hour, est_hours);
 
+
     let daily_fuel_consumption = HP_CMS_STD.daily_fuel_consumption(annual_fuel_consumption);
 
     let endurance_hours = HP_CMS_STD.endurance_hours(fuel_tank_size, avg_fuel_consumption_per_hour);
+
 
     let annual_fuel_cost = HP_CMS_STD.annual_fuel_cost(annual_fuel_consumption, fuel_cost);
 
@@ -327,33 +334,49 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
     let compressor_vol = inputs.dthComp;
     let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
-    let running_pressure = inputs.Wap;
-    let drill_time_percent = inputs.drill_time_percent;
-    let est_hours = inputs.est_hours;
-    let fuel_tank_size = inputs.fuel_tank_size;  //Check what actually name is later
-    let fuel_cost = inputs.fuel_cost;  //Check what actually name is later
-    let engine_rebuild_cost = inputs.engine_rebuild_cost //Add inputs
-    let compressor_rebuild_cost = inputs.compressor_rebuild_cost //Add inputs
-    let carbon_tax = inputs.carbon_tax;  //Add inputs
+    let running_pressure = inputs.dthWap;
+    let drill_time_percent = inputs.drillTimePercent;
+    let est_hours = inputs.estHours;
+    let fuel_tank_size = inputs.fuelTankSize;  //Check what actually name is later
+    let fuel_cost = inputs.fuelCost;  //Check what actually name is later
+    let engine_rebuild_cost = inputs.engineRebuildCost //Add inputs
+    let compressor_rebuild_cost = inputs.compRebuildCost //Add inputs
+    let carbon_tax = inputs.carbTaxTonne;  //Add inputs
+    
+    let fuel_burn;
+    let engine_hp;
+    let Fuel_V_Life;
 
+    let calculated_volume_altitude_derated_percent = HP_CMS_STD_outputs.compressor_actual_volume_for_altitude;
 
 
     //For all Engine values, will use first engine as temp values
-    let fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
-    let engine_hp = rig_model.Engine[0].Nominal_HP;
+    if(rig_model.Engine.length === 0)
+    {
+        fuel_burn = 0
+        engine_hp = 0
+        Fuel_V_Life = 0
+    }
+    else{
+        fuel_burn = rig_model.Engine[0].Fuel_BurnRate;
+        engine_hp = rig_model.Engine[0].Nominal_HP;
+        Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life;
+    }
+    
     let est_parasitic_hp = 225; //Some rig model has different values but some do not have this maybe just take average value?
-    let Fuel_V_Life = rig_model.Engine[0].Fuel_V_Life
-
+    
+    let ground_conditions = DTH.ground_conditions(inputs.ucs);
+    
     let non_drill_time_percent = HP_CMS_outputs.non_drilling_time_percent(drill_time_percent);
 
     let max_fuel_consumption = HP_CMS_STD.max_fuel_consumption(fuel_burn, engine_hp);
 
-    let total_HP_compressor = HP_CMS_CMS.total_hp_compressor(altitude_ambient_pressure, compressor_vol, running_pressure, 1.8);
-    let load_factor = HP_CMS_STD.load_factor();
+    let total_HP_compressor = HP_CMS_CMS.total_hp_compressor(altitude_ambient_pressure, calculated_volume_altitude_derated_percent, compressor_vol, running_pressure, 1.8);
+    let load_factor = HP_CMS_STD.load_factor(ground_conditions);
 
     let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
-    let fuel_consumption_off_load_per_hour = HP_CMS_CMS.fuel_consumption_off_load_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
+    let fuel_consumption_off_load_per_hour = HP_CMS_CMS.fuel_consumption_off_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
     let avg_fuel_consumption_per_hour = HP_CMS_STD.avg_fuel_consumption_per_hour(fuel_consumption_on_load_per_hour, drill_time_percent, fuel_consumption_off_load_per_hour,non_drill_time_percent );
 
@@ -408,7 +431,7 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
 
 function get_DTH_info(inputs, rig_model){
     
-    let rock_UCS = inputs.rock_UCS;
+    let rock_UCS = inputs.ucs;
     let holeDepth = inputs.holeDepth;
     let fracturization_Word = inputs.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
@@ -423,7 +446,7 @@ function get_DTH_info(inputs, rig_model){
     let hammer_ROP_factor1 = rig_model.DTH_Hammer[0].ROP_Factor[0];
     let hammer_ROP_factor2 = rig_model.DTH_Hammer[0].ROP_Factor[1];
     let hammer_bit = inputs.dthBit;
-    let rock_DRI = inputs.rock_DRI
+    let rock_DRI = inputs.rockDRI;
 
     let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
 
@@ -433,9 +456,9 @@ function get_DTH_info(inputs, rig_model){
     let adjusted_hammer_ROP = DTH.adjusted_hammer_ROP(hammer_ROP_factor1, hammer_ROP_factor2, hammer_bit);
 
     let ROP_in_DRI_at_given_pressure = DTH.ROP_in_DRI_at_given_pressure(adjusted_hammer_ROP, WAP);
-
+    
     let inst_rop = DTH.inst_rop(rock_DRI,ground_conditions,ROP_in_DRI_at_given_pressure);
-
+    console.log(rock_DRI);    
     let penetration_rate = DTH.penetration_rate(inst_rop);
 
     let pure_penetration_rate = DTH.pure_penetration_rate(penetration_rate);

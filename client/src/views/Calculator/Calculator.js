@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import InputTabs  from "../../components/InputTabs"
 // import * as Yup from 'yup';
 
-import './Calculator.css'
-import run_calculations from '../../functions/FormulaController.js';
+import './Calculator.css';
 
 /*
         Formik component:
@@ -42,19 +41,19 @@ export default function Calculator() {
         !objectEmpty(inputs) ?
             <Redirect to={{
                 pathname: '/output',
-                state: { inputs: inputs, outputs: run_calculations(inputs) }
+                state: { inputs: inputs }
             }} />
 
             :
 
-            <CalcInputForm inputs={inputs} setInputs={setInputs} />
+            <CalcInputForm setInputs={setInputs} />
 
 
     );
 }
 
 /* Component to render the input form. */
-const CalcInputForm = ({ inputs, setInputs, setOutputs }) => {
+const CalcInputForm = ({ setInputs }) => {
     return <div class="ui centered container">
         <div>
             <h1 style={{ fontSize: "30pt", color: "#009aff" }} class="ui centered header">New Calculation Form</h1>

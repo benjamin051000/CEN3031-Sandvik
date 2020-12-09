@@ -1,0 +1,2460 @@
+[
+	{
+		"Model": "D245S",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381
+		],
+		"RHT_SinglePass": 28.6,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 97,
+		"RHT_HoistRate": 207,
+		"RHT_AddPipe": 0.4,
+		"RHT_SetUp": 1,
+		"RPD_RHWeight": 1100,
+		"RPD_MaxPulldown": 30000,
+		"RPD_MaxFeedPressure": 3501,
+		"Rotary_BitSize": [
+			127,
+			133,
+			140,
+			146,
+			152,
+			159,
+			171,
+			203
+		],
+		"Comp": [
+			1050,
+			1225
+		],
+		"HP_Comp": [
+			1000,
+			1160
+		],
+		"HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 757,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D25KS",
+		"PipeSize": [
+			89,
+			102,
+			114,
+			127,
+			140
+		],
+		"PipeWeight": [
+			512,
+			512,
+			800,
+			1100,
+			1600
+		],
+		"RHT_SinglePass": 28.6,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 2,
+		"RHT_FeedRate": 120,
+		"RHT_HoistRate": 217,
+		"RHT_AddPipe": 0.4,
+		"RHT_SetUp": 1,
+		"RPD_RHWeight": 1100,
+		"RPD_MaxPulldown": 25000,
+		"RPD_MaxFeedPressure": 3501,
+		"Rotary_BitSize": [
+			127,
+			133,
+			140,
+			146,
+			152,
+			159,
+			171,
+			203
+		],
+		"Comp": [
+			900,
+			1050,
+			1225
+		],
+		"HP_Comp": [
+			1000,
+			1160
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 757,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D45KS_34",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720
+		],
+		"RHT_SinglePass": 28.6,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 125,
+		"RHT_HoistRate": 164,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 1.5,
+		"RPD_RHWeight": 1300,
+		"RPD_MaxPulldown": 45000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			203,
+			216,
+			229,
+			251
+		],
+		"Comp": [],
+		"HP_Comp": [
+			1000,
+			1160
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 1105,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D45KS_40",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720
+		],
+		"RHT_SinglePass": 34.5,
+		"RHT_PipeLength": 35,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 125,
+		"RHT_HoistRate": 164,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 2,
+		"RPD_RHWeight": 1300,
+		"RPD_MaxPulldown": 45000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			203,
+			216,
+			229,
+			251
+		],
+		"Comp": [],
+		"HP_Comp": [
+			1000,
+			1160
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 1105,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D50KS_34",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720
+		],
+		"RHT_SinglePass": 28.6,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 125,
+		"RHT_HoistRate": 164,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 1.5,
+		"RPD_RHWeight": 1300,
+		"RPD_MaxPulldown": 50000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1050,
+			1323,
+			1600
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 1135,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D50KS_40",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720
+		],
+		"RHT_SinglePass": 34.5,
+		"RHT_PipeLength": 35,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 125,
+		"RHT_HoistRate": 164,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 2,
+		"RPD_RHWeight": 1300,
+		"RPD_MaxPulldown": 50000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1050,
+			1323,
+			1600
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 1135,
+		"Engine": [
+			{
+				"name": "QSX15",
+				"Fuel_BurnRate": 213,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 600
+			},
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D55SP",
+		"PipeSize": [
+			152,
+			159,
+			165,
+			178,
+			194
+		],
+		"PipeWeight": [
+			1381,
+			1381,
+			1590,
+			2400,
+			2713
+		],
+		"RHT_SinglePass": 55,
+		"RHT_PipeLength": 25,
+		"RHT_LoaderCap": 2,
+		"RHT_FeedRate": 139,
+		"RHT_HoistRate": 171,
+		"RHT_AddPipe": 0,
+		"RHT_SetUp": 2.5,
+		"RPD_RHWeight": 1300,
+		"RPD_MaxPulldown": 35000,
+		"RPD_MaxFeedPressure": 3501,
+		"Rotary_BitSize": [
+			172,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1600,
+			2000
+		],
+		"HP_Comp": [
+			1350
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 2271,
+		"Engine": [
+			{
+				"name": "QSK19",
+				"Fuel_BurnRate": 215,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 755
+			},
+			{
+				"name": "C27",
+				"Fuel_BurnRate": 202,
+				"Fuel_V_Life": 1500000,
+				"Nominal_HP": 1000
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D75KS",
+		"PipeSize": [
+			195,
+			203,
+			219,
+			229,
+			235,
+			246
+		],
+		"PipeWeight": [
+			2713,
+			1675,
+			3684,
+			1961,
+			2100,
+			3000
+		],
+		"RHT_SinglePass": 33.5,
+		"RHT_PipeLength": 35,
+		"RHT_LoaderCap": 6,
+		"RHT_FeedRate": 89,
+		"RHT_HoistRate": 114,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 2,
+		"RPD_RHWeight": 2050,
+		"RPD_MaxPulldown": 75000,
+		"RPD_MaxFeedPressure": 3501,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279
+		],
+		"Comp": [
+			1600,
+			2000
+		],
+		"HP_Comp": [
+			1350,
+			1450
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 2271,
+		"Engine": [
+			{
+				"name": "QSK19",
+				"Fuel_BurnRate": 215,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 755
+			},
+			{
+				"name": "C27",
+				"Fuel_BurnRate": 202,
+				"Fuel_V_Life": 1500000,
+				"Nominal_HP": 1000
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR410i_MP",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179,
+			195
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720,
+			2713
+		],
+		"RHT_SinglePass": 32.8,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 130,
+		"RHT_HoistRate": 130,
+		"RHT_AddPipe": 0.35,
+		"RHT_SetUp": 1.5,
+		"RPD_RHWeight": 1500,
+		"RPD_MaxPulldown": 50000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1600
+		],
+		"HP_Comp": [
+			1450
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 1514,
+		"Engine": [
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR410i_SP",
+		"PipeSize": [
+			114,
+			127,
+			140,
+			152,
+			165,
+			179,
+			195
+		],
+		"PipeWeight": [
+			800,
+			1100,
+			1600,
+			1381,
+			1590,
+			2720,
+			2713
+		],
+		"RHT_SinglePass": 45.9,
+		"RHT_PipeLength": 30,
+		"RHT_LoaderCap": 2,
+		"RHT_FeedRate": 130,
+		"RHT_HoistRate": 130,
+		"RHT_AddPipe": 0.35,
+		"RHT_SetUp": 1.5,
+		"RPD_RHWeight": 1500,
+		"RPD_MaxPulldown": 50000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1600
+		],
+		"HP_Comp": [
+			1450
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 1514,
+		"Engine": [
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR412i_MP",
+		"PipeSize": [
+			178,
+			194,
+			203,
+			219,
+			229,
+			244,
+			260
+		],
+		"PipeWeight": [
+			2400,
+			2713,
+			1675,
+			3684,
+			1961,
+			3000,
+			4300
+		],
+		"RHT_SinglePass": 38.6,
+		"RHT_PipeLength": 40,
+		"RHT_LoaderCap": 6,
+		"RHT_FeedRate": 71,
+		"RHT_HoistRate": 120,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 2,
+		"RPD_RHWeight": 2050,
+		"RPD_MaxPulldown": 80000,
+		"RPD_MaxFeedPressure": 3751,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			311
+		],
+		"Comp": [
+			2000,
+			2600
+		],
+		"HP_Comp": [
+			1450
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 3787,
+		"Engine": [],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR412i_SP",
+		"PipeSize": [
+			178,
+			194,
+			203,
+			219,
+			229,
+			244
+		],
+		"PipeWeight": [
+			2400,
+			2713,
+			1675,
+			3684,
+			1961,
+			3000
+		],
+		"RHT_SinglePass": 65,
+		"RHT_PipeLength": 32.5,
+		"RHT_LoaderCap": 0,
+		"RHT_FeedRate": 75,
+		"RHT_HoistRate": 98,
+		"RHT_AddPipe": 0,
+		"RHT_SetUp": 3,
+		"RPD_RHWeight": 2050,
+		"RPD_MaxPulldown": 80000,
+		"RPD_MaxFeedPressure": 3751,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			311
+		],
+		"Comp": [
+			2000,
+			2600
+		],
+		"HP_Comp": [
+			1450
+		],
+		" HP_CompPressure": [
+			180,
+			350
+		],
+		"FuelTank_Vol": 3787,
+		"Engine": [],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D90KS",
+		"PipeSize": [
+			194,
+			219,
+			246,
+			273
+		],
+		"PipeWeight": [
+			2713,
+			3684,
+			3000,
+			3550
+		],
+		"RHT_SinglePass": 38.6,
+		"RHT_PipeLength": 40,
+		"RHT_LoaderCap": 6,
+		"RHT_FeedRate": 71,
+		"RHT_HoistRate": 120,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 3,
+		"RPD_RHWeight": 3580,
+		"RPD_MaxPulldown": 90000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			286,
+			311,
+			349
+		],
+		"Comp": [
+			2600,
+			3000
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 3787,
+		"Engine": [],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "D90SP",
+		"PipeSize": [
+			194,
+			219,
+			246,
+			260,
+			273
+		],
+		"PipeWeight": [
+			2713,
+			3684,
+			3000,
+			4300,
+			3550
+		],
+		"RHT_SinglePass": 65,
+		"RHT_PipeLength": 32.5,
+		"RHT_LoaderCap": 0,
+		"RHT_FeedRate": 75,
+		"RHT_HoistRate": 98,
+		"RHT_AddPipe": 0,
+		"RHT_SetUp": 4,
+		"RPD_RHWeight": 3580,
+		"RPD_MaxPulldown": 90000,
+		"RPD_MaxFeedPressure": 2701,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			286,
+			311,
+			349
+		],
+		"Comp": [
+			2600,
+			3000
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 3787,
+		"Engine": [],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "1190E",
+		"PipeSize": [
+			194,
+			219,
+			246,
+			273
+		],
+		"PipeWeight": [
+			2713,
+			3684,
+			3000,
+			3550
+		],
+		"RHT_SinglePass": 66,
+		"RHT_PipeLength": 32.5,
+		"RHT_LoaderCap": 2,
+		"RHT_FeedRate": 130,
+		"RHT_HoistRate": 130,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 3,
+		"RPD_RHWeight": 3580,
+		"RPD_MaxPulldown": 100000,
+		"RPD_MaxFeedPressure": 3001,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			286,
+			311,
+			349
+		],
+		"Comp": [
+			2600,
+			3000
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 0,
+		"Engine": [],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "1190E_SP",
+		"PipeSize": [
+			194,
+			219,
+			246,
+			260,
+			273
+		],
+		"PipeWeight": [
+			2713,
+			3684,
+			3000,
+			4300,
+			3550
+		],
+		"RHT_SinglePass": 34.5,
+		"RHT_PipeLength": 35,
+		"RHT_LoaderCap": 4,
+		"RHT_FeedRate": 125,
+		"RHT_HoistRate": 164,
+		"RHT_AddPipe": 0.5,
+		"RHT_SetUp": 2,
+		"RPD_RHWeight": 3580,
+		"RPD_MaxPulldown": 100000,
+		"RPD_MaxFeedPressure": 2701,
+		"Rotary_BitSize": [
+			229,
+			251,
+			270,
+			279,
+			286,
+			311,
+			349
+		],
+		"Comp": [
+			2600
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 0,
+		"Engine": [
+			{
+				"name": "C18",
+				"Fuel_BurnRate": 218,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 700
+			},
+			{
+				"name": "C18_T4F",
+				"Fuel_BurnRate": 202,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 755
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR416i",
+		"PipeSize": [
+			219,
+			235,
+			273,
+			323,
+			340
+		],
+		"PipeWeight": [
+			3684,
+			1961,
+			3550,
+			4000,
+			4100
+		],
+		"RHT_SinglePass": 21.3,
+		"RHT_PipeLength": 20,
+		"RHT_LoaderCap": 6,
+		"RHT_FeedRate": 257,
+		"RHT_HoistRate": 257,
+		"RHT_AddPipe": 0.2,
+		"RHT_SetUp": 1,
+		"RPD_RHWeight": 14000,
+		"RPD_MaxPulldown": 120000,
+		"RPD_MaxFeedPressure": 1601,
+		"Rotary_BitSize": [
+			311,
+			330,
+			381,
+			406
+		],
+		"Comp": [
+			3850
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 3633,
+		"Engine": [
+			{
+				"name": "QSK19",
+				"Fuel_BurnRate": 215,
+				"Fuel_V_Life": 1200000,
+				"Nominal_HP": 755
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	},
+	{
+		"Model": "DR580 ",
+		"PipeSize": [
+			89,
+			102,
+			114,
+			127,
+			140
+		],
+		"PipeWeight": [
+			512,
+			512,
+			800,
+			1100,
+			1600
+		],
+		"RHT_SinglePass": 21.3,
+		"RHT_PipeLength": 20,
+		"RHT_LoaderCap": 6,
+		"RHT_FeedRate": 257,
+		"RHT_HoistRate": 257,
+		"RHT_AddPipe": 0.2,
+		"RHT_SetUp": 1,
+		"RPD_RHWeight": 0,
+		"RPD_MaxPulldown": 0,
+		"RPD_MaxFeedPressure": 0,
+		"Rotary_BitSize": [
+			152,
+			159,
+			171,
+			200,
+			216,
+			229,
+			251,
+			254
+		],
+		"Comp": [
+			1600
+		],
+		"HP_Comp": [],
+		" HP_CompPressure": [],
+		"FuelTank_Vol": 0,
+		"Engine": [
+			{
+				"name": "QSK23",
+				"Fuel_BurnRate": 210,
+				"Fuel_V_Life": 1104660,
+				"Nominal_HP": 850
+			}
+		],
+		"DTH_Hammer": [
+			{
+				"Model": "M30",
+				"Sizes": [
+					102,
+					114,
+					121,
+					127,
+					130,
+					133,
+					140
+				],
+				"ROP_Factor": [
+					60,
+					90
+				]
+			},
+			{
+				"Model": "M40",
+				"Sizes": [
+					127,
+					130,
+					133,
+					140,
+					143,
+					146,
+					152
+				],
+				"ROP_Factor": [
+					64,
+					115
+				]
+			},
+			{
+				"Model": "M50",
+				"Sizes": [
+					140,
+					143,
+					146,
+					152,
+					156,
+					159,
+					165
+				],
+				"ROP_Factor": [
+					61,
+					140
+				]
+			},
+			{
+				"Model": "M60",
+				"Sizes": [
+					152,
+					156,
+					159,
+					165,
+					171,
+					178,
+					191
+				],
+				"ROP_Factor": [
+					68,
+					165
+				]
+			},
+			{
+				"Model": "M80",
+				"Sizes": [
+					203,
+					216,
+					225,
+					241,
+					254,
+					270
+				],
+				"ROP_Factor": [
+					44,
+					203
+				]
+			}
+		]
+	}
+]
