@@ -4,7 +4,8 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/server.routes'),
-    rigRouter = require('../routes/RigRouter');
+		rigRouter = require('../routes/RigRouter'),
+		calcHistoryRouter = require('../routes/CalcHistoryRouter');
 
 
 
@@ -44,7 +45,9 @@ module.exports.init = () => {
     }
 
     //sets route to drill rig database
-    app.use('/api/drillRigs/', rigRouter);
+		app.use('/api/drillRigs/', rigRouter);
+		
+		app.use('/api/history/', calcHistoryRouter);
 
     return app
 }
