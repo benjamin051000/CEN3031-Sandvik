@@ -1,36 +1,5 @@
 CalcHistory = require('../models/CalcHistoryModel');
 
-/* model CalcHist object:
-calcHist = {
-	"userId": "123456",
-	"isDeleted": "false",
-	"carbTaxTonne": "sampletext",
-	"compRebuildCost": "sampletext",
-	"companyName": "sampletext",
-	"custName": "sampletext",
-	"date": "sampletext",
-	"drillTimePercent": "sampletext",
-	"dthBit": "sampletext",
-	"dthComp": "sampletext",
-	"dthHammer": "sampletext",
-	"dthWap": "sampletext",
-	"elevation": "sampletext",
-	"engineRebuildCost": "sampletext",
-	"estHours": "sampletext",
-	"fracturization": "sampletext",
-	"fuelCost": "sampletext",
-	"fuelTankSize": "sampletext",
-	"holeDepth": "sampletext",
-	"pipeSize": "sampletext",
-	"projName": "sampletext",
-	"rotBit": "sampletext",
-	"rotPulldown": "sampletext",
-	"rotRpm": "sampletext",
-	"temp": "sampletext",
-	"ucs": "sampletext"
-}
-*/
-
 // add a new calculation history to the db
 module.exports.create = async (req, res) => {
 	const userId = req.body.userId;
@@ -116,7 +85,6 @@ module.exports.create = async (req, res) => {
 // }
 
 // get a user's history
-
 module.exports.getUserHistory = async (req, res) => {
 	let id = req.params.userId;
 
