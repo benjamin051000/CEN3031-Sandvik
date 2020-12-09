@@ -2,32 +2,27 @@ import React from 'react';
 import {useState} from 'react'
 // import { Redirect } from 'react-router-dom';
 // import {writeToCookie} from "../../functions/JSONFunctions"
-import './Login.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import 'whatwg-fetch';
 import { Redirect } from 'react-router-dom';
+import 'whatwg-fetch';
 
 /** Login styling based off example hosted at https://semantic-ui.com/examples/login.html */
 
-/**
- * @param {*} props 
- */
-
-
 //Set website header, includes the bar with home
-const Login  = () => {
-    
-    const [accountLoginState, setAccountLoginState] = useState(false)
+const SignUp  = () => {
 
-    return accountLoginState ? <Redirect to='/dashboard'/> : 
+    const [accountCreateState, setAccountCreateState] = useState(false)
 
-   (
+    return accountCreateState ? <Redirect to='/login'/> : 
+
+    (
+
         <div class="ui centered container">
             <div class="ui middle aligned center aligned grid">
                 <div class="six wide column">
                     <h2 class="ui header">
-                        <div style={{fontSize:"25pt", color:"#009aff"}} class="content">Login to your account</div>
+                        <div style={{fontSize:"25pt", color:"#009aff"}} class="content">Create a new account</div>
                     </h2>
                     <Formik 
                         initialValues={{
@@ -42,7 +37,7 @@ const Login  = () => {
                         })}
 
                         onSubmit={(values) => {
-                            fetch('/api/account/login', {
+                            fetch('/api/account/register', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -51,17 +46,15 @@ const Login  = () => {
                                     username: values.username,
                                     password: values.password,
                                   }),
-                            }).then(res => res.json())
-                            .then(json => {
-                              console.log('json', json)
+                            }).then(res => res.json()).
+                            then(json => {
+                                console.log('json', json)
                                 if(json.success){
-                                    setAccountLoginState(true)
-                                    localStorage.setItem("userId", values.username)
-                                    localStorage.setItem("token", json.token)
+                                    alert("Account Created Successfully!")
+                                    setAccountCreateState(true)
                                 }
-                                
-                            })
-                        }}>
+                              })
+                          }}>
                         {/**^^^^^^^^^^^^^^^PROCESS FROM HERE */}
 
                         <Form class="ui large form">
@@ -81,14 +74,11 @@ const Login  = () => {
                                     </div>
                                 </div>
                                 <button type="submit" class="ui fluid large blue sumbit button">
-                                    Login
+                                    Create Account
                                 </button>
                             </div>
                         </Form>
                     </Formik>
-                    <div class="ui message">
-                        <a href="/signup">Create an Account</a>
-                    </div>
                 </div>
             
             </div>        
@@ -97,4 +87,4 @@ const Login  = () => {
     )
 }
 
-export default Login;
+export default SignUp;

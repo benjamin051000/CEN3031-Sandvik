@@ -53,7 +53,19 @@ const CalculatorOutput = (props) => {
 
     console.log('[Output.js] selected rig:', rig);
 
+    
+    const toEdit = () =>{
+        localStorage.setItem("isEditing", true);
+        localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[0]))
+        //Redirect to input page
+    }
+
+    //const toDelete = () => {
+        //return ;
+    //}
+
     let list_of_rigs;
+
     let calc_inputs, calc_outputs;
 
     // Load data (from dummy files or elsewhere)
@@ -144,7 +156,7 @@ const CalculatorOutput = (props) => {
                 </Grid.Column>
 
                 <Grid.Column style={{ marginRight: "-10px" }}>
-                    <Button size='medium' color='blue' type="Edit">Edit</Button>
+                    <Button onClick={toEdit} size='medium' color='blue' type="Edit">Edit</Button>
                 </Grid.Column>
 
                 <Grid.Column floated='right' style={{ marginRight: "85px" }}>
