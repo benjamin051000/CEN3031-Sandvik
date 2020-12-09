@@ -41,7 +41,7 @@ import {DTH} from './formulas/DTHFormulas.js';
  */
 export default function run_calculations(inputs, rig_model) {
 
-    let drillingCalc_inputs = (({ holeDepth, rotPulldown }) => ({ holeDepth, rotPulldown }))(inputs);
+    let drillingCalc_inputs = (({ holeDepth, rotPulldown, dthHammer }) => ({ holeDepth, rotPulldown, dthHammer }))(inputs);
     let drillingCalc_outputs = get_drillingCalc_info(drillingCalc_inputs, rig_model);
 
     //Rotary formula calculations
@@ -73,7 +73,7 @@ export default function run_calculations(inputs, rig_model) {
  * @param {Object} input - Input from the frontend web form.
  * @param {Object} rig_model - Mongoose database results, in the form of DrillRigSchema.
  */
-function get_drillingCalc_info({ holeDepth, rotPulldown }, rig_model) {
+function get_drillingCalc_info({ holeDepth, rotPulldown, dthHammer }, rig_model) {
 
     let single_pass = rig_model.RHT_SinglePass;
     let pipeLength = rig_model.RHT_PipeLength;
@@ -83,19 +83,20 @@ function get_drillingCalc_info({ holeDepth, rotPulldown }, rig_model) {
 
     let number_of_pipes = drillingCalc.number_of_pipes(holeDepth, single_pass, pipeLength);
     let number_of_pipes_too_deep = drillingCalc.number_of_pipes_too_deep(holeDepth, single_pass, pipeLength, loader_cap, number_of_pipes);
-
+    
     let pipeWeight = drillingCalc.get_pipe_weight(pipeLength);
+    
     let drill_string_wt = drillingCalc.get_drill_string_wt(loader_cap, pipeWeight, number_of_pipes_too_deep);
-    let available_WOB = drillingCalc.available_WOB(rig_model.RHT_RHWeight, rig_model.RPD_MaxPulldown, drill_string_wt);
+  
+    let available_WOB = drillingCalc.available_WOB(rig_model.RPD_RHWeight, rig_model.RPD_MaxPulldown, drill_string_wt);
 
     let pulldown_Force = drillingCalc.get_pulldown_force(rig_model.RPD_MaxPulldown, rig_model.RPD_MaxFeedPressure, rotPulldown)
-    let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RHT_RHWeight, pulldown_Force, drill_string_wt);
+   
+    let adjusted_WOB = drillingCalc.adjusted_WOB(rig_model.RPD_RHWeight, pulldown_Force, drill_string_wt);
 
-    let hammer; // TODO figure out where to get this
-
-    let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(hammer);
+    let adjusted_feed_pressure = drillingCalc.get_adjusted_feed_pressure(dthHammer);
     let pulldown_force_DTH = drillingCalc.get_pulldown_force_DTH(adjusted_feed_pressure, rotPulldown);
-    let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RHT_RHWeight, drill_string_wt, pulldown_force_DTH);
+    let adjusted_WOB_for_DTH = drillingCalc.adjusted_WOB_for_DTH(rig_model.RPD_RHWeight, drill_string_wt, pulldown_force_DTH);
 
     return {
         number_of_pipes,
@@ -343,7 +344,7 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
-    let fuel_consumption_off_load_per_hour = HP_CMS_CMS.fuel_consumption_off_load_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
+    let fuel_consumption_off_load_per_hour = HP_CMS_CMS.fuel_consumption_off_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
 
     let avg_fuel_consumption_per_hour = HP_CMS_STD.avg_fuel_consumption_per_hour(fuel_consumption_on_load_per_hour, drill_time_percent, fuel_consumption_off_load_per_hour,non_drill_time_percent );
 
@@ -398,7 +399,7 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
 
 function get_DTH_info(inputs, rig_model){
     
-    let rock_UCS = inputs.rock_UCS;
+    let rock_UCS = inputs.ucs;
     let holeDepth = inputs.holeDepth;
     let fracturization_Word = inputs.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
