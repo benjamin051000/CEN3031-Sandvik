@@ -1,0 +1,44 @@
+{
+    "inputs": {
+        "projName": "Minin' fer gold",
+        "custName": "Albert",
+        "companyName": "UF Drilling Co. Ltd.",
+        "date": "12/8/2020",
+        "ucs": 150,
+        "fracturization": "Light",
+        "elevation": 5163,
+        "temp": 90,
+        "fuelCost": 15,
+        "estHours": 40,
+        "carbTaxTonne": 2,
+        "drillTimePercent": 75,
+        "fuelTankSize": 40,
+        "engineRebuildCost": 1200,
+        "compRebuildCost": 2400,
+        "pipeSize": 0.4,
+        "holeDepth": 12.5,
+        "dthComp": 100,
+        "dthWap": 69,
+        "dthHammer": "M30",
+        "dthBit": 1.25,
+        "rockDRI": "something",
+        "rotPulldown": 14,
+        "rotComp": 19,
+        "rotBit": 0.75,
+        "rotRpm": 9001
+    },
+
+    "outputs": {
+        "drillingCalc_outputs": {
+            "a": 1,
+            "b": 2,
+            "c": 3
+        },
+        "rotary_info": {},
+        "rotaryFormulas": {},
+        "rotaryPower": {},
+        "dth_info": {},
+        "HP_CMS_STD": {},
+        "HP_CMS_CMS": {}
+    }
+}
