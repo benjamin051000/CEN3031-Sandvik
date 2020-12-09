@@ -347,6 +347,8 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
     let engine_hp;
     let Fuel_V_Life;
 
+    let calculated_volume_altitude_derated_percent = HP_CMS_STD_outputs.compressor_actual_volume_for_altitude;
+
 
     //For all Engine values, will use first engine as temp values
     if(rig_model.Engine.length === 0)
@@ -369,7 +371,7 @@ function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let max_fuel_consumption = HP_CMS_STD.max_fuel_consumption(fuel_burn, engine_hp);
 
-    let total_HP_compressor = HP_CMS_CMS.total_hp_compressor(altitude_ambient_pressure, compressor_vol, running_pressure, 1.8);
+    let total_HP_compressor = HP_CMS_CMS.total_hp_compressor(altitude_ambient_pressure, calculated_volume_altitude_derated_percent, compressor_vol, running_pressure, 1.8);
     let load_factor = HP_CMS_STD.load_factor(ground_conditions);
 
     let fuel_consumption_on_load_per_hour = HP_CMS_STD.fuel_consumption_on_load_per_hour(load_factor,fuel_burn,est_parasitic_hp,total_HP_compressor);
