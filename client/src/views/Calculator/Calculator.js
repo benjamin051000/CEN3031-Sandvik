@@ -8,6 +8,7 @@ import InputTabs  from "../../components/InputTabs"
 import './Calculator.css'
 import run_calculations from '../../functions/FormulaController.js';
 import { editObject } from '../../functions/JSONFunctions';
+import defaultDrillData from '../../assets/DrillData.json'
 
 /*
         Formik component:
@@ -58,6 +59,9 @@ export default function Calculator() {
 /* Component to render the input form. */
 const CalcInputForm = ({ inputs }) => {
 
+    if(!localStorage.getItem("drillData"))
+        localStorage.setItem("drillData", JSON.stringify(defaultDrillData))
+
     const getId = () => {
         if (localStorage.getItem("historyStorage")) {
             return JSON.parse(localStorage.getItem("historyStorage"))[JSON.parse(localStorage.getItem("historyStorage")).length - 1].itemId + 1
@@ -68,7 +72,7 @@ const CalcInputForm = ({ inputs }) => {
 
     const getInitial = () => {
         let returnList;
-        if ("false" == localStorage.getItem("isEditing")) {
+        if ("false" === localStorage.getItem("isEditing")) {
             returnList = {
                 itemId: getId(),
                 // Client info
@@ -176,7 +180,7 @@ const CalcInputForm = ({ inputs }) => {
 
                     onSubmit={(values) => {
 
-                        if ("true" == localStorage.getItem("isEditing")) {
+                        if ("true" === localStorage.getItem("isEditing")) {
                             let history = JSON.parse(localStorage.getItem("historyStorage"))
                             editObject(values, history)
                             localStorage.setItem("historyStorage", JSON.stringify(history))
