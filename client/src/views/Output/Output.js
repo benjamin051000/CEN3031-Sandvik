@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import RigModal from '../../components/RigModal.js';
 import {RigInformation, PricingInformation, RigDropdown} from '../../components/OutputComponents.js';
@@ -50,14 +51,12 @@ const get_rigs_from_storage = () => {
 const CalculatorOutput = (props) => {
 
     const [rig, setRig] = useState({});
-
-    console.log('[Output.js] selected rig:', rig);
-
+    const [gotoInput, setGotoInput] = useState(false);
     
     const toEdit = () =>{
         localStorage.setItem("isEditing", true);
         localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[0]))
-        //Redirect to input page
+        setGotoInput(true)
     }
 
     //const toDelete = () => {
@@ -104,7 +103,11 @@ const CalculatorOutput = (props) => {
         calc_outputs = dummy_data.outputs;
     }
 
-    return (
+    return gotoInput ? <Redirect to={{
+        pathname: '/calculator',
+    }} />
+    :
+    (
         <Container>
             <Grid style={{ color: "white" }} celled='internally'>
                 <Grid.Row>
