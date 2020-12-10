@@ -6,7 +6,6 @@ import InputTabs  from "../../components/InputTabs"
 // import * as Yup from 'yup';
 
 import './Calculator.css'
-import run_calculations from '../../functions/FormulaController.js';
 import { editObject } from '../../functions/JSONFunctions';
 import defaultDrillData from '../../assets/DrillData.json'
 
@@ -57,7 +56,7 @@ export default function Calculator() {
 }
 
 /* Component to render the input form. */
-const CalcInputForm = ({ inputs }) => {
+const CalcInputForm = ({ setInputs }) => {
 
     if(!localStorage.getItem("drillData"))
         localStorage.setItem("drillData", JSON.stringify(defaultDrillData))
@@ -199,7 +198,7 @@ const CalcInputForm = ({ inputs }) => {
                             localStorage.setItem("historyStorage", JSON.stringify(history));
                         }
 
-                        //setInputs(values);
+                        setInputs(values);
                     }}
 
                 >
