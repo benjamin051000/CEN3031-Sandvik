@@ -44,7 +44,7 @@ const inputNames = {
 
 const get_rigs_from_storage = () => {
     // TODO check if its' there and sync if not ?
-    return localStorage.getItem('rig-models');
+    return JSON.parse(localStorage.getItem('drillData'));
 }
 
 const CalculatorOutput = (props) => {

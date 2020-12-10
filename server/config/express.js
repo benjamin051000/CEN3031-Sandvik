@@ -6,6 +6,7 @@ const path = require('path'),
     cors = require("cors"),
     exampleRouter = require('../routes/server.routes'),
 		rigRouter = require('../routes/RigRouter'),
+		calcHistoryRouter = require('../routes/CalcHistoryRouter');
 		signInRouter = require('../routes/SignInRouter');
 
 module.exports.init = () => {
@@ -47,7 +48,10 @@ module.exports.init = () => {
 
     //sets route to drill rig database
 		app.use('/api/drillRigs/', rigRouter);
-
+		
+		// use router for calchistory
+		app.use('/api/history/', calcHistoryRouter);
+  
 		// use router for sign in page
 		app.use('/api/account/', signInRouter);
 
