@@ -1,25 +1,28 @@
 import React from 'react'
 import { Tab } from 'semantic-ui-react'
-import { date } from 'yup'
-import ChangePassword from './ChangePasswordModel'
-import ChangeUsername from './ChangeUsernameModal'
+import ChangePasswordBox from './ChangePasswordBox'
+import ChangeUsernameBox from './ChangeUsernameBox'
 
 const syncTo = () => {
    
+    let newJSON = {
+        "userId": localStorage.getItem("userId"),
+        "userHistory": JSON.parse(localStorage.getItem("historyStorage"))
+    }
+
     //Sync history
     fetch('/api/history', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
           },
-          body: localStorage.getItem("historyStorage")
+          body: JSON.stringify(newJSON),
     }).then(res => res.json())
     .then(json => {
       console.log('json', json)
-        if(json){
+        if(json.success){
             alert("Success!")
         }
-        
     })
 }
 
@@ -33,6 +36,7 @@ const syncFrom = () =>{
     }).then(res => res.json())
     .then(json => {
         localStorage.setItem("drillData", JSON.stringify(json))
+        alert("Success, downloaded latest drill data!")
     })
     //Sync history
     fetch('/api/history/' + localStorage.getItem("userId"), {
@@ -43,6 +47,7 @@ const syncFrom = () =>{
     }).then(res => res.json())
     .then(json => {
       localStorage.setItem("historyStorage", JSON.stringify(json))
+      alert("Success, downloaded latest history data!")
     })
 }
 
@@ -54,9 +59,7 @@ const panes = [
         menuItem: 'Sync', render: () =>
             <Tab.Pane style={{ backgroundColor: "#272727", border: "5px solid #009aff" }}>
                 <div style={{ color: "#009aff", marginBottom: "15px" }} class="ui centered header">Sync with Server</div>
-                <div style={{ marginTop: "30px" }} class="ui two column centered grid">
-                    
-                    <div style={{ color: "white", fontSize: "10pt", marginTop: "-15px"}}>Last Synced: {new Date()}</div>
+                <div class="ui two column centered grid">
                     
                     <div class="row">
                         <button onClick={syncTo} class="ui blue medium button">Sync to server</button>
@@ -74,19 +77,21 @@ const panes = [
                 <div class="ui centered grid">
                     <div class="row">
                         <div class="ui vertical buttons">
-                            <ChangeUsername />
-                            <ChangePassword />
-
+                        
                         </div>
                     </div>
                 </div>
-
+                <ChangePasswordBox/>
+                <ChangeUsernameBox/>
+               
             </Tab.Pane>
     },
 ]
 
 const SettingsTabs = () => (
+    
     <Tab menu={{ fluid: true, vertical: true, tabular: true, inverted: true, color: "blue" }} panes={panes} />
+    
 )
 
 export default SettingsTabs
