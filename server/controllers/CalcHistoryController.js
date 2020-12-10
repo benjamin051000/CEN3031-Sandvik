@@ -6,7 +6,7 @@ module.exports.create = async (req, res) => {
 	let calcHist = req.body;
 
 	if (!calcHist || !userId) {
-		return res.send({
+		return res.status(200).send({
 			success: false,
 			message: "Error: Invalid",
 		});
@@ -17,7 +17,7 @@ module.exports.create = async (req, res) => {
 		userId: userId
 	}, (err, users) => {
 		if (err) {
-			return res.send({
+			return res.status(200).send({
 				success: false,
 				message: "Error: Server error 53"
 			});
@@ -27,20 +27,20 @@ module.exports.create = async (req, res) => {
 		newUserCalcHist = new CalcHistory(calcHist);
 		let error = newUserCalcHist.validateSync();
 		if (error) {
-			return res.send({
+			return res.status(200).send({
 				success: false,
 				message: `Server error: ${error._message}`
 			});
 		} else if (users.length != 1) {
 			// user isnt in db yet
-			calcHist.save((err) => {
+			newUserCalcHist.save((err) => {
 				if (err) {
-					return res.send({
+					return res.status(200).send({
 						success: false,
 						message: "Error: Server error 71"
 					});
 				} else {
-					return res.send({
+					return res.status(200).send({
 						success: true,
 						message: "New user's history created."
 					});
@@ -52,13 +52,13 @@ module.exports.create = async (req, res) => {
 				userId: userId
 			}, calcHist, (err) => {
 				if (err) {
-					return res.send({
+					return res.status(200).send({
 						success: false,
 						message: `Error: ${err}`
 					});
 				} else {
 					// if we got here the everything is good to go
-					return res.send({
+					return res.status(200).send({
 						success: true,
 						message: "Existing user's history updated!"
 					});
@@ -78,7 +78,7 @@ module.exports.create = async (req, res) => {
 //         error: err.message || "An unknown error occurred",
 //       });
 //     }
-//     res.send({
+//     res.status(200).send({
 //       error: id + " has been deleted successfully",
 //     });
 //   });
@@ -92,7 +92,7 @@ module.exports.getUserHistory = async (req, res) => {
 		userId: id
 	}, (err, data) => {
 		if (err)
-			return res.send({
+			return res.status(200).send({
 				success: false,
 				message: "Error: Server error",
 			});
@@ -106,14 +106,14 @@ module.exports.getUserHistory = async (req, res) => {
 // 	const calcHist = req.body;
 // 	const id = calcHist._id;
 // 	if (!calcHist) {
-// 		return res.send({
+// 		return res.status(200).send({
 // 			success: false,
 // 			message: "Error: History not found"
 // 		});
 // 	}
 
 // 	await CalcHistory.updateOne({ _id: id }, calcHist)
-// 	.then(res.send({
+// 	.then(res.status(200).send({
 // 		success: true,
 // 		message: "Updated document."
 // 	}));
