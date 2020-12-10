@@ -78,6 +78,11 @@ const PricingInformation = ({ outputs }) => {
     );
 };
 
+
+/**
+ * This is the vertically-paned output tabs which display calculation outputs.
+ * @param {Object} param0 
+ */
 const RigInformation = ({ outputs }) => {
 
     const panes = Object.keys(outputs).map(e => {
