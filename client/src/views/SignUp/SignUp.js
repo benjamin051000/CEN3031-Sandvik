@@ -46,8 +46,8 @@ const SignUp  = () => {
                                     username: values.username,
                                     password: values.password,
                                   }),
-                            }).then(res => res.json()).
-                            then(json => {
+                            }).then(res => res.json())
+                            .then(json => {
                                 console.log('json', json)
                                 if(json.success){
                                     alert("Account Created Successfully!")

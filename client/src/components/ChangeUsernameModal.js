@@ -13,8 +13,8 @@ export default function () {
                 oldUsername: localStorage.getItem("userId"),
                 newUsername: newUsername,
               }),
-            }).then(res => res.json()).
-            then(json => {
+            }).then(res => res.json())
+            .then(json => {
             console.log('json', json)
             if(json.success){
                 localStorage.setItem("userId", newUsername)
