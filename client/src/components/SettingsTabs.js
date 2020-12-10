@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tab } from 'semantic-ui-react'
+import { date } from 'yup'
 import ChangePassword from './ChangePasswordModel'
 import ChangeUsername from './ChangeUsernameModal'
 
@@ -15,8 +16,8 @@ const syncTo = () => {
     }).then(res => res.json())
     .then(json => {
       console.log('json', json)
-        if(json.success){
-            
+        if(json){
+            alert("Success!")
         }
         
     })
@@ -31,7 +32,7 @@ const syncFrom = () =>{
           },
     }).then(res => res.json())
     .then(json => {
-        localStorage.setItem("drillData", json)
+        localStorage.setItem("drillData", JSON.stringify(json))
     })
     //Sync history
     fetch('/api/history/' + localStorage.getItem("userId"), {
@@ -41,7 +42,7 @@ const syncFrom = () =>{
           },
     }).then(res => res.json())
     .then(json => {
-      localStorage.setItem("historyStorage", json)
+      localStorage.setItem("historyStorage", JSON.stringify(json))
     })
 }
 
@@ -55,7 +56,7 @@ const panes = [
                 <div style={{ color: "#009aff", marginBottom: "15px" }} class="ui centered header">Sync with Server</div>
                 <div style={{ marginTop: "30px" }} class="ui two column centered grid">
                     
-                    <div style={{ color: "white", fontSize: "10pt", marginTop: "-15px"}}>Last Synced: MY DATE</div>
+                    <div style={{ color: "white", fontSize: "10pt", marginTop: "-15px"}}>Last Synced: {new Date()}</div>
                     
                     <div class="row">
                         <button onClick={syncTo} class="ui blue medium button">Sync to server</button>
