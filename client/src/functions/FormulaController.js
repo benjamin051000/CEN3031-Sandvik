@@ -239,7 +239,7 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 
     let compressor_vol = inputs.dthComp;
     let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
-    let running_pressure = inputs.dthWap;
+    let running_pressure = parseInt(inputs.dthWap);
     let drill_time_percent = inputs.drillTimePercent;
     let est_hours = inputs.estHours;
     let fuel_tank_size = inputs.fuelTankSize;  //Check what actually name is later
@@ -334,7 +334,7 @@ function get_HP_CMS_STD_info(inputs, rig_model, HP_CMS_STD_outputs){
 function get_HP_CMS_CMS_info(inputs, rig_model, HP_CMS_STD_outputs){
     let compressor_vol = inputs.dthComp;
     let altitude_ambient_pressure = HP_CMS_STD_outputs.altitude_ambient_pressure //Could use get_HP_CMS_outputs as another parameter to get this
-    let running_pressure = inputs.dthWap;
+    let running_pressure = parseInt(inputs.dthWap);
     let drill_time_percent = inputs.drillTimePercent;
     let est_hours = inputs.estHours;
     let fuel_tank_size = inputs.fuelTankSize;  //Check what actually name is later
@@ -435,7 +435,7 @@ function get_DTH_info(inputs, rig_model){
     let holeDepth = inputs.holeDepth;
     let fracturization_Word = inputs.fracturization;   
     let fracturization = DTH.fracturization(fracturization_Word);
-    let WAP = inputs.dthWap;
+    let WAP = parseInt(inputs.dthWap);
 
 
     let pipeLength = rig_model.RHT_PipeLength;

@@ -72,11 +72,12 @@ const CalculatorOutput = (props) => {
     if (props.location.state) {
         calc_inputs = props.location.state.inputs;
         list_of_rigs = get_rigs_from_storage();
+        console.log('Loaded form inputs & browser cache rig models.');
     }
     else {
         calc_inputs = dummy_data.inputs;
         list_of_rigs = dummy_rig_models;
-        console.log('[Output.js] Loaded dummy_data.json.')
+        console.log('[Output.js] Loaded test inputs & rig models.')
     }
 
     const objectEmpty = (obj) => {
@@ -90,9 +91,16 @@ const CalculatorOutput = (props) => {
     if(!objectEmpty(rig)) {
         console.log('[Output.js] Running calculations...');
         // calc_outputs doesn't exist yet (needs to be calculated).
+
+        console.log('Input to be used in calculations:', calc_inputs, rig);
+
+        calc_inputs.dthWap = parseInt(calc_inputs.dthWap);
+
         calc_outputs = run_calculations(calc_inputs, rig);
+        console.log('calculated results:', calc_outputs);
     }
     else {
+        console.log('[Output.js] loaded dummy output.');
         calc_outputs = dummy_data.outputs;
     }
 
