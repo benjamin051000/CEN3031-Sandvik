@@ -11,6 +11,7 @@ import dummy_data from './dummy_data.json';
 import { Grid, Container, Button } from 'semantic-ui-react';
 
 import run_calculations from '../../functions/FormulaController.js';
+import {deleteObject} from '../../functions/JSONFunctions'
 
 
 const inputNames = {
@@ -50,22 +51,28 @@ const get_rigs_from_storage = () => {
 
 const CalculatorOutput = (props) => {
 
-    const [rig, setRig] = useState({});
-    const [gotoInput, setGotoInput] = useState(false);
-    
-    const toEdit = () =>{
-        localStorage.setItem("isEditing", true);
-        localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[0]))
-        setGotoInput(true)
-    }
-
-    //const toDelete = () => {
-        //return ;
-    //}
-
     let list_of_rigs;
 
     let calc_inputs, calc_outputs;
+
+    const [rig, setRig] = useState({});
+    const [gotoInput, setGotoInput] = useState(false);
+    const [gotoDash, setGotoDash] = useState(false);
+    
+    const toEdit = () =>{
+        localStorage.setItem("isEditing", true);
+        localStorage.setItem("editingItem", JSON.stringify(JSON.parse(localStorage.getItem("historyStorage"))[props.location.state.inputs.itemId]))
+        setGotoInput(true)
+    }
+
+    const toDelete = (calc_inputs) => {
+        let myHistory = JSON.parse(localStorage.getItem("historyStorage"))
+        myHistory = deleteObject(props.location.state.inputs.itemId, myHistory)
+        localStorage.setItem("historyStorage", JSON.stringify(myHistory))
+        setGotoDash(true);
+    }
+
+    
 
     // Load data (from dummy files or elsewhere)
     if (props.location.state) {
@@ -106,6 +113,11 @@ const CalculatorOutput = (props) => {
     return gotoInput ? <Redirect to={{
         pathname: '/calculator',
     }} />
+    :
+    gotoDash ?
+        <Redirect to={{
+            pathname: '/dashboard',
+        }} />
     :
     (
         <Container>
@@ -171,7 +183,7 @@ const CalculatorOutput = (props) => {
                 </Grid.Column>
 
                 <Grid.Column floated='right' style={{ marginRight: "85px" }}>
-                    <Button size='medium' color='blue' type="Delete">Delete</Button>
+                    <Button onClick={toDelete} size='medium' color='blue' type="Delete">Delete</Button>
                 </Grid.Column>
             </Grid>
         </Container>
