@@ -62,11 +62,11 @@ const CalcInputForm = ({ setInputs }) => {
         localStorage.setItem("drillData", JSON.stringify(defaultDrillData))
 
     const getId = () => {
-        if (localStorage.getItem("historyStorage")) {
-            return JSON.parse(localStorage.getItem("historyStorage"))[JSON.parse(localStorage.getItem("historyStorage")).length - 1].itemId + 1
+        if (!localStorage.getItem("historyStorage") || localStorage.getItem("historyStorage") === "[]") {
+            return 0
         }
         else
-            return 0;
+            return JSON.parse(localStorage.getItem("historyStorage"))[JSON.parse(localStorage.getItem("historyStorage")).length - 1].itemId + 1
     }
 
     const getInitial = () => {
