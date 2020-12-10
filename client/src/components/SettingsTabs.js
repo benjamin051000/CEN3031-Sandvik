@@ -46,8 +46,8 @@ const syncFrom = () =>{
           },
     }).then(res => res.json())
     .then(json => {
-      localStorage.setItem("historyStorage", JSON.stringify(json))
-      alert("Success, downloaded latest history data!")
+      //localStorage.setItem("historyStorage", JSON.stringify(json.userHistory))
+      //alert("Success, downloaded latest history data!")
     })
 }
 

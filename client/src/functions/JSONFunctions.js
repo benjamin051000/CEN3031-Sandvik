@@ -16,7 +16,7 @@ const editObject = (Object, data) =>{
 
 const deleteObject = (id, data) =>{
     return data.filter((Object) => {
-        return Object.id !== id;
+        return Object.itemId !== id;
       });
 }
 
