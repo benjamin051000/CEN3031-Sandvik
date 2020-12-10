@@ -114,10 +114,10 @@ function get_drillingCalc_info({ holeDepth, rotPulldown, dthHammer }, rig_model)
  */
 function get_rotary_info(altitude, rig_model) {
 
-    let comp_vol = rig_model.HP_Comp;
+    let comp_vol = rig_model.HP_Comp[0];
     // Rotary_BitSize and PipeSize must be converted to inches (from mm).
-    let hole_diam = rig_model.Rotary_BitSize / 25.4;
-    let rod_diam = rig_model.PipeSize / 25.4;
+    let hole_diam = rig_model.Rotary_BitSize[0] / 25.4;
+    let rod_diam = rig_model.PipeSize[0] / 25.4;
 
     let alt_vol_per_mass = calculator_rotary.altitude_volume_per_mass(comp_vol, altitude);
 
@@ -208,11 +208,11 @@ function get_rotaryPower_info(inputs, adjusted_WOB) {
 }
 
 function get_HP_CMS_outputs(inputs, rig_model){
-    let drill_time_percent = inputs.drill_time_percent;
+    let drill_time_percent = inputs.drillTimePercent;
     let altitude = inputs.elevation;
     let compressor_vol = inputs.dthComp;
-    let hole_diam = rig_model.Rotary_BitSize / 25.4;
-    let rod_diam = rig_model.PipeSize / 25.4;
+    let hole_diam = rig_model.Rotary_BitSize[0] / 25.4;
+    let rod_diam = rig_model.PipeSize[0] / 25.4;
 
     let non_drill_time_percent = HP_CMS_outputs.non_drilling_time_percent(drill_time_percent);
 

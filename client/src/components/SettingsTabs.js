@@ -31,7 +31,7 @@ const syncFrom = () =>{
           },
     }).then(res => res.json())
     .then(json => {
-        localStorage.setItem("drillData", json)
+        localStorage.setItem("drillData", JSON.stringify(json))
     })
     //Sync history
     fetch('/api/history/' + localStorage.getItem("userId"), {
@@ -41,7 +41,7 @@ const syncFrom = () =>{
           },
     }).then(res => res.json())
     .then(json => {
-      localStorage.setItem("historyStorage", json)
+      localStorage.setItem("historyStorage", JSON.stringify(json))
     })
 }
 
