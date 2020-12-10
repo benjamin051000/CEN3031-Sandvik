@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from 'react-router-dom';
-
+import {useState} from 'react'
+import { setIn } from "formik";
 
 /**
  * 
@@ -10,13 +11,8 @@ import { Redirect } from 'react-router-dom';
 
 const HistoryTable = (props) => {
 
-    const goToOutputPage = (entry) => {
-         return <Redirect to={{
-            pathname: '/CalculatorOutput',
-           // state: { inputs: entry, outputs: run_calculations(entry) }
-        }} />
-
-    }
+    const [gotoOutput, setGotoOutput] = useState(false);
+    const [inputs, setInputs] = useState({});
 
     const returnList =
         props.filteredEntries.length === 0 && props.searchText.length === 0
@@ -30,7 +26,8 @@ const HistoryTable = (props) => {
                         <td data-label="Client Name">{entry.custName}</td>
                         <td data-label="Date">{entry.date}</td>
                         <td class="right aligned">
-                            <button onClick={() => goToOutputPage(entry)} class="ui icon button">
+                            <button onClick={() =>{setGotoOutput(true)
+                                                    setInputs(entry)}} class="ui icon button">
                                 <i class="chevron circle right icon"></i>
                             </button>
                         </td>
@@ -61,7 +58,8 @@ const HistoryTable = (props) => {
                             <td data-label="Client Name">{entry.custName}</td>
                             <td data-label="Date">{entry.date}</td>
                             <td class="right aligned">
-                                <button class="ui icon button" onClick={() => goToOutputPage(entry.itemId, entry)}>
+                            <button onClick={() =>{setGotoOutput(true)
+                                                    setInputs(entry)}} class="ui icon button">
                                     <i class="chevron circle right icon"></i>
                                 </button>
                             </td>
@@ -69,7 +67,13 @@ const HistoryTable = (props) => {
                     );
                 });
 
-    return <tbody>{returnList}</tbody>;
+    
+    return gotoOutput ? <Redirect to={{
+        pathname: '/output',
+        state: { inputs: inputs }
+    }} />
+    :   
+    <tbody>{returnList}</tbody>;
 };
 
 export default HistoryTable;
