@@ -1,31 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import holedig from '../../assets/holedig.jpg'
 
-const Header = () => {
+//Set website header, includes the bar with home 
+const NewHeader = () => {
     return (
-        <div className='topnav'>
-            {/* Logo */}
-            <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={ "/logo192.png" } alt="React logo" />
-            </Link>
+        <div style={{backgroundImage:`url(${holedig})`,  backgroundSize:"cover", backgroundPosition:"50px", backgroundPositionX:"0"}} class="ui fluid container">
+            <div>
+                {/* Logo - Stored in client/public */}
+                <div >
+                    <div class="column" style={{ paddingTop:"40px"}}>
+                        <div >
+                            <img class="ui centered image" style={{ border: "4px solid #009aff"}} src={"/sandvik_header_2.png"} alt="Sandvik logo" />
+                        </div>
+                    </div>
+                </div>
 
-            {/* Page Links */}
-            <div className="topnav-right">
-                <Link className="topnav-link" to='/Register'>Sign in</Link>
-                <Link className="topnav-link" to='/projects'>Projects</Link>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
-                    Events
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
-                </a>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://github.com/ufosc/club-resources">
-                    Resources
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6 right-4"></i>
-                </a>
-                <Link className="topnav-link" to="/about">About</Link>
+                {/* Page Links */}
+                <div style={{ marginTop: "35px", marginBottom: "35px", position: "sticky" }} class="ui inverted menu" >
+                    <div class="right menu" >
+                        <Link class="item" to='/login' >Sign in</Link>
+                        <Link class="item" to='/dashboard'>Dashboard</Link>
+                        <Link class="item" to="/settings">Settings</Link>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export default Header;
+export default NewHeader;
