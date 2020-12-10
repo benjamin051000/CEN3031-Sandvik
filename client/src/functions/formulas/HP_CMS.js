@@ -1,7 +1,7 @@
 const HP_CMS_outputs = {
     non_drilling_time_percent: (drilling_time_perc) => {
         // drilling_time_perc is a form input
-        return 1 - drilling_time_perc;
+        return 100 - drilling_time_perc;
     },
 
     altitude_ambient_pressure: (altitude) => {

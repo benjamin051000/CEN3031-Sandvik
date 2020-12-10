@@ -55,6 +55,7 @@ export const drillingCalc = {
             return 4000;
 
         default:
+            return 1000;
 
         }
     },

@@ -134,13 +134,25 @@ const panes = [
 
                     <p>
                         <label htmlFor="dthWap">WAP</label>
-                        <Field name="dthWap" type="number" placeholder="WAP" />
+                        <Field name="dthWap" as="select" placeholder="WAP">
+                            <option></option>
+                            <option value={180}>180</option>
+                            <option value={350}>350</option>
+                            {/* Apparently no rig models use 500 */}
+                            <option value={500}>500</option>
+                        </Field>
                         <ErrorMessage component="required-message" name="dthWap" />
                     </p>
 
                     <p>
                         <label htmlFor="dthHammer">Hammer</label>
-                        <Field name="dthHammer" type="text" placeholder="Hammer Type" />
+                        <Field name="dthHammer" as="select" placeholder="Hammer Type">
+                            {
+                                ["", "M30", "M40", "M50", "M60", "M80"].map(e =>
+                                    <option value={e}>{e}</option>    
+                                )
+                            }
+                        </Field>
                         <ErrorMessage component="required-message" name="dthHammer" />
                     </p>
 
@@ -151,7 +163,7 @@ const panes = [
                     </p>
                     <p>
                         <label htmlFor="rockDRI">Rock DRI</label>
-                        <Field name="rockDRI" type="text" placeholder="Rock DRI" />
+                        <Field name="rockDRI" type="number" placeholder="Rock DRI" />
                         <ErrorMessage component="required-message" name="rockDRI" />
                     </p>
                 </div>
@@ -192,6 +204,7 @@ const panes = [
 ]
 
 const InputTabs = () => (
+    
     <Tab menu={{ fluid: true, tabular: true, inverted: true, color: "blue" }} panes={panes} />
 )
 

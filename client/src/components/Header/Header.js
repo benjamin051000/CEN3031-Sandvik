@@ -10,8 +10,10 @@ const NewHeader = () => {
             <div>
                 {/* Logo - Stored in client/public */}
                 <div >
-                    <div class="column"style={{ paddingTop:"40px"}}>
-                        <img style={{ border: "4px solid #009aff"}} class="ui centered image" src={"/sandvik_header_2.png"} alt="Sandvik logo" />
+                    <div class="column" style={{ paddingTop:"40px"}}>
+                        <div >
+                            <img class="ui centered image" style={{ border: "4px solid #009aff"}} src={"/sandvik_header_2.png"} alt="Sandvik logo" />
+                        </div>
                     </div>
                 </div>
 

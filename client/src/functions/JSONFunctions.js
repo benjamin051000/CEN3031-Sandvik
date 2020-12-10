@@ -8,9 +8,10 @@ const addObject = (Object, data) =>{
 
 
 const editObject = (Object, data) =>{
-    let index = data.indexOf(Object)
+    let index = 0//Object.itemId
+    console.log(data)
     data[index] = Object;
-}
+}  
 
 
 const deleteObject = (id, data) =>{

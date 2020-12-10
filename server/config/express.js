@@ -3,8 +3,10 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    cors = require("cors"),
     exampleRouter = require('../routes/server.routes'),
 		rigRouter = require('../routes/RigRouter'),
+		calcHistoryRouter = require('../routes/CalcHistoryRouter');
 		signInRouter = require('../routes/SignInRouter');
 
 module.exports.init = () => {
@@ -28,6 +30,9 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    //CORS for resource sharing with front end
+    app.use(cors());
+
     // add a router
     app.use('/api/example', exampleRouter);
 
@@ -43,7 +48,10 @@ module.exports.init = () => {
 
     //sets route to drill rig database
 		app.use('/api/drillRigs/', rigRouter);
-
+		
+		// use router for calchistory
+		app.use('/api/history/', calcHistoryRouter);
+  
 		// use router for sign in page
 		app.use('/api/account/', signInRouter);
 
