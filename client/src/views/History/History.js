@@ -7,6 +7,9 @@ import './History.css'
 
 function History() {
 
+  if (!localStorage.getItem("historyStorage"))
+        localStorage.setItem("historyStorage", "[]")
+
   localStorage.setItem("fromHistory", true)
 
   const data = getData();
