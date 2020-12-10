@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Tab, Dropdown} from 'semantic-ui-react';
+import { Grid, Tab, Dropdown } from 'semantic-ui-react';
 
 const outputNames = {
     // drillingCalc_outputs
@@ -68,9 +68,9 @@ const PricingInformation = ({ outputs }) => {
                 Object.keys(pricing).map(e => (
                     <Grid.Column key={e}>
                         <h2>{e}</h2>
-                        <u>Total Savings:</u> ${pricing[e].cost_before_and_after_total_savings}
+                        <u>Total Savings:</u> ${Number(pricing[e].cost_before_and_after_total_savings).toFixed(2)}
                         <br />
-                        With life increase: ${pricing[e].total_saving_with_component_life_increase}
+                        With life increase: ${Number(pricing[e].total_saving_with_component_life_increase).toFixed(2)}
                     </Grid.Column>
                 ))
             }
@@ -89,12 +89,13 @@ const RigInformation = ({ outputs }) => {
         return {
             menuItem: categoryNames[e],
             render: () => (
-                <Tab.Pane style={{backgroundColor:"#272727", border:"5px solid #009aff"}}
+                <Tab.Pane style={{ backgroundColor: "#272727", border: "5px solid #009aff" }}
                 >
                     <Grid columns={2}>
                         {
                             Object.keys(outputs[e]).map(f =>
-                                <Grid.Column><p>{outputNames[f]}: {outputs[e][f]}</p></Grid.Column>
+
+                                <Grid.Column><p>{outputNames[f]}: {Number(outputs[e][f]).toFixed(3)}</p></Grid.Column>
                             )
                         }
                     </Grid>
@@ -105,11 +106,11 @@ const RigInformation = ({ outputs }) => {
     );
 
     return (
-        <Tab panes={panes} menu={{ fluid: true, tabular: true, vertical: true, inverted: true, color: "blue" }}/>
+        <Tab panes={panes} menu={{ fluid: true, tabular: true, vertical: true, inverted: true, color: "blue" }} />
     );
 };
 
-const RigDropdown = ({rigs, setRig}) => {
+const RigDropdown = ({ rigs, setRig }) => {
 
     // rigs is a list of rigs. Duh.
     const rigOptions = rigs.map((rigInfo, idx) => {
@@ -123,10 +124,10 @@ const RigDropdown = ({rigs, setRig}) => {
     console.log('[RigDropdown] rigOptions:', rigOptions);
 
     return (
-        <Dropdown 
-            onChange={(_, {value}) => {setRig(value)}}
+        <Dropdown
+            onChange={(_, { value }) => { setRig(value) }}
             options={rigOptions}
-            // defaultValue={0}
+        // defaultValue={0}
         />
     );
 }
